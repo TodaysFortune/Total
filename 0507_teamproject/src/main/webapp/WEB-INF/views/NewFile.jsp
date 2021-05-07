@@ -173,7 +173,7 @@
 		  <tbody>
 		    <tr class="table-active user-fontsize">
 		      <th scope="row" >Active</th>
-		      <td>Column content</td>
+		      <td>Columncontent</td>
 		      <td>1</td>
 		    </tr>
 		    <tr class="table-active user-fontsize">

@@ -34,7 +34,10 @@
     </head>
     
 <body>
-
+    <input="hidden" value="pull테스트입니다"/>
+    <input="hidden" value="pull테스트입니다"/>
+    <input="hidden" value="pull테스트입니다"/>
+	
     <!--상단 https://bootswatch.com/sketchy/-->
    <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">

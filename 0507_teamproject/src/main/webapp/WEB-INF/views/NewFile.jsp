@@ -34,10 +34,6 @@
     </head>
     
 <body>
-<input type="hidden" value="깃테스트용"/>
-<input type="hidden" value="깃테스트용"/>
-<input type="hidden" value="깃테스트용"/>
-<input type="hidden" value="깃테스트용"/>
 
     <!--상단 https://bootswatch.com/sketchy/-->
    <nav class="navbar navbar-expand-lg navbar-light bg-light">

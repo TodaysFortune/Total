@@ -29,7 +29,6 @@
 			.form-control{
 				width:300px;
 			}
-			
         </style>
     </head>
     
@@ -93,9 +92,11 @@
     	</li>
       </ul>
       <form class="d-flex">
-      	<button type="button" class="btn me-sm-5 rounded-pill btn-info">로그인</button>
+      	<button type="button" class="btn me-sm-1 rounded-pill btn-info">로그인</button>
       </form>
-      
+      <form class="d-flex">
+      	<button type="button" class="btn me-sm-5 rounded-pill btn-outline-info">회원가입</button>
+      </form>
     </div>
   </div>
 </nav>
@@ -241,7 +242,7 @@
 </div>   
     <!--//중단2 -->
      <!--중단3 -->
-  <div class="card text-white bg-info mt-sm-4" style="width:34%; height:250px;align-item: center; justify-content:center;">
+  <div class="card text-white bg-info mt-sm-1" style="width:34%; height:250px;align-item: center; justify-content:center;">
   	<div class="card-header" style="align-item: center;">IT</div>
   	<div class="card-body" style="align-item: center;">
     
@@ -302,7 +303,7 @@
  <!--//중단3 -->
  <!--중단4 -->
     
-<div class="card text-white bg-success mt-sm-4" style="width:34%; height:250px; align-item: center; justify-content:center;">
+<div class="card text-white bg-success mt-sm-1" style="width:34%; height:250px; align-item: center; justify-content:center;">
   <div class="card-header" style="align-item: center;">유머</div>
   <div class="card-body" style="align-item: center;">
     

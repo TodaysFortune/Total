@@ -102,6 +102,7 @@
 </nav>
     <!--//상단 -->
  <!-- 실시간운세 -->
+<!-- 
  <div class="d-flex btn-group" role="group" aria-label="Button group with nested dropdown">
   <button type="button" class="btn btn-success"><span style="text-align: left;">실시간 운세랭킹 : </span><span style="text-align: center;">ㅇㅇㅇ님은 대박운수 입니다.</span></button>
   <div class="btn-group" role="group">
@@ -112,6 +113,7 @@
     </div>
   </div>
 </div>
+-->
  <!-- //실시간운세 -->   
  <!--중단-->  
 <div class="d-flex gap-md-1 flex-wrap" style="justify-content:center; height:100%;">

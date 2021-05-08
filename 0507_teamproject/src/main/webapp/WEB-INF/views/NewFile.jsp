@@ -31,6 +31,7 @@
     </head>
     
 <body>
+	<input type="hidden" value="깃테스트용"/>
     <!--상단 https://bootswatch.com/sketchy/-->
    <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
@@ -59,8 +60,8 @@
           <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">community</a>
           <div class="dropdown-menu">
             <a class="dropdown-item" href="#">It 시사</a>
-            <a class="dropdown-item" href="#">좋은글</a>
             <a class="dropdown-item" href="#">유머</a>
+            <a class="dropdown-item" href="#">좋은글</a>
             <a class="dropdown-item" href="#">Java</a>
             <a class="dropdown-item" href="#">JavaScript</a>
             <a class="dropdown-item" href="#">JSP</a>
@@ -101,7 +102,7 @@
     <!--//상단 -->
  <!-- 실시간운세 -->
  <div class="d-flex btn-group" role="group" aria-label="Button group with nested dropdown">
-  <button type="button" class="btn btn-success"><span style="text-align: left;">실시간 운세 : </span><span style="text-align: center;">ㅇㅇㅇ님은 대박운수 입니다.</span></button>
+  <button type="button" class="btn btn-success"><span style="text-align: left;">실시간 운세랭킹 : </span><span style="text-align: center;">ㅇㅇㅇ님은 대박운수 입니다.</span></button>
   <div class="btn-group" role="group">
     <button id="btnGroupDrop2" type="button" class="btn btn-success dropdown-toggle show" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="true"></button>
     <div class="dropdown-menu show" aria-labelledby="btnGroupDrop2" data-popper-placement="bottom-start" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(0px, 42px);">
@@ -115,12 +116,12 @@
 <div class="d-flex gap-md-1 flex-wrap" style="justify-content:center; height:100%;">
 	
     <!--중단1 -->
-  <div class="card text-white bg-warning mt-sm-4" style="width:34%; height:250px;align-item: center; justify-content:center;">
+  <div class="card text-white bg-warning mt-sm-4" style="width:34%; height:250px;align-item: center; justify-content:center; ">
   	<div class="card-header" style="align-item: center;">New</div>
   	<div class="card-body" style="align-item: center;">
     
     
-		<table class="table table-hover" style="width:99%; height:99%; background-color: #fff; border-bottom-left-radius: 7px; border-bottom-right-radius: 7px; align-item: center;">
+		<table class="table table-hover" style="width:99%; height:99%; background-color: #fff; border-bottom-left-radius: 7px; border-bottom-right-radius: 7px; align-item: center; margin:1px;">
 			  <thead>
 			    <tr class="th-user-fonesize">
 			      <th scope="col" class="col-2 text-center">번호</th>
@@ -181,7 +182,7 @@
   <div class="card-body" style="align-item: center;">
     
     
-	<table class="table table-hover" style="width:99%; height:99%; background-color: #fff; border-bottom-left-radius: 7px; border-bottom-right-radius: 7px;">
+	<table class="table table-hover" style="width:99%; height:99%; background-color: #fff; border-bottom-left-radius: 7px; border-bottom-right-radius: 7px; margin:1px;">
 		  <thead>
 		    <tr class="th-user-fonesize">
 		      <th scope="col" class="col-2 text-center">번호</th>
@@ -238,12 +239,12 @@
 </div>   
     <!--//중단2 -->
      <!--중단3 -->
-  <div class="card text-white bg-warning mt-sm-4" style="width:34%; height:250px;align-item: center; justify-content:center;">
+  <div class="card text-white bg-info mt-sm-4" style="width:34%; height:250px;align-item: center; justify-content:center;">
   	<div class="card-header" style="align-item: center;">IT</div>
   	<div class="card-body" style="align-item: center;">
     
     
-		<table class="table table-hover" style="width:99%; height:99%; background-color: #fff; border-bottom-left-radius: 7px; border-bottom-right-radius: 7px; align-item: center;">
+		<table class="table table-hover" style="width:99%; height:99%; background-color: #fff; border-bottom-left-radius: 7px; border-bottom-right-radius: 7px; align-item: center; margin:1px;">
 			  <thead>
 			    <tr class="th-user-fonesize">
 			      <th scope="col" class="col-2 text-center">번호</th>
@@ -299,12 +300,12 @@
  <!--//중단3 -->
  <!--중단4 -->
     
-<div class="card text-white bg-danger mt-sm-4" style="width:34%; height:250px; align-item: center; justify-content:center;">
-  <div class="card-header" style="align-item: center;">좋은글</div>
+<div class="card text-white bg-success mt-sm-4" style="width:34%; height:250px; align-item: center; justify-content:center;">
+  <div class="card-header" style="align-item: center;">유머</div>
   <div class="card-body" style="align-item: center;">
     
     
-	<table class="table table-hover" style="width:99%; height:99%; background-color: #fff; border-bottom-left-radius: 7px; border-bottom-right-radius: 7px;">
+	<table class="table table-hover" style="width:99%; height:99%; background-color: #fff; border-bottom-left-radius: 7px; border-bottom-right-radius: 7px; margin:1px;">
 		  <thead>
 		    <tr class="th-user-fonesize">
 		      <th scope="col" class="col-2 text-center">번호</th>
@@ -360,6 +361,7 @@
   </div>
 </div>   
     <!--//중단4 -->
+    
  </div>
  <!--//중단-->  
 </body>

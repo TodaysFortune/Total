@@ -26,6 +26,9 @@
 			.card-body{
 			    padding: .1rem .1rem;
 			}
+			.form-control{
+				width:300px;
+			}
 			
         </style>
     </head>
@@ -36,10 +39,6 @@
 <input type="hidden" value="깃테스트용"/>
 <input type="hidden" value="깃테스트용"/>
 
-<input type="hidden" value="깃테스트용"/>
-<input type="hidden" value="깃테스트용"/>
-<input type="hidden" value="깃테스트용"/>
-<input type="hidden" value="깃테스트용"/>
     <!--상단 https://bootswatch.com/sketchy/-->
    <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
@@ -54,12 +53,6 @@
           <a class="nav-link active" href="#">나의 운세
             <span class="visually-hidden">(current)</span>
           </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">New</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Best</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Notice</a>
@@ -83,7 +76,7 @@
           </div>
         </li>
         <li class="nav-item">
-         <form class="d-flex ms-sm-3">
+         <form class="d-flex ms-sm-5">
          	<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
   				<button type="button" class="btn btn-primary">Subject</button>
   				<div class="btn-group" role="group">

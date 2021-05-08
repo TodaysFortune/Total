@@ -13,9 +13,20 @@
         
         <!-- Custom styles for this template -->
         <style type="text/css">
-			.user-fontsize{
+			.th-user-fonesize{
+				font-size:	0.8125rem;
+			}
+			.td-user-fontsize{
 				font-size:	0.625rem;
 			}
+			.table>:not(caption)>*>*{
+				border-bottom-width:0px;
+				padding : 0px;
+			}
+			.card-body{
+			    padding: .1rem .1rem;
+			}
+			
         </style>
     </head>
     
@@ -88,128 +99,136 @@
   </div>
 </nav>
     <!--//상단 -->
-    
- <!--중단-->  
-<div class="d-flex gap-md-1" style="justify-content:center; height:100%;">
-	
-    <!--중단1 -->
-    <div class="card text-white bg-warning mt-sm-4" style="width:30%; height:250px;align-item: center;">
-  <div class="card-header">New</div>
-  <div class="card-body">
-    
-    
-    
-	<table class="table table-hover" style="width:99%; height:99%; background-color: #fff; border-radius: 20px;">
-		  <thead>
-		    <tr>
-		      <th scope="col" class="col-2">번호</th>
-		      <th scope="col" class="col-8">제목</th>
-		      <th scope="col" class="col-2">추천</th>
-		    </tr>
-		  </thead>
-		  <tbody>
-		    <tr class="table-active user-fontsize">
-		      <th scope="row">Active</th>
-		      <td>Column content</td>
-		      <td>1</td>
-		    </tr>
-		    <tr class="table-active user-fontsize">
-		      <th scope="row">Default</th>
-		      <td>Column content</td>
-		      <td>1</td>
-		    </tr>
-		    <tr class="table-active user-fontsize">
-		      <th scope="row">Primary</th>
-		      <td>Column content</td>
-		      <td>1</td>
-		    </tr>
-		    <tr class="table-active user-fontsize">
-		      <th scope="row">Secondary</th>
-		      <td>Column content</td>
-		      <td>1</td>
-		    </tr>
-		    <tr class="table-active user-fontsize">
-		      <th scope="row">Success</th>
-		      <td>Column content</td>
-		      <td>1</td>
-		    </tr>
-		    <tr class="table-active user-fontsize">
-		      <th scope="row">Danger</th>
-		      <td>Column content</td>
-		      <td>1</td>
-		    </tr>
-		    <tr class="table-active user-fontsize">
-		      <th scope="row">Warning</th>
-		      <td>Column content</td>
-		      <td>1</td>
-		    </tr>
-		    <tr class="table-active user-fontsize">
-		      <th scope="row">Info</th>
-		      <td>Column content</td>
-		      <td>1</td>
-		    </tr>
-		  </tbody>
-	</table>
-	
-	
+ <!-- 실시간운세 -->
+ <div class="d-flex btn-group" role="group" aria-label="Button group with nested dropdown">
+  <button type="button" class="btn btn-success"><span style="text-align: left;">실시간 운세 : </span><span style="text-align: center;">ㅇㅇㅇ님은 대박운수 입니다.</span></button>
+  <div class="btn-group" role="group">
+    <button id="btnGroupDrop2" type="button" class="btn btn-success dropdown-toggle show" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="true"></button>
+    <div class="dropdown-menu show" aria-labelledby="btnGroupDrop2" data-popper-placement="bottom-start" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(0px, 42px);">
+      <a class="dropdown-item" href="#">Dropdown link</a>
+      <a class="dropdown-item" href="#">Dropdown link</a>
+    </div>
   </div>
 </div>
-    <!--//중단1 -->
-    <!--중단2 -->
+ <!-- //실시간운세 -->   
+ <!--중단-->  
+<div class="d-flex gap-md-1 flex-wrap" style="justify-content:center; height:100%;">
+	
+    <!--중단1 -->
+  <div class="card text-white bg-warning mt-sm-4" style="width:34%; height:250px;align-item: center; justify-content:center;">
+  	<div class="card-header" style="align-item: center;">New</div>
+  	<div class="card-body" style="align-item: center;">
     
- <div class="card text-white bg-danger mt-sm-4" style="width:30%; height:250px; align-item: center;">
-  <div class="card-header">Best</div>
-  <div class="card-body">
+    
+		<table class="table table-hover" style="width:99%; height:99%; background-color: #fff; border-bottom-left-radius: 7px; border-bottom-right-radius: 7px; align-item: center;">
+			  <thead>
+			    <tr class="th-user-fonesize">
+			      <th scope="col" class="col-2 text-center">번호</th>
+			      <th scope="col" class="col-8 text-center">제목</th>
+			      <th scope="col" class="col-2 text-center">추천</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <tr class="table-active td-user-fontsize">
+			      <th scope="row" class="text-center">Active</th>
+			      <td>Column content</td>
+			      <td class="text-center">1</td>
+			    </tr>
+			    <tr class="table-active td-user-fontsize">
+			      <th scope="row" class="text-center">Default</th>
+			      <td>Column content</td>
+			      <td class="text-center">1</td>
+			    </tr>
+			    <tr class="table-active td-user-fontsize">
+			      <th scope="row" class="text-center">Primary</th>
+			      <td>Column content</td>
+			      <td class="text-center">1</td>
+			    </tr>
+			    <tr class="table-active td-user-fontsize">
+			      <th scope="row" class="text-center">Secondary</th>
+			      <td>Column content</td>
+			      <td  class="text-center">1</td>
+			    </tr>
+			    <tr class="table-active td-user-fontsize">
+			      <th scope="row" class="text-center">Success</th>
+			      <td>Column content</td>
+			      <td  class="text-center">1</td>
+			    </tr>
+			    <tr class="table-active td-user-fontsize">
+			      <th scope="row" class="text-center">Danger</th>
+			      <td>Column content</td>
+			      <td class="text-center">1</td>
+			    </tr>
+			    <tr class="table-active td-user-fontsize">
+			      <th scope="row"  class="text-center">Warning</th>
+			      <td>Column content</td>
+			      <td  class="text-center">1</td>
+			    </tr>
+			    <tr class="table-active td-user-fontsize">
+			      <th scope="row"  class="text-center">Info</th>
+			      <td>Column content</td>
+			      <td  class="text-center">1</td>
+			    </tr>
+			  </tbody>
+		</table>
+  	</div>
+ </div>
+ <!--//중단1 -->
+ <!--중단2 -->
+    
+<div class="card text-white bg-danger mt-sm-4" style="width:34%; height:250px; align-item: center; justify-content:center;">
+  <div class="card-header" style="align-item: center;">Best</div>
+  <div class="card-body" style="align-item: center;">
     
     
-	<table class="table table-hover" style="width:99%; height:99%; background-color: #fff; border-radius: 20px;">
+	<table class="table table-hover" style="width:99%; height:99%; background-color: #fff; border-bottom-left-radius: 7px; border-bottom-right-radius: 7px;">
 		  <thead>
-		    <tr>
-		      <th scope="col" class="col-2">번호</th>
-		      <th scope="col" class="col-8">제목</th>
-		      <th scope="col" class="col-2">추천</th>
+		    <tr class="th-user-fonesize">
+		      <th scope="col" class="col-2 text-center">번호</th>
+		      <th scope="col" class="col-8 text-center">제목</th>
+		      <th scope="col" class="col-2 text-center">추천</th>
 		    </tr>
 		  </thead>
 		  <tbody>
-		    <tr class="table-active user-fontsize">
-		      <th scope="row" >Active</th>
+		    <tr class="table-active td-user-fontsize">
+		      <th scope="row" class="text-center">Active</th>
 		      <td>Columncontent</td>
-		      <td>1</td>
+		      <td class="text-center">1</td>
 		    </tr>
-		    <tr class="table-active user-fontsize">
-		      <th scope="row">Default</th>
+		    <tr class="table-active td-user-fontsize">
+		      <th scope="row" class="text-center">Default</th>
 		      <td>Column content</td>
-		      <td>1</td>
+		      <td class="text-center">1</td>
 		    </tr>
-		    <tr class="table-active user-fontsize">
-		      <th scope="row">Primary</th>
+		    <tr class="table-active td-user-fontsize">
+		      <th scope="row" class="text-center">Primary</th>
 		      <td>Column content</td>
-		      <td>1</td>
+		      <td class="text-center">1</td>
 		    </tr>
-		    <tr class="table-active user-fontsize">
-		      <th scope="row">Secondary</th>
+		    <tr class="table-active td-user-fontsize">
+		      <th scope="row" class="text-center">Secondary</th>
 		      <td>Column content</td>
-		      <td>1</td>
+		      <td class="text-center">1</td>
 		    </tr>
-		    <tr class="table-active user-fontsize">
-		      <th scope="row">Success</th>
+		    <tr class="table-active td-user-fontsize">
+		      <th scope="row" class="text-center">Success</th>
 		      <td>Column content</td>
-		      <td>1</td>
+		      <td class="text-center">1</td>
 		    </tr>
-		    <tr class="table-active user-fontsize">
-		      <th scope="row">Danger</th>
+		    <tr class="table-active td-user-fontsize">
+		      <th scope="row" class="text-center">Danger</th>
 		      <td>Column content</td>
-		      <td>1</td>
+		      <td class="text-center">1</td>
 		    </tr>
-		    <tr class="table-active user-fontsize">
-		      <th scope="row">Warning</th>
+		    <tr class="table-active td-user-fontsize">
+		      <th scope="row" class="text-center">Warning</th>
 		      <td>Column content</td>
-		      <td>1</td>
+		      <td class="text-center">1</td>
 		    </tr>
-		    <tr class="table-active user-fontsize">
-		      <th scope="row">Info</th>
+		    <tr class="table-active td-user-fontsize">
+		      <th scope="row" class="text-center">Info</th>
 		      <td>Column content</td>
-		      <td>1</td>
+		      <td class="text-center">1</td>
 		    </tr>
 		  </tbody>
 	</table>
@@ -217,9 +236,130 @@
 
   </div>
 </div>   
-	
-	
     <!--//중단2 -->
+     <!--중단3 -->
+  <div class="card text-white bg-warning mt-sm-4" style="width:34%; height:250px;align-item: center; justify-content:center;">
+  	<div class="card-header" style="align-item: center;">IT</div>
+  	<div class="card-body" style="align-item: center;">
+    
+    
+		<table class="table table-hover" style="width:99%; height:99%; background-color: #fff; border-bottom-left-radius: 7px; border-bottom-right-radius: 7px; align-item: center;">
+			  <thead>
+			    <tr class="th-user-fonesize">
+			      <th scope="col" class="col-2 text-center">번호</th>
+			      <th scope="col" class="col-8 text-center">제목</th>
+			      <th scope="col" class="col-2 text-center">추천</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <tr class="table-active td-user-fontsize">
+			      <th scope="row" class="text-center">Active</th>
+			      <td>Column content</td>
+			      <td class="text-center">1</td>
+			    </tr>
+			    <tr class="table-active td-user-fontsize">
+			      <th scope="row" class="text-center">Default</th>
+			      <td>Column content</td>
+			      <td class="text-center">1</td>
+			    </tr>
+			    <tr class="table-active td-user-fontsize">
+			      <th scope="row" class="text-center">Primary</th>
+			      <td>Column content</td>
+			      <td class="text-center">1</td>
+			    </tr>
+			    <tr class="table-active td-user-fontsize">
+			      <th scope="row" class="text-center">Secondary</th>
+			      <td>Column content</td>
+			      <td  class="text-center">1</td>
+			    </tr>
+			    <tr class="table-active td-user-fontsize">
+			      <th scope="row" class="text-center">Success</th>
+			      <td>Column content</td>
+			      <td  class="text-center">1</td>
+			    </tr>
+			    <tr class="table-active td-user-fontsize">
+			      <th scope="row" class="text-center">Danger</th>
+			      <td>Column content</td>
+			      <td class="text-center">1</td>
+			    </tr>
+			    <tr class="table-active td-user-fontsize">
+			      <th scope="row"  class="text-center">Warning</th>
+			      <td>Column content</td>
+			      <td  class="text-center">1</td>
+			    </tr>
+			    <tr class="table-active td-user-fontsize">
+			      <th scope="row"  class="text-center">Info</th>
+			      <td>Column content</td>
+			      <td  class="text-center">1</td>
+			    </tr>
+			  </tbody>
+		</table>
+  	</div>
+ </div>
+ <!--//중단3 -->
+ <!--중단4 -->
+    
+<div class="card text-white bg-danger mt-sm-4" style="width:34%; height:250px; align-item: center; justify-content:center;">
+  <div class="card-header" style="align-item: center;">좋은글</div>
+  <div class="card-body" style="align-item: center;">
+    
+    
+	<table class="table table-hover" style="width:99%; height:99%; background-color: #fff; border-bottom-left-radius: 7px; border-bottom-right-radius: 7px;">
+		  <thead>
+		    <tr class="th-user-fonesize">
+		      <th scope="col" class="col-2 text-center">번호</th>
+		      <th scope="col" class="col-8 text-center">제목</th>
+		      <th scope="col" class="col-2 text-center">추천</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr class="table-active td-user-fontsize">
+		      <th scope="row" class="text-center">Active</th>
+		      <td>Columncontent</td>
+		      <td class="text-center">1</td>
+		    </tr>
+		    <tr class="table-active td-user-fontsize">
+		      <th scope="row" class="text-center">Default</th>
+		      <td>Column content</td>
+		      <td class="text-center">1</td>
+		    </tr>
+		    <tr class="table-active td-user-fontsize">
+		      <th scope="row" class="text-center">Primary</th>
+		      <td>Column content</td>
+		      <td class="text-center">1</td>
+		    </tr>
+		    <tr class="table-active td-user-fontsize">
+		      <th scope="row" class="text-center">Secondary</th>
+		      <td>Column content</td>
+		      <td class="text-center">1</td>
+		    </tr>
+		    <tr class="table-active td-user-fontsize">
+		      <th scope="row" class="text-center">Success</th>
+		      <td>Column content</td>
+		      <td class="text-center">1</td>
+		    </tr>
+		    <tr class="table-active td-user-fontsize">
+		      <th scope="row" class="text-center">Danger</th>
+		      <td>Column content</td>
+		      <td class="text-center">1</td>
+		    </tr>
+		    <tr class="table-active td-user-fontsize">
+		      <th scope="row" class="text-center">Warning</th>
+		      <td>Column content</td>
+		      <td class="text-center">1</td>
+		    </tr>
+		    <tr class="table-active td-user-fontsize">
+		      <th scope="row" class="text-center">Info</th>
+		      <td>Column content</td>
+		      <td class="text-center">1</td>
+		    </tr>
+		  </tbody>
+	</table>
+	
+
+  </div>
+</div>   
+    <!--//중단4 -->
  </div>
  <!--//중단-->  
 </body>

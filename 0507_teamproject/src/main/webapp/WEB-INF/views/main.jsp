@@ -101,10 +101,10 @@
       
       
       <form class="d-flex">
-      	<button type="button" class="btn me-sm-1 rounded-pill btn-info">로그인</button>
+      	<button type="button" class="btn me-sm-1 rounded-pill btn-info" onclick="location.href='Login'">로그인</button>
       </form>
       <form class="d-flex">
-      	<button type="button" class="btn me-sm-5 rounded-pill btn-outline-info">회원가입</button>
+      	<button type="button" class="btn me-sm-5 rounded-pill btn-outline-info" onclick="location.href='Signin'">회원가입</button>
       </form>
 
     </div>

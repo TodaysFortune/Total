@@ -23,12 +23,16 @@
 				border-bottom-width:0px;
 				padding : 0px;
 			}
+			.card-header {
+				padding: 0.2rem 1.5rem;
+			}
 			.card-body{
 			    padding: .1rem .1rem;
 			}
 			.form-control{
 				width:300px;
 			}
+
         </style>
     </head>
     
@@ -70,7 +74,7 @@
             <a class="dropdown-item" href="#">angular.js</a>
             <a class="dropdown-item" href="#">Spring</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" target="_blank" href="https://opentutorials.org/course/1">생활코딩</a>
+            <a class="dropdown-item" href="https://opentutorials.org/course/1">생활코딩</a>
           </div>
         </li>
         <li class="nav-item">
@@ -91,12 +95,15 @@
     	 </form>
     	</li>
       </ul>
+      
+      
       <form class="d-flex">
       	<button type="button" class="btn me-sm-1 rounded-pill btn-info">로그인</button>
       </form>
       <form class="d-flex">
       	<button type="button" class="btn me-sm-5 rounded-pill btn-outline-info">회원가입</button>
       </form>
+
     </div>
   </div>
 </nav>

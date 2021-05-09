@@ -1,9 +1,0 @@
-/**
- * 
- */
-/**
- * @author park
- *
- */
-module gittest {
-}

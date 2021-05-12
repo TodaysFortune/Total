@@ -29,6 +29,9 @@
 			.card-body{
 			    padding: .1rem .1rem;
 			}
+			.form-control.board-search{
+				width:300px;
+			}
 			.form-control{
 				width:500px;
 			}			
@@ -90,7 +93,7 @@
 	    			</div>
   				</div>
 			</div>
-       	 	<input class="form-control me-sm-2" type="text" placeholder="검색">
+       	 	<input class="form-control me-sm-2 board-search" type="text" placeholder="검색">
        	 	<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
     	 </form>
     	</li>

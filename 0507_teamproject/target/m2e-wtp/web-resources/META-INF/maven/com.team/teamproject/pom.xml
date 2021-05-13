@@ -113,30 +113,68 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.7</version>
+			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>     
-		<!--
-		
-		[오류 원인] 한글때문에 xml 파싱시 오류날 경우 (URI$MalformedURIException 오류) 
-		
-		[오류 내역] com.sun.org.apache.xerces.internal.util.URI$MalformedURIException: Path contains invalid character: 자
-		
-		[소스 시작]
-		
-		-->
-		
+
+		 <!-- MySQL -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>6.0.5</version>
+        </dependency>
+ 
+        <!-- MyBatis 3.4.1 -->
+        <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.4.1</version>
+        </dependency>
+ 
+ 
+        <!-- MyBatis-Spring -->
+        <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-spring</artifactId>
+            <version>1.3.0</version>
+        </dependency>
+ 
+        <!-- Spring-jdbc -->
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${org.springframework-version}</version>
+        </dependency>
+ 
+        <!-- Spring-test -->
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${org.springframework-version}</version>
+        </dependency>
+        
+        <!-- Mybatis log -->
+        <!-- https://mvnrepository.com/artifact/org.bgee.log4jdbc-log4j2/log4jdbc-log4j2-jdbc4.1 -->
+        <dependency>
+            <groupId>org.bgee.log4jdbc-log4j2</groupId>
+            <artifactId>log4jdbc-log4j2-jdbc4</artifactId>
+            <version>1.16</version>
+        </dependency>
+
 		<dependency>
 		
-		<groupId>xerces</groupId>
-		
-		<artifactId>xercesImpl</artifactId>
-		
-		<version>2.9.1</version>
+			<groupId>xerces</groupId>
+			
+			<artifactId>xercesImpl</artifactId>
+			
+			<version>2.9.1</version>
 		
 		</dependency>
 		
-		<!-- [소스 종료] -->   
 	</dependencies>
     <build>
         <plugins>

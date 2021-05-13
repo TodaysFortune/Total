@@ -36,11 +36,8 @@
     </head>
     
 <body>
-    <input="hidden" value="pull테스트입니다"/>
-    <input="hidden" value="pull테스트입니다"/>
-    <input="hidden" value="pull테스트입니다"/>
-	
-    <!--상단 https://bootswatch.com/sketchy/-->
+    
+<!--상단 https://bootswatch.com/sketchy/-->
    <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Navbar</a>
@@ -51,9 +48,7 @@
     <div class="collapse navbar-collapse" id="navbarColor03">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link active" href="#">나의 운세
-            <span class="visually-hidden">(current)</span>
-          </a>
+          <a class="nav-link active" href="#">Luck</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Notice</a>
@@ -89,7 +84,7 @@
 	    			</div>
   				</div>
 			</div>
-       	 	<input class="form-control me-sm-2" type="text" placeholder="검색">
+       	 	<input class="form-control me-sm-2 board-search" type="text" placeholder="검색">
        	 	<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
     	 </form>
     	</li>
@@ -97,34 +92,34 @@
       
       
       <form class="d-flex">
-      	<button type="button" class="btn me-sm-1 rounded-pill btn-info" onclick="location.href='Login'">로그인</button>
+      	<button type="button" class="btn me-sm-1 rounded-pill btn-info" onclick="location.href='Login'">Login</button>
       </form>
-      <form class="d-flex">
-      	<button type="button" class="btn me-sm-5 rounded-pill btn-outline-info" onclick="location.href='Signin'">회원가입</button>
+      <form class="d-flex" method="get">
+      	<button type="button" class="btn me-sm-5 rounded-pill btn-outline-info" onclick="location.href='Signin'">Sign</button>
       </form>
 
     </div>
   </div>
 </nav>
-<body>
+    <!--//상단 -->
   
   <section>
     <h1>회원가입</h1>
   </section>
   
   <section>
-    <form id="login" action="index.html" method="post">
+    <form id="login" action="Signin" method="post">
       아이디<br>
-      <input type="text" id="user_ID" placeholder="아이디 입력" >
+      <input type="text" name="id" id="user_ID" placeholder="아이디 입력" >
       <input type="button" id="user_IDcheck" value="아이디 확인">
       <br>
       비밀번호<br> 
-      <input type="password" id="user_PW1" value="123456"><br>
+      <input type="password" name="password" id="user_PW1" value="123456"><br>
       비밀번호 재확인<br> 
       <input type="password" id="user_PW2" value="123456">
       <input type="button" id="user_PWcheck" value="비밀번호 재확인">
       <br><br>
-      이름<br>  <input type="text" id="user_name" value=""> <br>
+      이름<br>  <input type="text" name="name" id="user_name" value=""> <br>
       생년월일<br> 
       <select id="year">
         <option value="">-- 선택 --</option>
@@ -190,9 +185,9 @@
       <input type="radio" id="gender" value="m" id="man">
       <label for="woman">여자</label>
       <input type="radio" id="gender" value="m" id="woman"> <br><br>
-      이메일<br><input type="email" id="user_email" placeholder="email@gmail.com"><br><br>
+      이메일<br><input type="email" name="email" id="user_email" placeholder="email@gmail.com"><br><br>
       휴대전화<br>  
-      <input type="text" id="user_phone" placeholder="010-****-****">
+      <input type="text" name="phone" id="user_phone" placeholder="010-****-****">
       <input type="button" id="certification" value="인증번호 받기"><br>
       <input type="text" id="certification" placeholder="인증번호를 입력하세요">
       <input type="button" id="certification" value="확인"><br><br>
@@ -210,7 +205,7 @@
       </div>
       <span>개인정보 수집 및 이용에 동의하십니까?</span>
       <input type="checkbox" id="check">
-      
+      <input type="submit" value="확인"><br><br>
     </form>
   </section>
 

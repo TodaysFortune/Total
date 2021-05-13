@@ -145,7 +145,7 @@
 	      </div>
 	 </div>
      <div class="d-grid gap-2 Btnoption1">
-  <button class="btn btn-lg btn-primary" type="button">로그인</button>
+  <button class="btn btn-lg btn-primary" type="button">0</button>
   <button class="btn btn-lg btn-primary" type="button">회원가입</button>
 	</div>
 	

@@ -101,7 +101,7 @@
       <form class="d-flex">
       	<button type="button" class="btn me-sm-1 rounded-pill btn-info" onclick="location.href='Login'">Login</button>
       </form>
-      <form class="d-flex">
+      <form class="d-flex" method="get">
       	<button type="button" class="btn me-sm-5 rounded-pill btn-outline-info" onclick="location.href='Signin'">Sign</button>
       </form>
 

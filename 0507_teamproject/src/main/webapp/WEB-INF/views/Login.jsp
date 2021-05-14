@@ -116,38 +116,41 @@
 <div class="IdinputAndPwinputbox">
 	<h1>오늘의 운세는?</h1>
 	<hr class="one">
-		<form>
-		<div class="form-group">
+	
+	
+	<form>
+		<div class="form-group"  style="margin-bottom:10px;">
 	  
 		  <div class="form-floating mb-3">
-		    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+		    <input type="email" class="form-control" style="width:100%;" id="floatingInput" placeholder="name@example.com">
 		    <label for="floatingInput">아이디 입력(필수)</label>
 		  </div>
 		  <div class="form-floating">
-		    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+		    <input type="password" class="form-control" style="width:100%;" id="floatingPassword" placeholder="Password">
 		    <label for="floatingPassword">비밀번호 입력(필수)</label>
 		  </div>
 		</div>
 		
-	</form>
+
 	
-	<div class="myway1">
-		<div class="form-check1" style="padding-left: 0px;margin-top: 3px;">
-			<div>
-	        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked="">
-	        <label class="form-check-label" for="flexCheckChecked">자동로그인</label>
-	        </div>
-	        <ul class="IdsearchAndPwsearch">
-	        	<a href="#">아이디찾기 </a>
-	        	<div>&nbsp;|&nbsp; </div>
-	        	<a href="#"> 비밀번호찾기</a>
-	        </ul>
-	      </div>
-	 </div>
-     <div class="d-grid gap-2 Btnoption1">
-  <button class="btn btn-lg btn-primary" type="button">0</button>
-  <button class="btn btn-lg btn-primary" type="button">회원가입</button>
-	</div>
+		<div class="myway1">
+			<div class="form-check1" style="padding-left: 0px;margin-top: 3px;">
+				<div>
+		        	<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked="">
+		        	<label class="form-check-label" for="flexCheckChecked">자동로그인</label>
+		    	</div>
+				<ul class="IdsearchAndPwsearch">
+		        	<a href="#">아이디찾기 </a>
+		        		<div>&nbsp;|&nbsp; </div>
+		        	<a href="#"> 비밀번호찾기</a>
+		        </ul>
+		    </div>
+		 </div>
+     	<div class="d-grid gap-2 Btnoption1">
+  			<button class="btn btn-lg btn-primary" type="button">로그인</button>
+  			<button class="btn btn-lg btn-primary" type="button">회원가입</button>
+		</div>
+	</form>
 	
 </div>
 

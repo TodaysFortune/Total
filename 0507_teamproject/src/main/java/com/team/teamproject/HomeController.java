@@ -40,4 +40,10 @@ public class HomeController {
 		System.out.println("controller - Login");
 		return "Login";
 	}
+	
+	@RequestMapping("/test")
+	public String test() {
+		System.out.println("controller - test");
+		return "test";
+	}
 }

@@ -84,7 +84,6 @@
     </div>
   </div>
 </nav>
-<body>
 
 
 <div class="IdinputAndPwinputbox">
@@ -92,7 +91,7 @@
 	<hr class="one">
 	
 	
-	<form action="/teamproject" method="post" onsubmit="return id_pw_Check();">
+	<form action="Login" method="post" onsubmit="return id_pw_Check();">
 		<div class="form-group"  style="margin-bottom:10px;">
 	  
 		  <div class="form-floating mb-3">

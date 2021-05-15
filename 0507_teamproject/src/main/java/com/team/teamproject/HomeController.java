@@ -23,22 +23,32 @@ public class HomeController {
 	public String home() {
 		return "main";
 	}
+	@RequestMapping("/main")
+	public String main() {
+		return "main";
+	}
 	@RequestMapping(value="/Signin",method = RequestMethod.GET)
 	public String getSignin() {
-		System.out.println("controller - Signin");
+		System.out.println("controller - Signin-GET");
 		return "Signin";
 	}
 	@RequestMapping(value="/Signin",method = RequestMethod.POST)
 	public String postSignin(UserinfoVO userinfoVO) throws Exception {//커맨드객체
-		System.out.println("controller - Signin");
+		System.out.println("controller - Signin-POST");
 		System.out.println(userinfoVO);
 		service.insertMember(userinfoVO);
 		return "redirect:Login";
 	}
 	@RequestMapping(value="/Login",method = RequestMethod.GET)
-	public String Login() {
-		System.out.println("controller - Login");
+	public String getLogin() {
+		System.out.println("controller - Login-GET");
 		return "Login";
+	}
+	@RequestMapping(value="/Login",method = RequestMethod.POST)
+	public String postLogin() {
+		System.out.println("controller - Login-POST");
+		//세션 쿠키 처리
+		return "redirect:main";
 	}
 	
 	@RequestMapping("/test")

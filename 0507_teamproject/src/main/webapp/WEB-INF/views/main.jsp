@@ -9,7 +9,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>레이아웃</title>
         <!-- Bootstrap core CSS , js -->
-        <!-- <link type="text/css" href="css/bootstrap.css" rel="stylesheet">  -->
         <link type="text/css" href="css/bootstrap.min.css" rel="stylesheet"> 
         <script type="text/javascript" src="js/bootstrap.js"></script>
         

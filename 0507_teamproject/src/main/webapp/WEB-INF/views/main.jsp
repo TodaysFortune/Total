@@ -1,17 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<!--  두두두두두둥 gitignore를 활용하여 깃테스트중 -->
-<!--  두두두두두둥 gitignore를 활용하여 깃테스트중 -->
-<!--  두두두두두둥 gitignore를 활용하여 깃테스트중 -->
-<!--  두두두두두둥 gitignore를 활용하여 깃테스트중 -->
-<!--  두두두두두둥 gitignore를 활용하여 깃테스트중 -->
-<!--  두두두두두둥 gitignore를 활용하여 깃테스트중 -->
-<!--  두두두두두둥 gitignore를 활용하여 깃테스트중 -->
-<!--  두두두두두둥 gitignore를 활용하여 깃테스트중 -->
-<!--  두두두두두둥 gitignore를 활용하여 깃테스트중 -->
+
 <html lang="ko">
     <head>
+    	<link rel="shortcut icon" href="#"> <!-- favicon -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>레이아웃</title>
@@ -21,31 +14,7 @@
         <script type="text/javascript" src="js/bootstrap.js"></script>
         
         <!-- Custom styles for this template -->
-        <style type="text/css">
-			.th-user-fonesize{
-				font-size:	0.8125rem;
-			}
-			.td-user-fontsize{
-				font-size:	0.625rem;
-			}
-			.table>:not(caption)>*>*{
-				border-bottom-width:0px;
-				padding : 0px;
-			}
-			.card-header {
-				padding: 0.2rem 1.5rem;
-			}
-			.card-body{
-			    padding: .1rem .1rem;
-			}
-			.form-control.board-search{
-				width:300px;
-			}
-			.form-control{
-				width:300px;
-			}
-
-        </style>
+        <link type="text/css" href="css/navbar.css" rel="stylesheet"> 
     </head>
     
 <body>

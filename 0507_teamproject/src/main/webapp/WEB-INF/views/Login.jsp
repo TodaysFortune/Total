@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html lang="ko">
     <head>
+    	<link rel="shortcut icon" href="#"> <!-- favicon -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>회원가입</title>
@@ -13,36 +14,15 @@
         
         <!-- Custom styles for this template -->
         <style type="text/css">
-			.th-user-fonesize{
-				font-size:	0.8125rem;
-			}
-			.td-user-fontsize{
-				font-size:	0.625rem;
-			}
-			.table>:not(caption)>*>*{
-				border-bottom-width:0px;
-				padding : 0px;
-			}
-			.card-header {
-				padding: 0.2rem 1.5rem;
-			}
-			.card-body{
-			    padding: .1rem .1rem;
-			}
-			.form-control.board-search{
-				width:300px;
-			}
 			.form-control{
 				width:500px;
 			}			
         </style>
+        <link type="text/css" href="css/navbar.css" rel="stylesheet"> 
         <link type="text/css" href="css/woojeong.css" rel="stylesheet" />
     </head>
     
 <body>
-    <input="hidden" value="pull테스트입니다"/>
-    <input="hidden" value="pull테스트입니다"/>
-    <input="hidden" value="pull테스트입니다"/>
 	
     <!--상단 https://bootswatch.com/sketchy/-->
    <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -147,8 +127,8 @@
 		    </div>
 		 </div>
      	<div class="d-grid gap-2 Btnoption1">
-  			<button class="btn btn-lg btn-primary" type="button">로그인</button>
-  			<button class="btn btn-lg btn-primary" type="button">회원가입</button>
+  			<button class="btn btn-lg btn-primary" type="submit">로그인</button>
+  			<button class="btn btn-lg btn-primary" type="button" onclick="location.href='Signin'">회원가입</button>
 		</div>
 	</form>
 	

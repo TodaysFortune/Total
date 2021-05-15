@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> <!-- 대입문,제어문 -->
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%><!-- 서식지정 -->
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%><!-- 함수 -->
 <!DOCTYPE html>
 <html lang="ko">
     <head>
@@ -129,6 +132,13 @@
 
 
 <script>
+	window.onload = function(){
+		var success="<c:out value='${success}'/>";
+		if(success=="no"){
+			//console.log(success);
+			alert("아이디 또는 비밀번호가 옳바르지 않습니다.");
+		}
+	}
 	function id_pw_Check(){
 		var id=document.getElementsByName('id')[0].value.trim();
 		var password=document.getElementsByName('password')[0].value.trim();
@@ -140,7 +150,6 @@
 				document.getElementsByName('password')[0].focus();
 			return false;
 		}
-		//서버로데이터전송
 	}
 </script>
 

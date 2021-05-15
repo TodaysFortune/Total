@@ -4,4 +4,5 @@ import com.team.vo.UserinfoVO;
 
 public interface userinfoService {
 	public void insertMember(UserinfoVO userinfoVO) throws Exception;
+	public int selectMember(UserinfoVO userinfoVO) throws Exception;
 }

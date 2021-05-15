@@ -21,5 +21,12 @@ public class userinfoDAOImpl implements userinfoDAO{
 		System.out.println("userinfoDAOImpl - insertMember");
 		sqlSession.insert(Namespace+".insertMember",userinfoVO);
 	}
+
+
+	@Override
+	public int selectMember(UserinfoVO userinfoVO) throws Exception {
+		System.out.println("userinfoDAOImpl - selectMember");
+		return sqlSession.selectOne(Namespace+".selectMember",userinfoVO);
+	}
 	
 }

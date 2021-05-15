@@ -9,5 +9,9 @@
         insert into userinfo (id,password,name,email,phone) 
         values ( #{id}, #{password}, #{name}, #{email}, #{phone} )
   </insert>
+  
+  <select id="selectMember" parameterType="UserinfoVO" resultType="int">
+        select count(*) from userinfo where id=#{id} AND password=#{password}
+  </select>
     
 </mapper>

@@ -5,6 +5,7 @@ import javax.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -35,7 +36,7 @@ public class HomeController {
 	@RequestMapping(value="/Signin",method = RequestMethod.POST)
 	public String postSignin(UserinfoVO userinfoVO) throws Exception {//커맨드객체
 		System.out.println("controller - Signin-POST");
-		System.out.println(userinfoVO);
+		//System.out.println(userinfoVO);
 		service.insertMember(userinfoVO);
 		return "redirect:Login";
 	}
@@ -45,10 +46,17 @@ public class HomeController {
 		return "Login";
 	}
 	@RequestMapping(value="/Login",method = RequestMethod.POST)
-	public String postLogin() {
+	public String postLogin(UserinfoVO userinfoVO,Model model) throws Exception {
 		System.out.println("controller - Login-POST");
-		//세션 쿠키 처리
-		return "redirect:main";
+		//id pw 비교
+		if((Integer)service.selectMember(userinfoVO)==1)
+		//id pw 가 일치 할경우 , 세션 등록 & 쿠키발급
+			return "redirect:main";
+		else {
+		//id pw 가 불일치 할경우 , model에 불일치라는 표현 데이터담아서 전송                   뷰단에서도 model로부터 데이터받아서 처리해야함
+			model.addAttribute("success", "no");
+			return "Login";
+		}
 	}
 	
 	@RequestMapping("/test")

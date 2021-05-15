@@ -19,5 +19,11 @@ public class userinfoServiceImpl implements userinfoService{
 		System.out.println("userinfoServiceImpl - insertMember");
 		dao.insertMember(userinfoVO);
 	}
+
+	@Override
+	public int selectMember(UserinfoVO userinfoVO) throws Exception {
+		System.out.println("userinfoServiceImpl - selectMember");
+		return dao.selectMember(userinfoVO);
+	}
 	
 }

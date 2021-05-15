@@ -35,7 +35,7 @@ public class HomeController {
 		service.insertMember(userinfoVO);
 		return "redirect:Login";
 	}
-	@RequestMapping("/Login")
+	@RequestMapping(value="/Login",method = RequestMethod.GET)
 	public String Login() {
 		System.out.println("controller - Login");
 		return "Login";

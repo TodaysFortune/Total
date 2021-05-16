@@ -138,6 +138,12 @@
 			//console.log(success);
 			alert("아이디 또는 비밀번호가 옳바르지 않습니다.");
 		}
+		
+		var userid="<c:out value='${userid}'/>";
+		if(userid.trim().length!=0){
+			document.getElementsByName('id')[0].value=userid;
+		}
+		
 	}
 	function id_pw_Check(){
 		var id=document.getElementsByName('id')[0].value.trim();

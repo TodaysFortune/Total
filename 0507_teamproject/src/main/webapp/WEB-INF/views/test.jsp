@@ -12,13 +12,13 @@
 
 <link type="text/css" href="css/modal.css" rel="stylesheet"> 
 
+
 </head>
 <body>
 	<form action="/teamproject" method="post" onsubmit="return func();">
 		<input type="text" style="border:1px solid red;"  name="text"/>
 		<input type="submit" value="버튼"/>
 	</form>
-	
 	
 	<!-- modal -->
 	<div class="custom_modal custom_hidden">
@@ -33,9 +33,14 @@
 	</div>
 	<!-- //modal -->
 	
+	<div>
+		 <div id="result"></div>
+		<input type="button" value="아이디를 받아오자~" id="userinfobutton" />
+	</div>
 	<!-- script -->
 	<script>
 	window.onload = function(){
+
 		//필요한 엘리먼트들을 선택한다.
 		var openButton = document.getElementById("open");
 		var modal = document.querySelector(".custom_modal");
@@ -60,7 +65,13 @@
 			return false;
 		}
 		alert("야호");
+		
 	}
+	function getCookie(key) {
+	    var result = null;
+	    console.log("cookie : "+document.cookie);
+	}
+
 </script>
 	<!-- //script -->
 

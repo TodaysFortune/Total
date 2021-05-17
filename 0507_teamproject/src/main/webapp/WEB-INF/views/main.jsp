@@ -53,7 +53,7 @@
           </div>
         </li>
         <li class="nav-item">
-         <form class="d-flex ms-sm-5">
+         <form class="d-flex ms-sm-4 me-sm-4">
          	<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
   				<button type="button" class="btn btn-primary">Subject</button>
   				<div class="btn-group" role="group">
@@ -71,32 +71,57 @@
     	</li>
       </ul>
       
-      
-      <form class="d-flex" method="get" action="Login">
+      <div id="greet"></div>
+      <form id="logoutForm"></form>
+      <form method="get" action="Login" id="userLogin">
       	<button type="submit" class="btn me-sm-1 rounded-pill btn-info">Login</button>
       </form>
-      <form class="d-flex" method="get" action="Signin">
+      <form method="get" action="Signin" id="userSign">
       	<button type="submit" class="btn me-sm-5 rounded-pill btn-outline-info">Sign</button>
       </form>
+      
+      
+      <script>
+      (function () {//익명즉시실행함수 
+    	  
+ 		var Session_userID='${Session_userID}';
+ 		if(Session_userID.length!=0){
+ 			var userLogin=document.getElementById('userLogin');
+ 	 		var userSign=document.getElementById('userSign');
+ 	 		userLogin.setAttribute('style','display:none');
+ 	 		userSign.setAttribute('style','display:none');
+ 	 		
+ 	 		var hyperlink = document.createElement("a");
+ 	 		hyperlink.href="http://www.naver.com";
+ 			var img = document.createElement("img");
+	        img.src = "images/userlogin.png"; 
+	        img.height = 30; 
+	        img.width = 30;
+	        hyperlink.append(img);
+	        document.getElementById('greet').append(hyperlink);
+ 	 		document.getElementById('greet').append(Session_userID+" 님 안녕하세요.");
+ 	 		
+ 	 		var logoutButton= document.createElement('button');
+ 	 		logoutButton.setAttribute('type','submit');
+ 	 		logoutButton.classList.add('btn','me-sm-1','rounded-pill','btn-info');
+ 	 		logoutButton.innerHTML='Logout';
+ 	 		
+ 	 		var logoutForm= document.getElementById('logoutForm');
+ 	 		logoutForm.setAttribute('method','post');
+ 	 		logoutForm.setAttribute('action','Logout');
+ 	 		logoutForm.append(logoutButton);
+ 	 		
+ 	 		document.getElementById('greet').setAttribute('style','margin-right:10px; font-size:0.5em');
 
+ 		}
+ 	})(2);
+     </script>
+     
+     
     </div>
   </div>
 </nav>
     <!--//상단 -->
- <!-- 실시간운세 -->
-<!-- 
- <div class="d-flex btn-group" role="group" aria-label="Button group with nested dropdown">
-  <button type="button" class="btn btn-success"><span style="text-align: left;">실시간 운세랭킹 : </span><span style="text-align: center;">ㅇㅇㅇ님은 대박운수 입니다.</span></button>
-  <div class="btn-group" role="group">
-    <button id="btnGroupDrop2" type="button" class="btn btn-success dropdown-toggle show" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="true"></button>
-    <div class="dropdown-menu show" aria-labelledby="btnGroupDrop2" data-popper-placement="bottom-start" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(0px, 42px);">
-      <a class="dropdown-item" href="#">Dropdown link</a>
-      <a class="dropdown-item" href="#">Dropdown link</a>
-    </div>
-  </div>
-</div>
--->
- <!-- //실시간운세 -->   
  <!--중단-->  
 <div class="d-flex gap-md-1 flex-wrap" style="justify-content:center; height:100%;">
 	
@@ -346,9 +371,8 @@
   </div>
 </div>   
     <!--//중단4 -->
-    
  </div>
  <!--//중단-->
- 
+
 </body>
 </html>

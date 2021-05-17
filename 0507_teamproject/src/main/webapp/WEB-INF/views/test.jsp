@@ -12,16 +12,16 @@
 
 <link type="text/css" href="css/modal.css" rel="stylesheet"> 
 
+<!-- script -->
+
+<!-- //script -->
+
 
 </head>
 <body>
-	<form action="/teamproject" method="post" onsubmit="return func();">
-		<input type="text" style="border:1px solid red;"  name="text"/>
-		<input type="submit" value="버튼"/>
-	</form>
 	
 	<!-- modal -->
-	<div class="custom_modal custom_hidden">
+	<div class="custom_modal custom_hidden" style="display:none;">
 		<div class="custom_md_overlay"></div>
 		<div class="custom_md_content">
 			<h1 class="custom_h1">샘플 모달창</h1>
@@ -33,10 +33,14 @@
 	</div>
 	<!-- //modal -->
 	
-	<div>
-		 <div id="result"></div>
-		<input type="button" value="아이디를 받아오자~" id="userinfobutton" />
-	</div>
+	<!-- test display:none -->
+	<form method="get" action="Login" id="userLogin">
+      	<button type="submit">Login</button>
+     </form>
+	<!-- test //display:none -->
+	
+	
+	
 	<!-- script -->
 	<script>
 	window.onload = function(){
@@ -53,25 +57,12 @@
 		}
 		//클릭 이벤트
 		closeButton.addEventListener("click", closeModal);
+		
+		
+		var userLogin=document.getElementById('userLogin');
+ 		userLogin.setAttribute('style','display:none');
 	}
 	
-	function func(){
-		var text=document.getElementsByName('text')[0].value.trim();
-		console.log(text);
-		if(text=='1'){
-			//조건없이 수행
-			alert("아이디 비밀번호가 정확하지 않습니다.");
-			//modal.classList.remove("custom_hidden");
-			return false;
-		}
-		alert("야호");
-		
-	}
-	function getCookie(key) {
-	    var result = null;
-	    console.log("cookie : "+document.cookie);
-	}
-
 </script>
 	<!-- //script -->
 

@@ -77,10 +77,10 @@
       </ul>
       
       
-      <form class="d-flex" method="get" action="Login">
+      <form method="get" action="Login" id="userLogin">
       	<button type="submit" class="btn me-sm-1 rounded-pill btn-info" >Login</button>
       </form>
-      <form class="d-flex"  method="get" action="Signin">
+      <form method="get" action="Signin" id="userSign">
       	<button type="submit" class="btn me-sm-5 rounded-pill btn-outline-info">Sign</button>
       </form>
 

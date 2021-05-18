@@ -14,7 +14,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.team.service.userinfoService;
 import com.team.vo.UserinfoVO;
@@ -45,7 +47,7 @@ public class HomeController {
 		System.out.println("controller - Signin-POST");
 		//System.out.println(userinfoVO);
 		service.insertMember(userinfoVO);
-		return "redirect:Login";
+		return "redirect:Login";//get방식으로 들어감.
 	}
 
 	@RequestMapping(value="/Login",method = RequestMethod.GET)
@@ -56,7 +58,7 @@ public class HomeController {
 	}
 		
 	@RequestMapping(value="/Login",method = RequestMethod.POST)
-	public String postLogin(UserinfoVO userinfoVO,Model model,HttpServletResponse response,HttpServletRequest request) throws Exception {
+	public String postLogin(@RequestParam(value="checkbox",required=false) String checked,UserinfoVO userinfoVO,Model model,HttpServletResponse response,HttpServletRequest request) throws Exception {
 		System.out.println("controller - Login-POST");
 		//id pw 비교
 		if((Integer)service.selectMember(userinfoVO)==1) {
@@ -65,12 +67,17 @@ public class HomeController {
 			HttpSession session=request.getSession(); 
 			session.setAttribute("Session_userID", userinfoVO.getId());
 			
+			if(checked!=null) 
+				session.setMaxInactiveInterval(-1); //web.xml 에서 먼저 적용되었지만 후에 다시 설정이 가능하다!
+			else 
+				session.setMaxInactiveInterval(60*30);
+			
 			Cookie theCookie = new Cookie("Cookie_userID", userinfoVO.getId());
 			theCookie.setMaxAge(60*60*24 );
 			
 			response.addCookie(theCookie);
 			
-			return "main";
+			return "redirect:main";
 		}
 		else {
 		//id pw 가 불일치 할경우 , model에 불일치라는 표현 데이터담아서 전송                   뷰단에서도 model로부터 데이터받아서 처리해야함

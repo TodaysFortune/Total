@@ -112,7 +112,7 @@
 		<div class="myway1">
 			<div class="form-check1" style="padding-left: 0px;margin-top: 3px;">
 				<div>
-		        	<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked="">
+		        	<input class="form-check-input" type="checkbox" name="checkbox" id="flexCheckChecked">
 		        	<label class="form-check-label" for="flexCheckChecked">자동로그인</label>
 		    	</div>
 				<ul class="IdsearchAndPwsearch">

@@ -53,7 +53,7 @@
           </div>
         </li>
         <li class="nav-item">
-         <form class="d-flex ms-sm-4 me-sm-4">
+         <form class="d-flex ms-sm-5">
          	<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
   				<button type="button" class="btn btn-primary">Subject</button>
   				<div class="btn-group" role="group">

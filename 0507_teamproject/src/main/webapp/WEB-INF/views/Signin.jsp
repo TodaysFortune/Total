@@ -3,7 +3,6 @@
 <!DOCTYPE html>
 <html lang="ko">
     <head>
-    	<link rel="shortcut icon" href="#"> <!-- favicon -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>회원가입</title>
@@ -13,13 +12,36 @@
         <script type="text/javascript" src="js/bootstrap.js"></script>
         
         <!-- Custom styles for this template -->
-		<link type="text/css" href="css/navbar.css" rel="stylesheet"> 
-		
+        <style type="text/css">
+			.th-user-fonesize{
+				font-size:	0.8125rem;
+			}
+			.td-user-fontsize{
+				font-size:	0.625rem;
+			}
+			.table>:not(caption)>*>*{
+				border-bottom-width:0px;
+				padding : 0px;
+			}
+			.card-header {
+				padding: 0.2rem 1.5rem;
+			}
+			.card-body{
+			    padding: .1rem .1rem;
+			}
+			.form-control{
+				width:300px;
+			}			
+        </style>
+        <link type="text/css" href="css/Signpage.css" rel="stylesheet" />
     </head>
     
 <body>
-    
-<!--상단 https://bootswatch.com/sketchy/-->
+    <input="hidden" value="pull테스트입니다"/>
+    <input="hidden" value="pull테스트입니다"/>
+    <input="hidden" value="pull테스트입니다"/>
+	
+    <!--상단 https://bootswatch.com/sketchy/-->
    <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Navbar</a>
@@ -30,7 +52,9 @@
     <div class="collapse navbar-collapse" id="navbarColor03">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link active" href="#">Luck</a>
+          <a class="nav-link active" href="#">나의 운세
+            <span class="visually-hidden">(current)</span>
+          </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Notice</a>
@@ -66,130 +90,93 @@
 	    			</div>
   				</div>
 			</div>
-       	 	<input class="form-control me-sm-2 board-search" type="text" placeholder="검색">
+       	 	<input class="form-control me-sm-2" type="text" placeholder="검색">
        	 	<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
     	 </form>
     	</li>
       </ul>
       
       
-      <form method="get" action="Login" id="userLogin">
-      	<button type="submit" class="btn me-sm-1 rounded-pill btn-info">Login</button>
+      <form class="d-flex">
+      	<button type="button" class="btn me-sm-1 rounded-pill btn-info" onclick="location.href='Login'">로그인</button>
       </form>
-      <form method="get" action="Signin" id="userSign">
-      	<button type="submit" class="btn me-sm-5 rounded-pill btn-outline-info">Sign</button>
+      <form class="d-flex">
+      	<button type="button" class="btn me-sm-5 rounded-pill btn-outline-info" onclick="location.href='Signin'">회원가입</button>
       </form>
 
     </div>
   </div>
 </nav>
-    <!--//상단 -->
-  
-  <section>
-    <h1>회원가입</h1>
-  </section>
-  
-  <section>
-    <form id="login" action="Signin" method="post">
-      아이디<br>
-      <input type="text" name="id" id="user_ID" placeholder="아이디 입력" >
-      <input type="button" id="user_IDcheck" value="아이디 확인">
-      <br>
-      비밀번호<br> 
-      <input type="password" name="password" id="user_PW1" value="123456"><br>
-      비밀번호 재확인<br> 
-      <input type="password" id="user_PW2" value="123456">
-      <input type="button" id="user_PWcheck" value="비밀번호 재확인">
-      <br><br>
-      이름<br>  <input type="text" name="name" id="user_name" value=""> <br>
-      생년월일<br> 
-      <select id="year">
-        <option value="">-- 선택 --</option>
-        <option value="1995">1995</option>
-        <option value="1996">1996</option>
-        <option value="1997">1997</option>
-        <option value="1998">1998</option>
-        <option value="1999">1999</option>
-        <option value="2000">2000</option>
-      </select>
-      <select id="month">
-        <option value="">-- 선택 --</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-        <option value="11">11</option>
-        <option value="12">12</option>
-      </select>
-      <select id="day">
-        <option value="">-- 선택 --</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-        <option value="11">11</option>
-        <option value="12">12</option>
-        <option value="13">13</option>
-        <option value="14">14</option>
-        <option value="15">15</option>
-        <option value="16">16</option>
-        <option value="17">17</option>
-        <option value="18">18</option>
-        <option value="19">19</option>
-        <option value="20">20</option>
-        <option value="21">21</option>
-        <option value="22">22</option>
-        <option value="23">23</option>
-        <option value="24">24</option>
-        <option value="25">25</option>
-        <option value="26">26</option>
-        <option value="27">27</option>
-        <option value="28">28</option>
-        <option value="29">29</option>
-        <option value="30">30</option>
-        <option value="31">31</option>
-      </select>
-      <br><br>
-      성별<br>  
-      <label for="man">남자</label>
-      <input type="radio" id="gender" value="m" id="man">
-      <label for="woman">여자</label>
-      <input type="radio" id="gender" value="m" id="woman"> <br><br>
-      이메일<br><input type="email" name="email" id="user_email" placeholder="email@gmail.com"><br><br>
-      휴대전화<br>  
-      <input type="text" name="phone" id="user_phone" placeholder="010-****-****">
-      <input type="button" id="certification" value="인증번호 받기"><br>
-      <input type="text" id="certification" placeholder="인증번호를 입력하세요">
-      <input type="button" id="certification" value="확인"><br><br>
-      <div>
-      	<h3>[필수] 개인정보 수집 및 이용 동의</h3>
-      	<div class="content">
-      		<p>동철우정컴퍼니 (이하’회사는’) 고객님의 개인정보를 중요시하며,”정보통신망 이용촉진 및 정보보호”에 관한 법률을 준수하고 있습니다.
+<body>
+  <div class="signbox">
+  	<form id="login" action="Signin" method="post">
+    <h1 class="sign">회원가입</h1>
+ 	<hr class="one">
+		<div class="sign-info">
+		
+		<div class="form-group">
+		  	<div class="idcheck">	
+			  <div class="form-floating mb-3">
+			    <input type="text" class="form-control" name="id" id="floatingInput" placeholder="아이디 입력">
+			    <label for="floatingInput">아이디</label>
+			  </div>
+			 </div>
+			  <div class="idcheck">	
+			  <div class="form-floating mb-3">
+			    <input type="password" class="form-control" id="floatingInput" placeholder="비밀번호 입력">
+			    <label for="floatingInput">비밀번호</label>
+			  </div>
+			 </div>
+			 <div class="idcheck">	
+			  <div class="form-floating mb-3">
+			    <input type="password" class="form-control" name="password" id="floatingInput" placeholder="비밀번호 재확인">
+			    <label for="floatingInput">비밀번호 확인</label>
+			  </div>
+			 </div>
+			 <div class="idcheck">	
+			  <div class="form-floating mb-3">
+			    <input type="text" class="form-control" name="name" id="floatingInput" placeholder="이름">
+			    <label for="floatingInput">이름</label>
+			  </div>
+			 </div>
+			 <div class="idcheck">	
+			  <div class="form-floating mb-3">
+			    <input type="email" class="form-control" name="email" id="floatingInput" placeholder="name@example.com">
+			    <label for="floatingInput">이메일</label>
+			  </div>
+			 </div>
+			 <div class="idcheck">	
+			  <div class="form-floating mb-3">
+			    <input type="text" class="form-control" name="phone" id="floatingInput" placeholder="휴대전화">
+			    <label for="floatingInput">휴대전화</label>
+			  </div>
+			 </div>
+		</div>
+		</div>
+			
+	
+	<hr class="one">
+	<div class="content-consent">
+	<p>동철우정컴퍼니 (이하’회사는’) 고객님의 개인정보를 중요시하며,”정보통신망 이용촉진 및 정보보호”에 관한 법률을 준수하고 있습니다.
 
 회사는 개인정보취급방침을 통하여 고객님께서 제공하시는 개인정보가 어떠한 용도와 방식으로 이용되고 있으며, 개인정보보호를 위해 어떠한 조치가 취해지고 있는지 알려드립니다.
 
 회사는 개인정보취급방침을 개정하는 경우 웹사이트 공지사항(또는 개별공지)을 통하여 공지할 것입니다.
 
 본 방침은 2013년 9월 1일부터 시행됩니다.</p>
-      	</div>
-      </div>
-      <span>개인정보 수집 및 이용에 동의하십니까?</span>
-      <input type="checkbox" id="check">
-      <input type="submit" value="확인"><br><br>
-    </form>
-  </section>
+	</div>
+	<div class="check-consent-box">
+	        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked="">
+	        <label class="form-check-label" for="flexCheckChecked">&nbsp동의</label>
+	 </div>
+	 <hr class="one">
+	 <div class="SignAndRewrite">
+	 	<button class="btn btn-lg btn-primary" type="submit">가입</button>
+  		<button class="btn btn-lg btn-primary" type="button">다시쓰기</button>
+	 </div>
+	</form>
+  </div>
+  
 
 </body>
 </html>

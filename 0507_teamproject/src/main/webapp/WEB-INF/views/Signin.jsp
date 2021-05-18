@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html lang="ko">
     <head>
+    	<link rel="shortcut icon" href="#"> <!-- favicon -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>회원가입</title>
@@ -12,6 +13,7 @@
         <script type="text/javascript" src="js/bootstrap.js"></script>
         
         <!-- Custom styles for this template -->
+        <link type="text/css" href="css/navbar.css" rel="stylesheet">
         <style type="text/css">
 			.th-user-fonesize{
 				font-size:	0.8125rem;
@@ -37,11 +39,7 @@
     </head>
     
 <body>
-    <input="hidden" value="pull테스트입니다"/>
-    <input="hidden" value="pull테스트입니다"/>
-    <input="hidden" value="pull테스트입니다"/>
-	
-    <!--상단 https://bootswatch.com/sketchy/-->
+   <!--상단 https://bootswatch.com/sketchy/-->
    <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Navbar</a>
@@ -52,9 +50,7 @@
     <div class="collapse navbar-collapse" id="navbarColor03">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link active" href="#">나의 운세
-            <span class="visually-hidden">(current)</span>
-          </a>
+          <a class="nav-link active" href="#">Luck</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Notice</a>
@@ -90,18 +86,18 @@
 	    			</div>
   				</div>
 			</div>
-       	 	<input class="form-control me-sm-2" type="text" placeholder="검색">
+       	 	<input class="form-control me-sm-2 board-search" type="text" placeholder="검색">
        	 	<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
     	 </form>
     	</li>
       </ul>
       
       
-      <form class="d-flex">
-      	<button type="button" class="btn me-sm-1 rounded-pill btn-info" onclick="location.href='Login'">로그인</button>
+      <form method="get" action="Login" id="userLogin">
+      	<button type="submit" class="btn me-sm-1 rounded-pill btn-info" onclick="location.href='Login'">Login</button>
       </form>
-      <form class="d-flex">
-      	<button type="button" class="btn me-sm-5 rounded-pill btn-outline-info" onclick="location.href='Signin'">회원가입</button>
+      <form method="get" action="Signin" id="userSign">
+      	<button type="submit" class="btn me-sm-5 rounded-pill btn-outline-info" onclick="location.href='Signin'">Sign</button>
       </form>
 
     </div>

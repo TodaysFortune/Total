@@ -8,56 +8,49 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.team.service.userinfoService;
 import com.team.vo.UserinfoVO;
 
 @Controller
-public class HomeController {
+public class UserController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 	
 	@Inject
 	private userinfoService service;
 	
-	@RequestMapping("/")
-	public String home() {
-		return "main";
-	}
-	@RequestMapping("/main")
+	@RequestMapping(value= {"/","/main"})
 	public String main() {
 		return "main";
 	}
-	@RequestMapping(value="/Signin",method = RequestMethod.GET)
+	@RequestMapping(value="/main/signin",method = RequestMethod.GET)
 	public String getSignin() {
 		System.out.println("controller - Signin-GET");
 		return "Signin";
 	}
-	@RequestMapping(value="/Signin",method = RequestMethod.POST)
+	@RequestMapping(value="/main/signin",method = RequestMethod.POST)
 	public String postSignin(UserinfoVO userinfoVO) throws Exception {//커맨드객체
 		System.out.println("controller - Signin-POST");
 		//System.out.println(userinfoVO);
 		service.insertMember(userinfoVO);
-		return "redirect:Login";//get방식으로 들어감.
+		return "redirect:login";//get방식으로 들어감.
 	}
 
-	@RequestMapping(value="/Login",method = RequestMethod.GET)
+	@RequestMapping(value="/main/login",method = RequestMethod.GET)
 	public String getLogin(@CookieValue(value="Cookie_userID",required=false) String userId ,Model model) {
 		System.out.println("controller - Login-GET");
 			model.addAttribute("userid", userId);
 			return "Login";
 	}
 		
-	@RequestMapping(value="/Login",method = RequestMethod.POST)
+	@RequestMapping(value="/main/login",method = RequestMethod.POST)
 	public String postLogin(@RequestParam(value="checkbox",required=false) String checked,UserinfoVO userinfoVO,Model model,HttpServletResponse response,HttpServletRequest request) throws Exception {
 		System.out.println("controller - Login-POST");
 		//id pw 비교
@@ -77,7 +70,7 @@ public class HomeController {
 			
 			response.addCookie(theCookie);
 			
-			return "redirect:main";
+			return "redirect:..";
 		}
 		else {
 		//id pw 가 불일치 할경우 , model에 불일치라는 표현 데이터담아서 전송                   뷰단에서도 model로부터 데이터받아서 처리해야함
@@ -85,21 +78,11 @@ public class HomeController {
 			return "Login";
 		}
 	}
-	@RequestMapping(value="/Logout",method = RequestMethod.POST)
+	@RequestMapping(value="/main/logout",method = RequestMethod.POST)
 	public String logOut(HttpSession session) {
 		System.out.println("controller - logOut");
 			session.invalidate();
-			return "main";
-	}
-	
-	
-	
-	
-	@RequestMapping("/test")
-	public String test() {
-		System.out.println("controller - test");
-		
-		return "test";
+			return "redirect:..";
 	}
 	
 }

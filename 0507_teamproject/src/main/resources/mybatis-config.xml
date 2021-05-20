@@ -6,6 +6,7 @@
  		
  		 <typeAliases>
             <typeAlias type="com.team.vo.UserinfoVO" alias="UserinfoVO"/>
+            <typeAlias type="com.team.dto.ITboardDTO" alias="ITboardDTO"/>
         </typeAliases>
         
     </configuration>

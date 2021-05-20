@@ -24,7 +24,7 @@
     <!--상단 https://bootswatch.com/sketchy/-->
    <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="../">Navbar</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -42,7 +42,7 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">community</a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">It 시사</a>
+            <a class="dropdown-item" href="itboard">It 시사</a>
             <a class="dropdown-item" href="#">유머</a>
             <a class="dropdown-item" href="#">좋은글</a>
             <a class="dropdown-item" href="#">Java</a>
@@ -77,10 +77,10 @@
       </ul>
       
       
-      <form method="get" action="Login" id="userLogin">
+      <form method="get" action="login" id="userLogin">
       	<button type="submit" class="btn me-sm-1 rounded-pill btn-info" >Login</button>
       </form>
-      <form method="get" action="Signin" id="userSign">
+      <form method="get" action="signin" id="userSign">
       	<button type="submit" class="btn me-sm-5 rounded-pill btn-outline-info">Sign</button>
       </form>
 
@@ -94,7 +94,7 @@
 	<hr class="one">
 	
 	
-	<form action="Login" method="post" onsubmit="return id_pw_Check();">
+	<form action="login" method="post" onsubmit="return id_pw_Check();">
 		<div class="form-group"  style="margin-bottom:10px;">
 	  
 		  <div class="form-floating mb-3">
@@ -124,7 +124,7 @@
 		 </div>
      	<div class="d-grid gap-2 Btnoption1">
   			<button class="btn btn-lg btn-primary" type="submit">로그인</button>
-  			<button class="btn btn-lg btn-primary" type="button" onclick="location.href='Signin'">회원가입</button>
+  			<button class="btn btn-lg btn-primary" type="button" onclick="location.href='signin'">회원가입</button>
 		</div>
 	</form>
 	

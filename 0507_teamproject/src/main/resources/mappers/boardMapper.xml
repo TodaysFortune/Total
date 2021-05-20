@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.team.mapper.boardMapper"> 
+ 
+  <select id="selectCount" resultType="int">
+       select count(*) from itboard 
+  </select>
+  
+  <select id="selectList" parameterType="java.util.HashMap" resultType="ITboardDTO">
+        select * from itboard order by bidx desc limit #{startNo},#{noSize}
+  </select>
+    
+</mapper>

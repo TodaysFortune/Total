@@ -42,7 +42,7 @@
    <!--상단 https://bootswatch.com/sketchy/-->
    <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="../">Navbar</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -58,7 +58,7 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">community</a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">It 시사</a>
+            <a class="dropdown-item" href="itboard">It 시사</a>
             <a class="dropdown-item" href="#">유머</a>
             <a class="dropdown-item" href="#">좋은글</a>
             <a class="dropdown-item" href="#">Java</a>
@@ -93,10 +93,10 @@
       </ul>
       
       
-      <form method="get" action="Login" id="userLogin">
+      <form method="get" action="login" id="userLogin">
       	<button type="submit" class="btn me-sm-1 rounded-pill btn-info" onclick="location.href='Login'">Login</button>
       </form>
-      <form method="get" action="Signin" id="userSign">
+      <form method="get" action="signin" id="userSign">
       	<button type="submit" class="btn me-sm-5 rounded-pill btn-outline-info" onclick="location.href='Signin'">Sign</button>
       </form>
 
@@ -105,7 +105,7 @@
 </nav>
 <body>
   <div class="signbox">
-  	<form id="login" action="Signin" method="post">
+  	<form id="login" action="signin" method="post">
     <h1 class="sign">회원가입</h1>
  	<hr class="one">
 		<div class="sign-info">

@@ -20,15 +20,9 @@
 	        	<when test='searchType.equals("all")'> <!-- 제목+본문 탐색수행 -->
 	        		subject LIKE CONCAT('%',#{searchText},'%') OR content LIKE CONCAT('%',#{searchText},'%')
 	        	</when>
-	        	<when test='searchType.equals("subject")'>
-	        		subject LIKE CONCAT('%',#{searchText},'%')
-	        	</when>
-	        	<when test='searchType.equals("content")'>
-	        		content LIKE CONCAT('%',#{searchText},'%')
-	        	</when>
-	        	<when test='searchType.equals("name")'>
-	        		name LIKE CONCAT('%',#{searchText},'%')
-	        	</when>
+	        	<otherwise>
+		        	${searchType} LIKE CONCAT('%',#{searchText},'%')
+	        	</otherwise>
         	</choose>
         </where>
   </select> 
@@ -42,15 +36,9 @@
 	        	<when test='searchType.equals("all")'> <!-- 제목+본문 탐색수행 -->
 	        		subject LIKE CONCAT('%',#{searchText},'%') OR content LIKE CONCAT('%',#{searchText},'%')
 	        	</when>
-	        	<when test='searchType.equals("subject")'>
-	        		subject LIKE CONCAT('%',#{searchText},'%')
-	        	</when>
-	        	<when test='searchType.equals("content")'>
-	        		content LIKE CONCAT('%',#{searchText},'%')
-	        	</when>
-	        	<when test='searchType.equals("name")'>
-	        		name LIKE CONCAT('%',#{searchText},'%')
-	        	</when>
+	        	<otherwise>
+	        		${searchType} LIKE CONCAT('%',#{searchText},'%')
+	        	</otherwise>
         	</choose>
         </where> 
         	order by bidx desc limit #{startNo},#{noSize}

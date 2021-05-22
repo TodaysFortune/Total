@@ -112,7 +112,7 @@
  	 		
  	 		var logoutForm= document.getElementById('logoutForm');
  	 		logoutForm.setAttribute('method','post');
- 	 		logoutForm.setAttribute('action','../logout');
+ 	 		logoutForm.setAttribute('action','logout');
  	 		logoutForm.append(logoutButton);
  	 		
  	 		document.getElementById('greet').setAttribute('style','margin-right:10px; font-size:0.5em');
@@ -141,7 +141,7 @@
 				
                 <!--테이블-->
                 <div style="margin-bottom:5px;">
-                    <table border-spacing=0; class="table-menu" style="border-radius:3px; line-height: 2rem; border:2px solid gray; width:100%;">   
+                    <table border-spacing=0; class="table-menu" style="border-radius:3px; line-height: 1.5rem; border:2px solid gray; width:100%;">   
                         <tr style="font-weight:600; font-size:1.1rem;">
                             <td align="center" style="width:8.3%;">번호</td>
                             <td align="center" style="width:54.2%;">제목</td>
@@ -162,8 +162,6 @@
 							</td>
 						</tr>
 						</c:if>
-                        
-                        
                         
                         <c:if test="${list.size()!=0}">
 							<c:forEach var="dto" items="${list}">
@@ -195,7 +193,7 @@
 										</c:if>
 										<c:if test="${date.year!=dto.writedate.year || 
 										date.month!=dto.writedate.month || date.date!=dto.writedate.date}">
-											<fmt:formatDate value="${dto.writedate}" pattern="yyyy-MM-dd(E)" />
+											<fmt:formatDate value="${dto.writedate}" pattern="yy-MM-dd(E)" />
 										</c:if>
 									</td>
 									<td align="center">
@@ -226,14 +224,14 @@
                         <div style="display:flex; justify-content:center; width:80%;height:80%;">
                             <!--  맨 앞으로 -->
                             <c:if test="${iTboardList.currentPage> 1}">
-                            	<button class="pageButton"  title="첫 번째 페이지로 이동" onclick="location.href='?currentPage=1'">처음</button>
+                            	<button class="pageButton"  title="첫 번째 페이지로 이동" onclick="location.href='?currentPage=1&searchType=${searchType}&searchText=${searchText}'">처음</button>
                             </c:if>
                             <c:if test="${iTboardList.currentPage <= 1}">
                             	<button class="pageButton" disabled="disabled" title="이미 첫 번째 페이지입니다.">처음</button>
                             </c:if>	
                             <!--  10페이지 앞으로 -->	
                             <c:if test='${iTboardList.startPage>1}'>
-                            	<button class="pageButton" title="이전 10페이지로 이동" onclick="location.href='?currentPage=${iTboardList.startPage -1}'">이전</button>
+                            	<button class="pageButton" title="이전 10페이지로 이동" onclick="location.href='?currentPage=${iTboardList.startPage -1}&searchType=${searchType}&searchText=${searchText}'">이전</button>
                             </c:if>
                             <c:if test='${iTboardList.startPage<=1}'>
                             	<button class="pageButton" disabled="disabled">이전</button>
@@ -244,12 +242,12 @@
                             		<button class="pageButton" disabled="disabled">${i}</button>
                             	</c:if>
                             	<c:if test="${iTboardList.currentPage!=i}">
-                            		<button class="pageButton" onclick="location.href='ITboard?currentPage=${i}'">${i}</button>
+                            		<button class="pageButton" onclick="location.href='?currentPage=${i}&searchType=${searchType}&searchText=${searchText}'">${i}</button>
                             	</c:if>
                             </c:forEach>
                             <!--  10페이지 뒤로 -->
                             <c:if test="${iTboardList.endPage < iTboardList.totalPage}">
-                            	<button class="pageButton" title="다음 10페이지로 이동" onclick="location.href='?currentPage=${iTboardList.endPage +1}'">다음</button>
+                            	<button class="pageButton" title="다음 10페이지로 이동" onclick="location.href='?currentPage=${iTboardList.endPage +1}&searchType=${searchType}&searchText=${searchText}'">다음</button>
                             </c:if>
                             
                             <c:if test="${iTboardList.endPage >= iTboardList.totalPage}">
@@ -257,7 +255,7 @@
                             </c:if>
                             <!--  맨 뒤로 -->
                             <c:if test="${iTboardList.currentPage < iTboardList.totalPage}">
-                            	<button class="pageButton" title="마지막 페이지로 이동" onclick="location.href='?currentPage=${iTboardList.totalPage}'">끝</button>
+                            	<button class="pageButton" title="마지막 페이지로 이동" onclick="location.href='?currentPage=${iTboardList.totalPage}&searchType=${searchType}&searchText=${searchText}'">끝</button>
                             </c:if>
                             <c:if test="${iTboardList.currentPage >= iTboardList.totalPage}">
                            		<button class="pageButton" disabled="disabled" title="이미 마지막 페이지입니다.">끝</button>
@@ -269,16 +267,16 @@
         <!--//버튼 + 페이징-->
 		<!-- 글쓰기 버튼 -->
 		 <!--검색-->
-                <div style="display:flex; justify-content:center;">
-                    <select id="browsers" name="browsers">
-                        <option value="제목+본문">제목+본문</option>
-                        <option value="제목">제목</option>
-                        <option value="본문">본문</option>
-                        <option value="작성자">작성자</option>
+                <form action="itboardsearch" style="display:flex; justify-content:center;">
+                    <select name="searchType">
+                        <option value="all" <c:if test="${searchType eq 'all'}">selected</c:if>>제목+본문</option>
+                        <option value="subject" <c:if test="${searchType eq 'subject'}">selected</c:if>>제목</option>
+                        <option value="content" <c:if test="${searchType eq 'content'}">selected</c:if>>본문</option>
+                        <option value="name" <c:if test="${searchType eq 'name'}">selected</c:if>>작성자</option>
                     </select>
-                    <input style="margin-left:5px;margin-right:5px; width: 20vw;" type="text"/>
-                    <button >검색</button>
-                </div>
+                    <input name="searchText" value="${searchText}" style="margin-left:5px;margin-right:5px; width: 20vw;" type="text"/>
+                    <button type="submit">검색</button>
+                </form>
                 <!--//검색-->
             </div>
         </div>

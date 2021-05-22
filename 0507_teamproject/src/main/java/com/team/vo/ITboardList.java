@@ -17,7 +17,8 @@ public class ITboardList {
 	private int endNo = 0;
 	private int startPage = 0;
 	private int endPage = 0;
-	
+	private String searchType=null;
+	private String searchText=null;
 	
 	//pageSize,totalCount,currentPage를 넘겨받아 페이지 작업에 사용할  4개의 변수를 초기화 시키는 메소드
 	public void initITboardList(int totalCount, int currentPage) {
@@ -120,11 +121,29 @@ public class ITboardList {
 		this.endPage = endPage;
 	}
 
+	public String getSearchType() {
+		return searchType;
+	}
+
+	public void setSearchType(String searchType) {
+		this.searchType = searchType;
+	}
+
+	public String getSearchText() {
+		return searchText;
+	}
+
+	public void setSearchText(String searchText) {
+		this.searchText = searchText;
+	}
+
 	@Override
 	public String toString() {
 		return "ITboardList [list=" + list + ", noSize=" + noSize + ", PageSize=" + PageSize + ", totalCount="
 				+ totalCount + ", totalPage=" + totalPage + ", currentPage=" + currentPage + ", startNo=" + startNo
-				+ ", endNo=" + endNo + ", startPage=" + startPage + ", endPage=" + endPage + "]";
+				+ ", endNo=" + endNo + ", startPage=" + startPage + ", endPage=" + endPage + ", searchType="
+				+ searchType + ", searchText=" + searchText + "]";
 	}
+
 	
 }

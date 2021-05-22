@@ -13,4 +13,47 @@
         select * from itboard order by bidx desc limit #{startNo},#{noSize}
   </select>
     
+   <select id="selectTypeCount" resultType="int" parameterType="ITboardList">
+        select count(*) from itboard
+        <where>
+        	<choose>
+	        	<when test='searchType.equals("all")'> <!-- 제목+본문 탐색수행 -->
+	        		subject LIKE CONCAT('%',#{searchText},'%') OR content LIKE CONCAT('%',#{searchText},'%')
+	        	</when>
+	        	<when test='searchType.equals("subject")'>
+	        		subject LIKE CONCAT('%',#{searchText},'%')
+	        	</when>
+	        	<when test='searchType.equals("content")'>
+	        		content LIKE CONCAT('%',#{searchText},'%')
+	        	</when>
+	        	<when test='searchType.equals("name")'>
+	        		name LIKE CONCAT('%',#{searchText},'%')
+	        	</when>
+        	</choose>
+        </where>
+  </select> 
+  <select id="selectTypeList" parameterType="ITboardList" resultType="ITboardDTO">
+        select * from itboard
+        <where>
+        	<choose>
+	        	<when test='searchText.equals("")'> <!-- 텍스트에 아무것도 적지 않았을 경우 -->
+	        		1=1
+	        	</when>
+	        	<when test='searchType.equals("all")'> <!-- 제목+본문 탐색수행 -->
+	        		subject LIKE CONCAT('%',#{searchText},'%') OR content LIKE CONCAT('%',#{searchText},'%')
+	        	</when>
+	        	<when test='searchType.equals("subject")'>
+	        		subject LIKE CONCAT('%',#{searchText},'%')
+	        	</when>
+	        	<when test='searchType.equals("content")'>
+	        		content LIKE CONCAT('%',#{searchText},'%')
+	        	</when>
+	        	<when test='searchType.equals("name")'>
+	        		name LIKE CONCAT('%',#{searchText},'%')
+	        	</when>
+        	</choose>
+        </where> 
+        	order by bidx desc limit #{startNo},#{noSize}
+  </select>
+  
 </mapper>

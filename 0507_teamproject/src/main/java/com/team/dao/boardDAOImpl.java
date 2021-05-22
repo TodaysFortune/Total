@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.team.dto.ITboardDTO;
+import com.team.vo.ITboardList;
 
 @Repository
 public class boardDAOImpl implements boardDAO {
@@ -28,6 +29,16 @@ public class boardDAOImpl implements boardDAO {
 	public List<ITboardDTO> selectList(HashMap<String, Integer> hmap) {
 		System.out.println("boardDAOImpl - selectList");
 		return sqlSession.selectList(Namespace+".selectList",hmap);
+	}
+	@Override
+	public int selectTypeCount(ITboardList iTboardList) {
+		System.out.println("boardDAOImpl - selectTypeCount");
+		return sqlSession.selectOne(Namespace+".selectTypeCount",iTboardList);
+	}
+	@Override
+	public List<ITboardDTO> selectTypeList(ITboardList iTboardList) {
+		System.out.println("boardDAOImpl - selectTypeList");
+		return sqlSession.selectList(Namespace+".selectTypeList",iTboardList);
 	}
 
 }

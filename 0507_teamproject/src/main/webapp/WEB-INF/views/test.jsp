@@ -10,10 +10,27 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
+<!-- js,css path set -->
 <link type="text/css" href="css/modal.css" rel="stylesheet"> 
+<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
 
 <!-- script -->
-
+<script>
+	window.onload = function(){
+		//필요한 엘리먼트들을 선택한다.
+		var openButton = document.getElementById("open");
+		var modal = document.querySelector(".custom_modal");
+		var overlay = modal.querySelector(".custom_md_overlay");
+		var closeButton = modal.querySelector("button");
+			
+		//함수정의
+		function closeModal(){
+			modal.classList.add("custom_hidden");
+		}
+		//클릭 이벤트
+		closeButton.addEventListener("click", closeModal);
+	}
+</script>
 <!-- //script -->
 
 
@@ -33,41 +50,62 @@
 	</div>
 	<!-- //modal -->
 	
-	<!-- test display:none -->
-	<form method="get" action="Login" id="userLogin">
-      	<button type="submit">Login</button>
-     </form>
-	<!-- test //display:none -->
+	<!-- fetch process -->
+	<div>
+		<input type="text" id="ajaxText" placeholder="넘겨주는 데이터가 1이라면 10을 가져오고 ,그외에는 100을 가져옵니다. "/>
+		<button type="button" onclick="ajaxTest()">버튼</button>
+		<button type="button" onclick="ajaxTest2()">버튼</button>
+	</div>
 	
 	
 	
-	<!-- script -->
-	<script>
-	window.onload = function(){
-
-		//필요한 엘리먼트들을 선택한다.
-		var openButton = document.getElementById("open");
-		var modal = document.querySelector(".custom_modal");
-		var overlay = modal.querySelector(".custom_md_overlay");
-		var closeButton = modal.querySelector("button");
-			
-		//함수정의
-		function closeModal(){
-			modal.classList.add("custom_hidden");
-		}
-		//클릭 이벤트
-		closeButton.addEventListener("click", closeModal);
-		
-		
-		var userLogin=document.getElementById('userLogin');
- 		userLogin.setAttribute('style','display:none');
-	}
+<!-- script -->
+<script>
+// 일반 텍스트 데이터  주도받는 함수
+function ajaxTest(){
+        var form = {
+                name: "jamong",
+                age: 23
+        }
+        $.ajax({
+            url: "requestObject",
+            type: "POST",
+            data: form,
+            success: function(data){
+                $('#ajaxText').val(data);
+            },
+            error: function(){
+                alert("simpleWithObject err");
+            }
+        });
+} 
+/*
+ 
+ */
+//JSON 데이터  주도받는 함수
+function ajaxTest2(){
+	        var formarian = {
+	                name: "jamong",
+	                age: 100
+	        }
+	        $.ajax({
+	            url: "stringify",
+	            type: "POST",
+	            data: JSON.stringify(formarian),
+	            contentType: "application/json",
+	            dataType: "json",
+	            success: function(data){
+	                var txt = data.name + data.age;
+	                $('#ajaxText').val(txt);
+	            },
+	            error: function(){
+	                alert("stringify err");
+	            }
+	        });
+} 	
+	
 	
 </script>
 	<!-- //script -->
-
-	
-	
-	
 </body>
 </html>

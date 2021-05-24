@@ -41,7 +41,14 @@
 	        	</otherwise>
         	</choose>
         </where> 
-        	order by bidx desc limit #{startNo},#{noSize}
+        <choose>
+        	<when test='searchType.equals("recommendedNumber")'>
+        		order by good desc,bidx desc limit #{startNo},#{noSize}
+        	</when>
+        	<otherwise>
+        		order by bidx desc limit #{startNo},#{noSize}
+        	</otherwise>
+        </choose>
   </select>
   
 </mapper>

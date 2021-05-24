@@ -1,5 +1,8 @@
 package com.team.teamproject;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.inject.Inject;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -8,12 +11,15 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.team.service.userinfoService;
 import com.team.vo.UserinfoVO;
@@ -85,4 +91,32 @@ public class UserController {
 			return "redirect:..";
 	}
 	
+	//test mapping
+	@RequestMapping(value="/test",method = RequestMethod.GET)
+	public String test() {
+		System.out.println("controller - test");
+			return "test";
+	}
+	//test ajax1
+	 @RequestMapping(value="/requestObject", method=RequestMethod.POST)
+	    @ResponseBody
+	    public String simpleWithObject(HttpServletRequest request) {
+	        //필요한 로직 처리
+		 	String name=request.getParameter("name");
+		 	String age=request.getParameter("age");
+		 	
+		 	System.out.println("name");
+		 	System.out.println("age");
+		 	
+		 	
+		 	
+	        return name + age;
+	 }
+	//test ajax2
+	 @RequestMapping(value = "/stringify", 
+	    		produces = { MediaType.APPLICATION_JSON_VALUE} , method=RequestMethod.POST)	 
+		public @ResponseBody Map<String,Object> getTodayChart(@RequestBody Map<String,Object> map) {     	
+	    	System.out.println(map);
+	    	return map;
+		}
 }

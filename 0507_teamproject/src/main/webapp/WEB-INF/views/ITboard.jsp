@@ -218,8 +218,8 @@
 		
 		 <!--버튼 + 페이징-->
                 <div style="margin-bottom:5px; display:flex; align-items:center; justify-content:space-between;">
-                    <input class="BlackWhite" style="width:7%; height:6vh; font-size:1rem;" type="button" value="전체글" onclick="location.href='http://www.naver.com'"/>
-                    <input class="GrayWhite" style="width:7%; height:6vh; font-size:1rem;" type="button" value="추천글" onclick="location.href='http://www.naver.com'"/>
+                    <input class="BlackWhite" style="width:7%; height:6vh; font-size:1rem;" type="button" value="전체글" onclick="location.href='itboard'"/>
+                    <input class="GrayWhite" style="width:7%; height:6vh; font-size:1rem;" type="button" value="추천글" onclick="location.href='itboardsearch?searchType=recommendedNumber&searchText='"/>
                     <span style="display:flex; width:70%; height:6vh;justify-content:center;align-items: center;">
                         <div style="display:flex; justify-content:center; width:80%;height:80%;">
                             <!--  맨 앞으로 -->

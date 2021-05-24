@@ -34,7 +34,8 @@ public class boardServiceImpl implements boardService {
 	public int selectTypeCount(ITboardList iTboardList) {
 		
 		System.out.println("boardServiceImpl - selectTypeCount");
-		if(iTboardList.getSearchText().length()==0)//검색창에 아무것도 안썻을 경우 
+		if(iTboardList.getSearchText().length()==0 ||
+				iTboardList.getSearchType().equals("recommendedNumber"))//검색창에 아무것도 안썻을 경우 || 추천글을 눌렀을 경우
 			return dao.selectCount();//일반 게시판첫페이지를 호출할 경우와 같은 효과
 		return dao.selectTypeCount(iTboardList);
 	}

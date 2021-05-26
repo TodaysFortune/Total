@@ -36,7 +36,7 @@ public class UserController {
 	public String main() {
 		return "main";
 	}
-	@RequestMapping(value="/main/signin",method = RequestMethod.GET)
+	@RequestMapping(value= "/main/signin",method = RequestMethod.GET)
 	public String getSignin() {
 		System.out.println("controller - Signin-GET");
 		return "Signin";

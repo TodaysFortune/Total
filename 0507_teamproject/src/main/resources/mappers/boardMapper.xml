@@ -50,5 +50,8 @@
         	</otherwise>
         </choose>
   </select>
-  
+  <insert id="insertBoard" parameterType="ITboardDTO">
+  		insert into itboard (id,name,subject,content,board_ref,board_lev,board_seq,board_hit,good) values
+  		(#{id},#{name},#{subject},#{content},0,0,0,0,0)
+  </insert>
 </mapper>

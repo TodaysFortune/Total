@@ -11,4 +11,5 @@ public interface boardService {
 	public List<ITboardDTO> selectList(HashMap<String, Integer> hmap);
 	public int selectTypeCount(ITboardList iTboardList);
 	public List<ITboardDTO> selectTypeList(ITboardList iTboardList);
+	public void insertBoard(ITboardDTO iTboardDTO);
 }

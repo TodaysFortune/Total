@@ -28,5 +28,12 @@ public class userinfoDAOImpl implements userinfoDAO{
 		System.out.println("userinfoDAOImpl - selectMember");
 		return sqlSession.selectOne(Namespace+".selectMember",userinfoVO);
 	}
+
+
+	@Override
+	public String selectName(String userid) {
+		System.out.println("userinfoDAOImpl - selectName");
+		return sqlSession.selectOne(Namespace+".selectName",userid);
+	}
 	
 }

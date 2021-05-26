@@ -25,5 +25,12 @@ public class userinfoServiceImpl implements userinfoService{
 		System.out.println("userinfoServiceImpl - selectMember");
 		return dao.selectMember(userinfoVO);
 	}
+
+	@Override
+	public String selectName(String userid) {
+		System.out.println("userinfoServiceImpl - selectName");
+		return dao.selectName(userid);
+	}
+
 	
 }

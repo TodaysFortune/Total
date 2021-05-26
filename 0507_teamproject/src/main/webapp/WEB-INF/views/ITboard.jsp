@@ -201,7 +201,7 @@
 									</td>
 									<td align="center">
 										<c:if test="${dto.good>=10}">
-										<img src=".images/hot.gif"/>
+										<img src="images/hot.gif"/>
 										</c:if>
 										${dto.good}
 									</td>
@@ -262,7 +262,9 @@
                            	</c:if>
                         </div>
                     </span>
-                    <input class="BlackWhite"style="width:12%; height:6vh; font-size:1rem;" type="button" value="글쓰기" onclick="location.href='http://www.naver.com'"/>
+                    <form style="width:12%; height:6vh;" method="get" action="itboard/write" onsubmit="return login_Check();">
+                    	<input class="BlackWhite" id="boardWrite" style="width:100%;height:100%; font-size:1rem;" type="submit" value="글쓰기"/>
+               		</form>
                 </div>
         <!--//버튼 + 페이징-->
 		<!-- 글쓰기 버튼 -->
@@ -281,5 +283,14 @@
             </div>
         </div>
     </div>
+    <script>
+    	function login_Check(){
+    		var Session_userID='${Session_userID}';
+    		console.log(Session_userID);
+    		if(Session_userID.trim().length==0){
+	 			alert("로그인이 필요합니다.");
+	 		}
+    	}
+	</script>
 </body>
 </html>

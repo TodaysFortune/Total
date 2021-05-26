@@ -1,6 +1,5 @@
 package com.team.dao;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -39,6 +38,11 @@ public class boardDAOImpl implements boardDAO {
 	public List<ITboardDTO> selectTypeList(ITboardList iTboardList) {
 		System.out.println("boardDAOImpl - selectTypeList");
 		return sqlSession.selectList(Namespace+".selectTypeList",iTboardList);
+	}
+	@Override
+	public void insertBoard(ITboardDTO iTboardDTO) {
+		System.out.println("boardDAOImpl - insertBoard");
+		sqlSession.insert(Namespace+".insertBoard", iTboardDTO);
 	}
 
 }

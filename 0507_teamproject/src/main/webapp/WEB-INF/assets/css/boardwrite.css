@@ -1,0 +1,35 @@
+@charset "EUC-KR";
+ .container-column-align{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .container-column{
+            display: flex;
+            flex-direction: column;
+        }
+        .BlackWhite:active,.GrayWhite:active{
+             box-shadow: 1px 1px 0 rgb(0,0,0,0.5); 
+             position: relative; 
+             top:1px; 
+             text-decoration:underline;
+        }
+        .BlackWhite{
+            background-color: rgb(94, 93, 93);
+            color:white;
+            font-weight: bold;
+            border:0;
+            border-radius: 3px;
+            outline: 0;
+        }
+        .GrayWhite{
+            background-color:white;
+            color:rgb(49, 49, 49);
+            font-weight: bold;
+            border-radius: 3px;
+            outline: 1;
+        }
+        textarea:focus{
+            outline: none;
+        }

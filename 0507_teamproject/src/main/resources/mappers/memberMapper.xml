@@ -13,5 +13,7 @@
   <select id="selectMember" parameterType="UserinfoVO" resultType="int">
         select count(*) from userinfo where id=#{id} AND password=#{password}
   </select>
-    
+  <select id="selectName" parameterType="string" resultType="string">
+        select name from userinfo where id=#{_parameter}
+  </select>  
 </mapper>

@@ -46,6 +46,11 @@ public class boardServiceImpl implements boardService {
 		return dao.selectTypeList(iTboardList);
 	}
 
-	
+	@Override
+	public void insertBoard(ITboardDTO iTboardDTO) {
+		System.out.println("boardServiceImpl - insertBoard");
+		dao.insertBoard(iTboardDTO);
+	}
+
 	
 }

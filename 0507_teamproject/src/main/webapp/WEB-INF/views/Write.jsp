@@ -129,16 +129,24 @@
             <div><hr/></div>
             <form style="margin-top:10px;" action="write" method="post" onsubmit="return emptyCheck();">
                 <div style="margin-bottom:5px;">
-                    <input type="text" name="subject" nameplaceholder="제목을 입력해주세요" style="height:1.7rem; width:40rem"/>
+                    <input type="text" name="subject" onkeyup="fn_checkByte_subject(this,100)" placeholder="제목을 입력해주세요" style="height:1.7rem; width:40rem"/>
                 </div>
                 <div style="display:flex; justify-content:space-between; margin-bottom:5px; ">
                     <div style="position:relative; left:10px;">
                         <span>${name}</span>&nbsp;<span>|</span>&nbsp;
                         <span>${id} 님</span>
                     </div>
+                    <div style="font-size: 0.8rem; position: relative; right:10px;">
+	                    <div>
+	                    	<span>Totalbyte</span>
+	                    </div>
+	                    <div>
+	                    	<span>(</span><span id="nowByte">0</span><span>/</span><span>6000</span><span>)</span>
+	                    </div>
+                    </div>
                 </div>
                 <div style="align-items: center; border: 1px solid black;">
-                    <textarea  name="content" style="resize: none; width: 99%; height: 15rem; padding:0;border:0;margin:0;"></textarea>
+                    <textarea  name="content" onkeydown="resize(this)" onkeyup="fn_checkByte(this,6000)" style="resize: none; width: 99%; min-height: 15rem; padding:0;border:0;margin:0;"></textarea>
                 </div>
                 <div><hr/></div>
                 <div style="display:flex; justify-content: flex-end;">
@@ -159,7 +167,8 @@
 			alert('제목 혹은 내용을 입력해주세요.');
 			return false;
 		}
-	}
+	}    
 </script>
+<script type="text/javascript" src="../js/board.js"></script>
 </body>
 </html>

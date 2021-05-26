@@ -180,7 +180,7 @@
 										</c:if>
 										<c:set var="subject" value="${fn:replace(dto.subject,'<','&lt;')}" />
 										<c:set var="subject" value="${fn:replace(subject,'>','&gt;')}" />
-										<a href="increment?idx=${dto.bidx}&currentPage=${iTboardList.currentPage}">
+										<a href="itboard/increment?bidx=${dto.bidx}&currentPage=${iTboardList.currentPage}">
 											${subject}
 										</a>
 									</td>

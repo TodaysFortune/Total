@@ -99,4 +99,27 @@ public class BoardController {
 		}
 		return "redirect:../login";//글입력중 세션만료 걸렸을 경우
 	}
+	@RequestMapping(value="/main/itboard/increment",method=RequestMethod.GET)
+	public String incrementBoard(HttpServletRequest request,Model model) {
+		System.out.println("BoardController-incrementBoard");
+		String bidx=request.getParameter("bidx");
+		String currentPage=request.getParameter("currentPage");
+		model.addAttribute("bidx", bidx);
+		model.addAttribute("currentPage", currentPage);
+		//조회수증가 알고리즘
+		//조회수증가 알고리즘 끝
+		
+		return "redirect:../itboard/contentView";
+	}
+	@RequestMapping(value="/main/itboard/contentView",method=RequestMethod.GET)
+	public String boardContentView(HttpServletRequest request) {
+		System.out.println("BoardController-boardContentView");
+		String bidx=request.getParameter("bidx");
+		String currentPage=request.getParameter("currentPage");
+		System.out.println("bidx : "+bidx);
+		System.out.println("currentPage : "+currentPage);
+		//게시글 + 답글 가져오기 알고리즘
+		//게시글 + 답글 가져오기 알고리즘 끝
+		return "contentView";
+	}
 }

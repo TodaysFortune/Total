@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> <!-- 대입문,제어문 -->
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%><!-- 서식지정 -->
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%><!-- 함수 -->
 <!DOCTYPE html>
 <html lang="ko">
     <head>
@@ -146,7 +149,7 @@
                 </div>
                 <textarea onkeydown="resize(this)" onkeyup="resize(this)" readonly
                     style="min-height: 10rem; width:95%; outline: none;
-                    border:0; resize: none;" class="relative-left"></textarea>
+                    border:0; resize:none;" class="relative-left"></textarea>
             </div>
             <!-- //contents -->
             <div style="display:flex; justify-content: space-between;">
@@ -200,58 +203,13 @@
                     <div style="width:50%; display: flex; justify-content: flex-end;">
                         <input class="BlackWhite"style="width:24%; height:6vh; font-size:1rem;" type="button" value="댓글등록" onclick="location.href='insert'"/>
                         <input class="GrayWhite"style="margin-left:7px; width:24%; height:6vh; font-size:1rem;" type="button" value="게시글답변" onclick="location.href='insert'"/>
-                        <input class="BlackWhite"style="margin-left:7px; width:24%; height:6vh; font-size:1rem;" type="button" value="돌아가기" onclick="location.href='insert'"/>
+                        <input class="BlackWhite"style="margin-left:7px; width:24%; height:6vh; font-size:1rem;" type="button" value="돌아가기" onclick="location.href='../itboard?currentPage=${currentPage}'"/>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <!-- 중단 끝 -->
-    <script>
-        function resize(obj) {
-            obj.style.height = "1px";
-            obj.style.height = (12+obj.scrollHeight)+"px";
-        }
-        function fn_checkByte(obj,maxByte){ //maxByte:최대바이트
-                obj.style.height = "1px";
-                obj.style.height = (12+obj.scrollHeight)+"px";//resize
-
-                const text_val = obj.value; //입력한 문자
-                const text_len = text_val.length; //입력한 문자수
-                var cropped_text="";
-                var texting_len=0;//글자단위(모든문자,한글포함)
-
-                let totalByte=0;
-                for(let i=0; i<text_len; i++){
-                    const each_char = text_val.charAt(i);//한 글자
-                    const uni_char = escape(each_char) //유니코드 형식으로 변환
-                    if(uni_char.length>4){
-                        // 한글 : 2Byte
-                        totalByte += 2;
-                    }else{
-                        // 영문,숫자,특수문자 : 1Byte
-                        totalByte += 1;
-                    }
-                    if(totalByte <=maxByte){//return할 문자열 갯수
-                        texting_len=i+1;
-                    }
-                }
-                
-                if(totalByte>maxByte){
-                    alert("최대 "+maxByte+"Byte까지만 입력가능합니다.");
-                    document.getElementById("nowByte").innerText = totalByte;
-                    document.getElementById("nowByte").style.color = "red";
-
-                    cropped_text =text_val.substr(0,texting_len);//오바된만큼 자르기
-                    obj.value=cropped_text;
-                    fn_checkByte(obj,maxByte);
-                }else{
-                    document.getElementById("nowByte").innerText = totalByte;
-                    document.getElementById("nowByte").style.color = "green";
-                }
-
-            }
-    </script>
     <script type="text/javascript" src="../js/board.js"></script>
 </body>
 </html>

@@ -10,7 +10,7 @@
   </select>
   
   <select id="selectList" parameterType="java.util.HashMap" resultType="ITboardDTO">
-        select * from itboard order by bidx desc limit #{startNo},#{noSize}
+        select * from itboard order by board_ref desc,board_seq asc limit #{startNo},#{noSize}
   </select>
     
    <select id="selectTypeCount" resultType="int" parameterType="ITboardList">
@@ -51,7 +51,7 @@
         </choose>
   </select>
   <insert id="insertBoard" parameterType="ITboardDTO">
-  		insert into itboard (id,name,subject,content,board_ref,board_lev,board_seq,board_hit,good) values
-  		(#{id},#{name},#{subject},#{content},0,0,0,0,0)
+  		insert into itboard (bidx,id,name,subject,content,board_ref,board_lev,board_seq,board_hit,good) values
+  		(boardnextval(#{category}),#{id},#{name},#{subject},#{content},boardcurval(#{category}),0,0,0,0)
   </insert>
 </mapper>

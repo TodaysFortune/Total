@@ -14,6 +14,8 @@ public class ITboardDTO {
 	private int board_hit;
 	private Date writedate;
 	private int good;
+	private int category=1;
+	
 	
 	public int getBoard_hit() {
 		return board_hit;

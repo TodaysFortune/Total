@@ -1,27 +1,27 @@
 package com.team.teamproject;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import javax.inject.Inject;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.team.dto.ITboardDTO;
 import com.team.service.boardService;
 import com.team.service.userinfoService;
 import com.team.vo.ITboardList;
-import com.team.vo.UserinfoVO;
 
 @Controller
 public class BoardController {
@@ -33,9 +33,6 @@ public class BoardController {
 	@RequestMapping("/main/itboard")
 	public String ITboard(@RequestParam(value="currentPage",required=false,defaultValue="1") int currentPage,Model model) {
 		System.out.println("BoardController의 ITboard() 메소드");
-		//test
-		//System.out.println(currentPage);
-		
 		int totalCount = boardservice.selectCount();
 		AbstractApplicationContext ctx = new GenericXmlApplicationContext("classpath:applicationCTX.xml");
 		ITboardList iTboardList = ctx.getBean("ITboardList", ITboardList.class);
@@ -45,7 +42,7 @@ public class BoardController {
 		hmap.put("noSize", iTboardList.getNoSize());
 		iTboardList.setList(boardservice.selectList(hmap));//sql 이용해서 한페이지 게시글 리스트 초기화.
 		model.addAttribute("iTboardList", iTboardList);
-		return "ITboard";		
+		return "ITboard";
 	}
 	
 	@RequestMapping(value="/main/itboardsearch",method=RequestMethod.GET)
@@ -102,26 +99,66 @@ public class BoardController {
 	@RequestMapping(value="/main/itboard/increment",method=RequestMethod.GET)
 	public String incrementBoard(HttpServletRequest request,Model model) {
 		System.out.println("BoardController-incrementBoard");
-		String bidx=request.getParameter("bidx");
 		String currentPage=request.getParameter("currentPage");
-		model.addAttribute("bidx", bidx);
 		model.addAttribute("currentPage", currentPage);
-		//조회수증가 알고리즘
-		//조회수증가 알고리즘 끝
+		int bidx;
+		try { //이미 게시판이 삭제되었을 경우, 예외처리 
+			bidx=Integer.valueOf(request.getParameter("bidx"));
+		}catch(Exception e) {		
+			return "redirect:../itboard";
+		}
+		model.addAttribute("bidx", bidx);
+		boardservice.incrementBoard(bidx);
 		
 		return "redirect:../itboard/contentView";
 	}
 	@RequestMapping(value="/main/itboard/contentView",method=RequestMethod.GET)
-	public String boardContentView(@RequestParam(value="currentPage",required=false,defaultValue="1") int currentPage,HttpServletRequest request,Model model) {
+	public String boardContentView(@RequestParam(value="currentPage",required=false,defaultValue="1") int currentPage,
+			HttpServletRequest request,Model model) {
 		System.out.println("BoardController-boardContentView");
-		String bidx=request.getParameter("bidx");
-		//String currentPage=request.getParameter("currentPage");
-		System.out.println("bidx : "+bidx);
-		System.out.println("currentPage : "+currentPage);
-		model.addAttribute("bidx", bidx);
+		int bidx=Integer.valueOf(request.getParameter("bidx"));
+		ITboardDTO itboardDTO=boardservice.selectBoard(bidx);
+		
+		//bidx,사용자아이디를 얻어서  boardservice.selectGoodChecked(map)==1 여부에 따라 초기 하트를 결정함
+		Map<String,String> map=new HashMap<String, String>();
+		String userid=(String)request.getSession().getAttribute("Session_userID");//세션이없을 경우 null이 들어감
+		model.addAttribute("heart",0);//비로그인 상태일 경우 , 좋아요를 누른이력이 없는 경우
+		if(userid!=null) {
+			map.put("bidx", request.getParameter("bidx"));
+			map.put("id",userid);
+			if(boardservice.selectGoodChecked(map)==1)
+				model.addAttribute("heart",1);
+		}
+		
 		model.addAttribute("currentPage", currentPage);
-		//게시글 + 답글 가져오기 알고리즘
-		//게시글 + 답글 가져오기 알고리즘 끝
+		model.addAttribute("itboardDTO", itboardDTO);
 		return "contentView";
 	}
+	@RequestMapping(value = "/main/itboard/asyncGood", 
+			produces = { MediaType.APPLICATION_JSON_VALUE} , method=RequestMethod.POST)
+	public @ResponseBody Map<String,Integer>asyncGood(@RequestBody Map<String,String> map){
+		System.out.println("BoardController-asyncGood");
+		Map<String,Integer> response_map=new HashMap<String, Integer>();
+		int bidx=Integer.valueOf(map.get("bidx"));
+		if(boardservice.selectGoodChecked(map)==1) {//특정아이디에 해당하는 이미 좋아요 누른 상태이면
+			//좋아요를 해제
+			boardservice.updateGooddown(map);
+			//clicked= 0도 반환
+			response_map.put("clicked", 0);
+			//특정 itboard 테이블의 good 변경
+			boardservice.updateGooddownBoard(bidx);
+		}else {//좋아요가 안눌린 상태라면
+			//좋아요를 넣어주기
+			boardservice.updateGoodup(map);
+			//clicked= 1도 반환
+			response_map.put("clicked", 1);
+			//특정 itboard 테이블의 good 변경
+			boardservice.updateGoodupBoard(bidx);
+		}
+		//총좋아요갯수반환
+		int goodCount=boardservice.selectGoodCount(bidx);
+		response_map.put("goodCount",goodCount);
+		return response_map;
+	}
+
 }

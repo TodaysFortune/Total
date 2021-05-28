@@ -10,6 +10,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>레이아웃</title>
+        <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
         <!-- Bootstrap core CSS , js -->
         <link type="text/css" href="../css/bootstrap.min.css" rel="stylesheet"> 
         <script type="text/javascript" src="../js/bootstrap.js"></script>
@@ -76,13 +77,12 @@
       
       <div id="greet"></div>
       <form id="logoutForm"></form>
-      <form method="get" action="main/login" id="userLogin">
+      <form method="get" action="../login" id="userLogin">
       	<button type="submit" class="btn me-sm-1 rounded-pill btn-info">Login</button>
       </form>
-      <form method="get" action="main/signin" id="userSign">
+      <form method="get" action="../signin" id="userSign">
       	<button type="submit" class="btn me-sm-5 rounded-pill btn-outline-info">Sign</button>
       </form>
-      
       
       <script>
       (function () {//익명즉시실행함수 
@@ -131,14 +131,14 @@
             <div style="font-size:1.5rem;">IT 게시판</div>
             <div><hr/></div>
             <div class="relative-left">
-                <span>제목입니다</span>
+                <span>${itboardDTO.subject}</span>
             </div>
             <div style="display:flex; justify-content: space-between;">
                 <div class="relative-left">
-                    <span>닉네임</span>&nbsp;<span>|</span>&nbsp;<span>날짜</span>
+                    <span>${itboardDTO.name}</span>&nbsp;<span>|</span>&nbsp;<span>${itboardDTO.writedate}</span>
                 </div>
                 <div class="relative-right">
-                    <span>조회수 130</span>&nbsp;<span>|</span>&nbsp;<span>추천 </span><span style="color: red;">2</span>
+                    <span>조회수 ${itboardDTO.board_hit}</span>&nbsp;<span>|</span>&nbsp;<span>추천 </span><span style="color: red;">${itboardDTO.good}</span>
                 </div>
             </div>
             <div><hr/></div>
@@ -149,7 +149,7 @@
                 </div>
                 <textarea onkeydown="resize(this)" onkeyup="resize(this)" readonly
                     style="min-height: 10rem; width:95%; outline: none;
-                    border:0; resize:none;" class="relative-left"></textarea>
+                    border:0; resize:none;" class="relative-left">${itboardDTO.content}</textarea>
             </div>
             <!-- //contents -->
             <div style="display:flex; justify-content: space-between;">
@@ -157,8 +157,15 @@
 	                <span>전체 댓글</span><span style="color:red;"> 3 </span><span>개</span>
 	            </div>
 	            <div class="relative-right">
-	                <img id="good-id4label" alt="좋아요" src="../images/good.png" style="width:1rem; height:1rem;"/>&nbsp;
-	                <label for="good-id4label" id="good_label">0</label>
+	            	<label onclick="goodup()">
+	            		<c:if test="${heart==0}">
+		                <img alt="좋아요" src="../images/empty_heart.png" id="heartbeat" style="width:1rem; height:1rem;"/>&nbsp;
+		                </c:if>
+		                <c:if test="${heart!=0}">
+		                <img alt="좋아요" src="../images/full_heart.png" id="heartbeat" style="width:1rem; height:1rem;"/>&nbsp;
+		                </c:if>
+	                	<span id="good_label">${itboardDTO.good}</span>
+	                </label>
 	            </div>
             </div>
             <div>
@@ -211,5 +218,40 @@
     </div>
     <!-- 중단 끝 -->
     <script type="text/javascript" src="../js/board.js"></script>
+    <script>
+    	function goodup(){
+    		var Session_userID='${Session_userID}';
+    		var bidx_='${itboardDTO.bidx}'
+    		var form={
+    				bidx: bidx_,
+    				id: Session_userID
+    		}
+     		if(Session_userID.length!=0){
+     			//로그인중임
+     			var label_text=document.getElementById('good_label');
+     			$.ajax({
+     	            url: "asyncGood",
+     	            type: "POST",
+     	            data: JSON.stringify(form),
+     	            contentType: "application/json",
+     	            dataType: "json",
+     	            success: function(data){
+     	            	if(data.clicked==0){
+     	            		$('#heartbeat').attr('src','../images/empty_heart.png');
+     	            	}else{
+     	            		$('#heartbeat').attr('src','../images/full_heart.png');
+     	            	}
+     	                $('#good_label').text(data.goodCount);
+     	            },
+     	            error: function(){
+     	                alert("asyncGood err");
+     	            }
+     	        });
+     		}
+     		else{
+     			alert("로그인을 해주세요.");
+     		}
+    	}
+    </script>
 </body>
 </html>

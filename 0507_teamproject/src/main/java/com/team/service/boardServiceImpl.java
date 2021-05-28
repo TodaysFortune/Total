@@ -2,6 +2,7 @@ package com.team.service;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -51,6 +52,56 @@ public class boardServiceImpl implements boardService {
 		System.out.println("boardServiceImpl - insertBoard");
 		dao.insertBoard(iTboardDTO);
 	}
+
+	@Override
+	public void incrementBoard(int bidx) {
+		System.out.println("boardServiceImpl - incrementBoard");
+		dao.incrementBoard(bidx);
+	}
+
+	@Override
+	public ITboardDTO selectBoard(int bidx) {
+		System.out.println("boardServiceImpl - selectBoard");
+		return dao.selectBoard(bidx);
+	}
+
+	@Override
+	public int selectGoodChecked(Map<String, String> map) {
+		System.out.println("boardServiceImpl - selectGoodChecked");
+		return dao.selectGoodChecked(map);
+	}
+	@Override
+	public void updateGoodup(Map<String, String> map) {
+		System.out.println("boardServiceImpl - updateGoodup");
+		dao.updateGoodup(map);
+	}
+
+	@Override
+	public void updateGooddown(Map<String, String> map) {
+		System.out.println("boardServiceImpl - updateGooddown");
+		dao.updateGooddown(map);
+	}
+
+	@Override
+	public int selectGoodCount(int bidx) {
+		System.out.println("boardServiceImpl - selectGoodCount");
+		return dao.selectGoodCount(bidx);
+	}
+
+	@Override
+	public void updateGooddownBoard(int bidx) {
+		System.out.println("boardServiceImpl - updateGooddownBoard");
+		dao.updateGooddownBoard(bidx);
+	}
+
+	@Override
+	public void updateGoodupBoard(int bidx) {
+		System.out.println("boardServiceImpl - updateGoodupBoard");
+		dao.updateGoodupBoard(bidx);
+	}
+
+
+
 
 	
 }

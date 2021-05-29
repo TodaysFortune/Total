@@ -13,6 +13,7 @@ public class ITboardDTO {
 	private int board_seq;
 	private int board_hit;
 	private Date writedate;
+	private Date recentupdate;
 	private int good;
 	private int category=1;
 	
@@ -83,11 +84,19 @@ public class ITboardDTO {
 	public void setGood(int good) {
 		this.good = good;
 	}
+	public Date getRecentupdate() {
+		return recentupdate;
+	}
+	public void setRecentupdate(Date recentupdate) {
+		this.recentupdate = recentupdate;
+	}
 	@Override
 	public String toString() {
 		return "ITboardDTO [bidx=" + bidx + ", id=" + id + ", name=" + name + ", subject=" + subject + ", content="
 				+ content + ", board_ref=" + board_ref + ", board_lev=" + board_lev + ", board_seq=" + board_seq
-				+ ", board_hit=" + board_hit + ", writedate=" + writedate + ", good=" + good + "]";
+				+ ", board_hit=" + board_hit + ", writedate=" + writedate + ", recentupdate=" + recentupdate + ", good="
+				+ good + ", category=" + category + "]";
 	}
+	
 	
 }

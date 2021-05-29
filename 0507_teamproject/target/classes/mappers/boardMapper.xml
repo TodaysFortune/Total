@@ -60,14 +60,21 @@
   	select count(*) from itgood where bidx=#{_parameter}
   </select>
   <insert id="insertBoard" parameterType="ITboardDTO">
-  		insert into itboard (bidx,id,name,subject,content,board_ref,board_lev,board_seq,board_hit,good) values
-  		(boardnextval(#{category}),#{id},#{name},#{subject},#{content},boardcurval(#{category}),0,0,0,0)
+  		insert into itboard (bidx,id,name,subject,content,board_ref,board_lev,board_seq,board_hit,good,recentupdate) values
+  		(boardnextval(#{category}),#{id},#{name},#{subject},#{content},boardcurval(#{category}),0,0,0,0,CURRENT_TIMESTAMP)
   </insert>
   <insert id="updateGoodup" parameterType="java.util.Map">
   		insert into itgood (bidx,id) values (#{bidx},#{id})
   </insert>
+  <insert id="insertreplyBoard" parameterType="ITboardDTO">
+  		insert into itboard (bidx,id,name,subject,content,board_ref,board_lev,board_seq,board_hit,good,recentupdate) values
+  		 (boardnextval(#{category}),#{id},#{name},#{subject},#{content},#{board_ref},#{board_lev}+1,#{board_seq}+1,0,0,CURRENT_TIMESTAMP)
+  </insert>
   <delete id="updateGooddown" parameterType="java.util.Map">
   		delete from itgood where bidx=#{bidx} and id=#{id}
+  </delete>
+  <delete id="deleteBoard" parameterType="int">
+  		delete from itboard where bidx=#{_parameter}
   </delete>
   <update id="incrementBoard" parameterType="int">
   		update itboard set board_hit=board_hit+1 where bidx=#{_parameter}
@@ -77,5 +84,11 @@
   </update>
   <update id="updateGoodupBoard" parameterType="int">
   		update itboard set good=good+1 where bidx=#{_parameter}
+  </update>
+  <update id="updateBoard" parameterType="ITboardDTO">
+  		update itboard set subject=#{subject} , content=#{content} , recentupdate=CURRENT_TIMESTAMP where bidx=#{bidx}
+  </update>
+  <update id="updateseqBoard" parameterType="ITboardDTO">
+  		update itboard set board_seq=board_seq+1 where board_ref=#{board_ref} and board_seq>#{board_seq}
   </update>
 </mapper>

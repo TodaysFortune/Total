@@ -12,6 +12,7 @@ import org.springframework.context.support.GenericXmlApplicationContext;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -134,6 +135,63 @@ public class BoardController {
 		model.addAttribute("itboardDTO", itboardDTO);
 		return "contentView";
 	}
+	
+	
+	@RequestMapping(value = "main/itboard/contentView/update",method=RequestMethod.POST)
+	public String getupdate(@RequestParam(value="currentPage",required=false,defaultValue="1") int currentPage,
+			@RequestParam(value="bidx",required=true) int bidx,
+			Model model) { //오는것 bidx,currentPage
+		System.out.println("BoardController-getupdate");
+		ITboardDTO iTboardDTO=boardservice.selectBoard(bidx);
+		
+		model.addAttribute("iTboardDTO", iTboardDTO);
+		model.addAttribute("currentPage", currentPage);
+		return "update";
+	}
+	@RequestMapping(value = "main/itboard/contentView/updateBoard",method=RequestMethod.POST)
+	public String postupdate(@RequestParam(value="currentPage",required=false,defaultValue="1") int currentPage,
+			ITboardDTO iTboardDTO,
+			Model model) { //오는것 bidx,currentPage
+		System.out.println("BoardController-postupdate");
+		
+		boardservice.updateBoard(iTboardDTO);
+		
+		model.addAttribute("bidx", iTboardDTO.getBidx());// bidx, currentPage가 잘 적용되는지 contentView 에서 볼것 됨. 아주좋아.
+		model.addAttribute("currentPage", currentPage);
+		return "redirect:../contentView";
+	}
+	@RequestMapping(value = "main/itboard/contentView/delete",method=RequestMethod.POST)
+	public String deleteBoard(@RequestParam(value="currentPage",required=false,defaultValue="1") int currentPage,
+			@RequestParam(value="bidx",required=true) int bidx,
+			Model model) {  //오는것 bidx,currentPage
+		System.out.println("BoardController-deleteBoard");
+		boardservice.deleteBoard(bidx);
+		model.addAttribute("currentPage", currentPage);
+		return "redirect:../../itboard";
+	}
+	
+	@RequestMapping(value = "main/itboard/contentView/replyBoard",method=RequestMethod.GET)
+	public String getreplyBoard(@RequestParam(value="currentPage",required=false,defaultValue="1") int currentPage,
+			Model model,@ModelAttribute("itboardDTO") ITboardDTO iTboardDTO,
+			HttpSession session) {
+		System.out.println("BoardController-replyBoard");
+		String name=userinfoservice.selectName((String)session.getAttribute("Session_userID"));
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("name", name);
+		return "replyBoard";
+	}
+	@RequestMapping(value = "main/itboard/contentView/replyBoard",method=RequestMethod.POST)
+	public String postreplyBoard(@RequestParam(value="currentPage",required=false,defaultValue="1") int currentPage,
+			Model model,ITboardDTO iTboardDTO) {
+		System.out.println("BoardController-postreplyBoard");
+		boardservice.updateseqBoard(iTboardDTO);
+		boardservice.insertreplyBoard(iTboardDTO);
+		System.out.println("currentPage : "+currentPage);
+		model.addAttribute("currentPage", currentPage);
+		return "redirect:../../itboard";
+	}
+	
+	
 	@RequestMapping(value = "/main/itboard/asyncGood", 
 			produces = { MediaType.APPLICATION_JSON_VALUE} , method=RequestMethod.POST)
 	public @ResponseBody Map<String,Integer>asyncGood(@RequestBody Map<String,String> map){

@@ -128,14 +128,24 @@
 	<!-- 중단 -->
 	<div class="container-column-align" style="height: auto; margin-top: 3px;">
         <div class="container-column" style="width: 80vw; min-width: 259.2px;">
-            <div style="font-size:1.5rem;">IT 게시판</div>
+            <div style="font-size:1.5rem; font-weight:900; position:relative; top:5px; left:5px;">IT 게시판</div>
             <div><hr/></div>
             <div class="relative-left">
                 <span>${itboardDTO.subject}</span>
             </div>
             <div style="display:flex; justify-content: space-between;">
                 <div class="relative-left">
-                    <span>${itboardDTO.name}</span>&nbsp;<span>|</span>&nbsp;<span>${itboardDTO.writedate}</span>
+					<jsp:useBean id="date" class="java.util.Date"/>
+                    <span>${itboardDTO.name}</span>&nbsp;<span>|</span>&nbsp;
+                    <span>
+	                    <c:if test="${date.year==itboardDTO.writedate.year && date.month==itboardDTO.writedate.month && date.date==itboardDTO.writedate.date}">
+							<fmt:formatDate value="${itboardDTO.writedate}" pattern="HH:mm:ss" />
+						</c:if>
+						<c:if test="${date.year!=itboardDTO.writedate.year || 
+							date.month!=itboardDTO.writedate.month || date.date!=itboardDTO.writedate.date}">
+							<fmt:formatDate value="${itboardDTO.writedate}" pattern="yy-MM-dd(E)" />
+						</c:if>
+                    </span>
                 </div>
                 <div class="relative-right">
                     <span>조회수 ${itboardDTO.board_hit}</span>&nbsp;<span>|</span>&nbsp;<span>추천 </span><span style="color: red;">${itboardDTO.good}</span>
@@ -143,10 +153,14 @@
             </div>
             <div><hr/></div>
             <!-- contents -->
-            <div style="min-height: 6rem;">
-                <div style="float:right;" class="relative-right">
-                    <span>수정</span>&nbsp;<span>|</span>&nbsp;<span>삭제</span>
-                </div>
+            <div style="min-height: 5rem;">
+                <form style="float:right;" class="relative-right" method="post" onsubmit="return idmatching();">
+                	<input type="hidden" name="bidx" value="${itboardDTO.bidx}"/>
+                	<input type="hidden" name="currentPage" value="${currentPage}"/>
+                    <button style="cursor:pointer;background-color: white;border:0;" type="submit" formaction="../itboard/contentView/update">수정</button>
+                    &nbsp;<span>|</span>&nbsp;
+                    <button style="cursor:pointer;background-color: white;border:0;" type="submit" formaction="../itboard/contentView/delete">삭제</button>
+                </form>
                 <textarea onkeydown="resize(this)" onkeyup="resize(this)" readonly
                     style="min-height: 10rem; width:95%; outline: none;
                     border:0; resize:none;" class="relative-left">${itboardDTO.content}</textarea>
@@ -157,7 +171,7 @@
 	                <span>전체 댓글</span><span style="color:red;"> 3 </span><span>개</span>
 	            </div>
 	            <div class="relative-right">
-	            	<label onclick="goodup()">
+	            	<label  style="cursor:pointer" onclick="goodup()">
 	            		<c:if test="${heart==0}">
 		                <img alt="좋아요" src="../images/empty_heart.png" id="heartbeat" style="width:1rem; height:1rem;"/>&nbsp;
 		                </c:if>
@@ -173,13 +187,13 @@
                 <div style="width:100%;">
                     <hr/>
                     <div style="display:flex; justify-content: space-between;">
-                        <div style="width:80%;" class="relative-left">
+                        <div style="width:75%; border:1px solid red;" class="relative-left">
                             <div style="display:flex;">
                                 <div style="width:10%;">추이</div>
                                 <div style="width:90%;">방가</div>
                             </div>
                         </div>
-                        <div style="width:15%;">
+                        <div style="width:20%; border:1px solid green;">
                             <span>2021.05.10 18:16:18</span>
                             <input type="submit"  value="X"/>
                         </div>
@@ -209,7 +223,18 @@
                     </div>
                     <div style="width:50%; display: flex; justify-content: flex-end;">
                         <input class="BlackWhite"style="width:24%; height:6vh; font-size:1rem;" type="button" value="댓글등록" onclick="location.href='insert'"/>
-                        <input class="GrayWhite"style="margin-left:7px; width:24%; height:6vh; font-size:1rem;" type="button" value="게시글답변" onclick="location.href='insert'"/>
+                        <form action="../itboard/contentView/replyBoard" method="get" onsubmit="return loginCheck();" style="margin-left:7px; width:24%; height:6vh; font-size:1rem;">
+                        	<input type="hidden" name="bidx" value="${itboardDTO.bidx}"/>
+                        	<input type="hidden" name="board_ref" value="${itboardDTO.board_ref}"/>
+                        	<input type="hidden" name="board_lev" value="${itboardDTO.board_lev}"/>
+                        	<input type="hidden" name="board_seq" value="${itboardDTO.board_seq}"/>
+                        	<input type="hidden" name="currentPage" value="${currentPage}"/>
+                        	<input class="GrayWhite" style="display:block; width:100%; height:100%;" type="submit" value="게시글답변"/>
+                        </form>
+                        <!-- 
+                        <input class="GrayWhite"style="margin-left:7px; width:24%; height:6vh; font-size:1rem;" type="button" value="게시글답변" 
+                        	onclick="location.href='../itboard/contentView/replyBoard?currentPage=${currentPage}'"/>
+                        	 -->
                         <input class="BlackWhite"style="margin-left:7px; width:24%; height:6vh; font-size:1rem;" type="button" value="돌아가기" onclick="location.href='../itboard?currentPage=${currentPage}'"/>
                     </div>
                 </div>
@@ -251,6 +276,28 @@
      		else{
      			alert("로그인을 해주세요.");
      		}
+    	}
+    	function idmatching(){
+    		var userID='${Session_userID}';
+    		var boardUserID='${itboardDTO.id}';
+    		console.log(userID);
+    		console.log(boardUserID);
+    		if(userID==boardUserID){
+    			return true;
+    		}
+    		else{
+    			alert('게시글 작성자만이 이용할 수 있습니다!');
+    			return false;
+    		}
+    	}
+    	function loginCheck(){
+    		var userID='${Session_userID}';
+    		if(userID.trim().length==0){
+    			alert("로그인을 먼저 해주세요.");
+    			return false;
+    		}else{
+    			return true;
+    		}
     	}
     </script>
 </body>

@@ -21,4 +21,8 @@ public interface boardService {
 	public int selectGoodCount(int bidx);
 	public void updateGooddownBoard(int bidx);
 	public void updateGoodupBoard(int bidx);
+	public void updateBoard(ITboardDTO iTboardDTO);
+	public void deleteBoard(int bidx);
+	public void updateseqBoard(ITboardDTO iTboardDTO);
+	public void insertreplyBoard(ITboardDTO iTboardDTO);
 }

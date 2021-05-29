@@ -85,5 +85,25 @@ public class boardDAOImpl implements boardDAO {
 		System.out.println("boardDAOImpl - updateGoodupBoard");
 		sqlSession.update(Namespace+".updateGoodupBoard", bidx);
 	}
+	@Override
+	public void updateBoard(ITboardDTO iTboardDTO) {
+		System.out.println("boardDAOImpl - updateBoard");
+		sqlSession.update(Namespace+".updateBoard", iTboardDTO);
+	}
+	@Override
+	public void deleteBoard(int bidx) {
+		System.out.println("boardDAOImpl - deleteBoard");
+		sqlSession.delete(Namespace+".deleteBoard", bidx);
+	}
+	@Override
+	public void updateseqBoard(ITboardDTO iTboardDTO) {
+		System.out.println("boardDAOImpl - updateseqBoard");
+		sqlSession.delete(Namespace+".updateseqBoard", iTboardDTO);
+	}
+	@Override
+	public void insertreplyBoard(ITboardDTO iTboardDTO) {
+		System.out.println("boardDAOImpl - insertreplyBoard");
+		sqlSession.insert(Namespace+".insertreplyBoard", iTboardDTO);
+	}
 
 }

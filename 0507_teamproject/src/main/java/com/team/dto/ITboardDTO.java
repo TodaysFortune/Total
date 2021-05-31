@@ -9,8 +9,6 @@ public class ITboardDTO {
 	private String subject;
 	private String content;
 	private int board_ref;
-	private int board_lev;
-	private int board_seq;
 	private int board_hit;
 	private Date writedate;
 	private Date recentupdate;
@@ -18,6 +16,12 @@ public class ITboardDTO {
 	private int category=1;
 	
 	
+	public int getCategory() {
+		return category;
+	}
+	public void setCategory(int category) {
+		this.category = category;
+	}
 	public int getBoard_hit() {
 		return board_hit;
 	}
@@ -60,18 +64,6 @@ public class ITboardDTO {
 	public void setBoard_ref(int board_ref) {
 		this.board_ref = board_ref;
 	}
-	public int getBoard_lev() {
-		return board_lev;
-	}
-	public void setBoard_lev(int board_lev) {
-		this.board_lev = board_lev;
-	}
-	public int getBoard_seq() {
-		return board_seq;
-	}
-	public void setBoard_seq(int board_seq) {
-		this.board_seq = board_seq;
-	}
 	public Date getWritedate() {
 		return writedate;
 	}
@@ -93,9 +85,8 @@ public class ITboardDTO {
 	@Override
 	public String toString() {
 		return "ITboardDTO [bidx=" + bidx + ", id=" + id + ", name=" + name + ", subject=" + subject + ", content="
-				+ content + ", board_ref=" + board_ref + ", board_lev=" + board_lev + ", board_seq=" + board_seq
-				+ ", board_hit=" + board_hit + ", writedate=" + writedate + ", recentupdate=" + recentupdate + ", good="
-				+ good + ", category=" + category + "]";
+				+ content + ", board_ref=" + board_ref + ", board_hit=" + board_hit + ", writedate=" + writedate
+				+ ", recentupdate=" + recentupdate + ", good=" + good + ", category=" + category + "]";
 	}
 	
 	

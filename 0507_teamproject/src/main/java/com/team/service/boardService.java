@@ -23,6 +23,7 @@ public interface boardService {
 	public void updateGoodupBoard(int bidx);
 	public void updateBoard(ITboardDTO iTboardDTO);
 	public void deleteBoard(int bidx);
-	public void updateseqBoard(ITboardDTO iTboardDTO);
 	public void insertreplyBoard(ITboardDTO iTboardDTO);
+	public int selectBoardNextbidx(int category);
+	public void callProcedure4sequence(int next_bidx);
 }

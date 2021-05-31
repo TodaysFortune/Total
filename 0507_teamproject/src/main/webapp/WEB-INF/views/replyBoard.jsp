@@ -153,8 +153,6 @@
                 	<input type="hidden" name="id" value="${Session_userID}"/>
                 	<input type="hidden" name="name" value="${name}"/>
                 	<input type="hidden" name="board_ref" value="${itboardDTO.board_ref}"/>
-                	<input type="hidden" name="board_lev" value="${itboardDTO.board_lev}"/>
-                	<input type="hidden" name="board_seq" value="${itboardDTO.board_seq}"/>
                 	<input type="hidden" name="board_hit" value="${itboardDTO.board_hit}"/>
                 	<input type="hidden" name="currentPage" value="${currentPage}"/>
                 	<!--  good 모름 -->

@@ -21,8 +21,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.team.dto.ITboardDTO;
 import com.team.service.boardService;
+import com.team.service.commentService;
 import com.team.service.userinfoService;
 import com.team.vo.ITboardList;
+import com.team.vo.ITcommentList;
 
 @Controller
 public class BoardController {
@@ -31,16 +33,24 @@ public class BoardController {
 	private boardService boardservice;
 	@Inject
 	private userinfoService userinfoservice;
+	@Inject
+	private commentService commentservice;
+	
 	@RequestMapping("/main/itboard")
-	public String ITboard(@RequestParam(value="currentPage",required=false,defaultValue="1") int currentPage,Model model) {
+	public String ITboard(@RequestParam(value="currentPage",required=false,defaultValue="1") int currentPage,
+			Model model) {
 		System.out.println("BoardController의 ITboard() 메소드");
 		int totalCount = boardservice.selectCount();
+		
 		AbstractApplicationContext ctx = new GenericXmlApplicationContext("classpath:applicationCTX.xml");
 		ITboardList iTboardList = ctx.getBean("ITboardList", ITboardList.class);
+		
 		iTboardList.initITboardList(totalCount, currentPage);
+		
 		HashMap<String, Integer> hmap = new HashMap<String, Integer>();
 		hmap.put("startNo", iTboardList.getStartNo());
 		hmap.put("noSize", iTboardList.getNoSize());
+		
 		iTboardList.setList(boardservice.selectList(hmap));//sql 이용해서 한페이지 게시글 리스트 초기화.
 		model.addAttribute("iTboardList", iTboardList);
 		return "ITboard";
@@ -62,8 +72,6 @@ public class BoardController {
 		iTboardList.setSearchType(searchType);
 		
 		int totalCount = boardservice.selectTypeCount(iTboardList);
-		
-		System.out.println("totalCount"+totalCount);//test
 		
 		iTboardList.initITboardList(totalCount,currentPage);
 		iTboardList.setList(boardservice.selectTypeList(iTboardList));
@@ -92,7 +100,18 @@ public class BoardController {
 		System.out.println("BoardController-postwrite");
 		String Session_userID=(String)session.getAttribute("Session_userID");
 		if(Session_userID!=null) {
+			//레이스 컨디션 방지를 위해서
+			//1.먼저 특정 boardnextval(#{category})를 얻어와서 임의의 변수 next_bidx에 대입시킨다. 
+			int next_bidx=boardservice.selectBoardNextbidx(iTboardDTO.getCategory());
+			//!!  select boardnextval(#{category})
+			//2. 이제 레이스 컨디션의 문제는 사라졌으므로 , 획득한 next_bidx로 요리하면된다.
+			//3.bidx, board_ref setter 등록해주고 , 게시글등록  
+			iTboardDTO.setBidx(next_bidx);
+			iTboardDTO.setBoard_ref(next_bidx);
 			boardservice.insertBoard(iTboardDTO);
+			//4.ITCommentRefsequences테이블의 레코드를 생성하는 프로시져 호출
+			boardservice.callProcedure4sequence(next_bidx);
+			
 			return "redirect:../itboard";
 		}
 		return "redirect:../login";//글입력중 세션만료 걸렸을 경우
@@ -115,6 +134,7 @@ public class BoardController {
 	}
 	@RequestMapping(value="/main/itboard/contentView",method=RequestMethod.GET)
 	public String boardContentView(@RequestParam(value="currentPage",required=false,defaultValue="1") int currentPage,
+			@RequestParam(value="comment_currentPage",required=false,defaultValue="1") int comment_currentPage,
 			HttpServletRequest request,Model model) {
 		System.out.println("BoardController-boardContentView");
 		int bidx=Integer.valueOf(request.getParameter("bidx"));
@@ -131,8 +151,22 @@ public class BoardController {
 				model.addAttribute("heart",1);
 		}
 		
+		//덧글 한페이지 얻기
+		int comment_totalCount = commentservice.selectCount(bidx);
+		AbstractApplicationContext ctx = new GenericXmlApplicationContext("classpath:applicationCTX.xml");
+		ITcommentList iTcommentList = ctx.getBean("ITcommentList", ITcommentList.class);
+		iTcommentList.initITcommentList(comment_totalCount, comment_currentPage);
+		HashMap<String, Integer> hmap = new HashMap<String, Integer>();
+		hmap.put("startNo", iTcommentList.getStartNo());
+		hmap.put("noSize", iTcommentList.getNoSize());
+		hmap.put("bidx", bidx);
+		iTcommentList.setList(commentservice.selectList(hmap));
+		
 		model.addAttribute("currentPage", currentPage);
 		model.addAttribute("itboardDTO", itboardDTO);
+		model.addAttribute("comment_currentPage", comment_currentPage);
+		model.addAttribute("iTcommentList", iTcommentList);
+		model.addAttribute("comment_totalCount",comment_totalCount);
 		return "contentView";
 	}
 	
@@ -184,9 +218,16 @@ public class BoardController {
 	public String postreplyBoard(@RequestParam(value="currentPage",required=false,defaultValue="1") int currentPage,
 			Model model,ITboardDTO iTboardDTO) {
 		System.out.println("BoardController-postreplyBoard");
-		boardservice.updateseqBoard(iTboardDTO);
+		//1.boardnextval에 의해 증가된 bidx를 우선적으로 받아와서 int next_bidx에 저장한다.  (레이스컨디션은 방지되었음)
+		int next_bidx=boardservice.selectBoardNextbidx(iTboardDTO.getCategory());
+		//2.이용할 ref는 기존의 iTboardDTO에 그대로 있음
+		//3.next_bidx 를 iTboardDTO 에 등록
+		iTboardDTO.setBidx(next_bidx);
+		//4. 답변게시글등록
 		boardservice.insertreplyBoard(iTboardDTO);
-		System.out.println("currentPage : "+currentPage);
+		//5. ITCommentRefsequences테이블의 레코드를 생성하는 프로시져 호출
+		boardservice.callProcedure4sequence(next_bidx);
+		
 		model.addAttribute("currentPage", currentPage);
 		return "redirect:../../itboard";
 	}

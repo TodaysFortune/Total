@@ -113,16 +113,23 @@ public class boardServiceImpl implements boardService {
 		dao.deleteBoard(bidx);
 	}
 
-	@Override
-	public void updateseqBoard(ITboardDTO iTboardDTO) {
-		System.out.println("boardServiceImpl - updateseqBoard");
-		dao.updateseqBoard(iTboardDTO);
-	}
 
 	@Override
 	public void insertreplyBoard(ITboardDTO iTboardDTO) {
 		System.out.println("boardServiceImpl - insertreplyBoard");
 		dao.insertreplyBoard(iTboardDTO);
+	}
+
+	@Override
+	public int selectBoardNextbidx(int category) {
+		System.out.println("boardServiceImpl - selectBoardNextbidx");
+		return dao.selectBoardNextbidx(category);
+	}
+
+	@Override
+	public void callProcedure4sequence(int next_bidx) {
+		System.out.println("boardServiceImpl - callProcedure4sequence");
+		dao.callProcedure4sequence(next_bidx);
 	}
 
 

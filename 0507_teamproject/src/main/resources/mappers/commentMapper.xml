@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.team.mapper.commentMapper"> 
+ 	<select id="ITcommentnextval" parameterType="int" resultType="int">
+ 		select ITcommentnextval(#{_parameter})
+ 	</select>
+ 	<select id="selectCount" parameterType="int" resultType="int">
+ 		select count(*) from itcomment where bidx=#{_parameter}
+ 	</select>
+ 	<select id="selectList" parameterType="java.util.HashMap" resultType="ITcommentDTO">
+ 		select * from itcomment where bidx=#{bidx} order by comment_ref desc,cidx asc limit #{startNo},#{noSize}
+ 	</select>
+ 	<insert id="insertComment" parameterType="ITcommentDTO">
+ 		insert into itcomment (bidx,id,name,content,comment_ref) values 
+ 		(#{bidx},#{id},#{name},#{content},#{comment_ref})
+ 	</insert>
+  
+</mapper>

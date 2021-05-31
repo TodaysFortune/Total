@@ -169,11 +169,10 @@
 									<td align="center">${No}</td>
 									<c:set var="No" value="${No-1}"/>
 									<td align="left">
-										<c:if test="${dto.board_lev>0}">
-											<c:forEach var="i" begin="1" end="${dto.board_lev}" step="1">
+										<c:if test="${current_ref==dto.board_ref}">
 												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-											</c:forEach>
 										</c:if>
+										<c:set var="current_ref" value="${dto.board_ref}"/>
 										<!-- 오늘 입력된 글에 new 아이콘을 표시 -->
 										<c:if test="${date.year==dto.writedate.year && date.month==dto.writedate.month && date.date==dto.writedate.date}">
 											<img src="images/new1.png"/>

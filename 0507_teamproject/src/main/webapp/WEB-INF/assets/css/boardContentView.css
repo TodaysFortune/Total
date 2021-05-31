@@ -9,6 +9,9 @@
             display: flex;
             flex-direction: column;
         }
+        .container-row{
+            display: flex;
+        }
         .BlackWhite:active,.GrayWhite:active{
              box-shadow: 1px 1px 0 rgb(0,0,0,0.5); 
              position: relative; 
@@ -38,4 +41,17 @@
         }
         .relative-right{
             position: relative; right:10px;
+        }
+        .display_visible{
+    			display:none;
+    		}
+    	.pageButton{
+            padding: 0px; border-width: 0px;
+            width:1.2rem;height:100%; font-size:1rem;
+            cursor: pointer;
+            background-color: white;
+        }
+        .pageButton:disabled{
+            text-decoration:underline;
+            color:red;
         }

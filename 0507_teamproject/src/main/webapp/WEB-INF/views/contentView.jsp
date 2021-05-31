@@ -19,7 +19,6 @@
         <link type="text/css" href="../css/navbar.css" rel="stylesheet"> 
         <link type="text/css" href="../css/boardContentView.css" rel="stylesheet"> 
     </head>
-    
 <body>
 	
     <!--상단 https://bootswatch.com/sketchy/-->
@@ -154,7 +153,7 @@
             <div><hr/></div>
             <!-- contents -->
             <div style="min-height: 5rem;">
-                <form style="float:right;" class="relative-right" method="post" onsubmit="return idmatching();">
+                <form style="float:right;" class="relative-right unloginSet" method="post" onsubmit="return idmatching();">
                 	<input type="hidden" name="bidx" value="${itboardDTO.bidx}"/>
                 	<input type="hidden" name="currentPage" value="${currentPage}"/>
                     <button style="cursor:pointer;background-color: white;border:0;" type="submit" formaction="../itboard/contentView/update">수정</button>
@@ -166,9 +165,9 @@
                     border:0; resize:none;" class="relative-left">${itboardDTO.content}</textarea>
             </div>
             <!-- //contents -->
-            <div style="display:flex; justify-content: space-between;">
+            <div style="display:flex; justify-content: space-between; margin-bottom: 3px;">
 	            <div class="relative-left">
-	                <span>전체 댓글</span><span style="color:red;"> 3 </span><span>개</span>
+	                <span>전체 댓글</span><span style="color:red;"> ${comment_totalCount} </span><span>개</span>
 	            </div>
 	            <div class="relative-right">
 	            	<label  style="cursor:pointer" onclick="goodup()">
@@ -183,35 +182,108 @@
 	            </div>
             </div>
             <div>
+				<!--  덧글을 받는다. -->
+				<c:set var="list" value="${iTcommentList.list}"/>
+                <c:if test="${list.size()!=0}">
+                	<c:forEach var="dto" items="${list}">
                 <!-- 덧글 한 묶음-->
                 <div style="width:100%;">
                     <hr/>
-                    <div style="display:flex; justify-content: space-between;">
-                        <div style="width:75%; border:1px solid red;" class="relative-left">
-                            <div style="display:flex;">
-                                <div style="width:10%;">추이</div>
-                                <div style="width:90%;">방가</div>
+                    	<c:if test="${dto.comment_ref!=current_comment_ref}">
+                    <!-- 메인댓글  + 대댓글까지(ref 오름차순)-->
+                    <div style="display:flex;  justify-content: space-between; width:100%;" onclick="replyComment(this)">
+                        <div style="width:75%; display:flex;" class="relative-left">
+                            <div style="display:flex; width:100%;">
+                                <div style="width:10%;">${dto.name}</div>
+                                <div style="width:90%;">${dto.content}</div>
                             </div>
                         </div>
-                        <div style="width:20%; border:1px solid green;">
-                            <span>2021.05.10 18:16:18</span>
-                            <input type="submit"  value="X"/>
+                        <div style="width:20%; display:flex; justify-content:flex-end;"
+                         	class="relative-right">
+                            <span style="display:block;" class="relative-right">
+	                            <c:if test="${date.year==dto.writedate.year && date.month==dto.writedate.month && date.date==dto.writedate.date}">
+								<fmt:formatDate value="${dto.writedate}" pattern="HH:mm:ss" />
+								</c:if>
+								<c:if test="${date.year!=dto.writedate.year || 
+								date.month!=dto.writedate.month || date.date!=dto.writedate.date}">
+								<fmt:formatDate value="${dto.writedate}" pattern="yy-MM-dd(E)" />
+								</c:if>
+                            </span>
+                            <input style="width:1rem; height:1rem; padding:0; border-width:1px; font-size:0.4rem;"  type="submit"  value="x"/>
                         </div>
                     </div>
+                    <!--대덧글작성-->
+                    <div style="width:100%; margin-top: 5px; margin-bottom: 5px;" class="container-row display_visible">
+		                <textarea  onkeydown="resize(this)" onkeyup="fn_checkByte(this,300)" placeholder="내용을 입력해주세요"
+		                    style=" width:90%; min-height: 3rem; max-height: 9rem; resize: none;"
+		                     class="relative-left"></textarea>
+		                <div class="relative-left" style="width:7%; display:flex; align-items:flex-end; justify-content: flex-start;">
+		                	<input style="max-height:2rem; max-width:3rem;" type="button" value="등록"/>
+		                </div>
+	                </div>
+	                <!--//대덧글작성-->
+	                	</c:if>
+                    
+                    	<c:if test="${dto.comment_ref==current_comment_ref}">
+                    <!-- 이미작성된대댓글  -->
+                    <div style="width:100%; display:flex; justify-content: flex-end;">
+	                    <div style="display:flex; background-color:#E6E7EA; justify-content: space-between; width:95%;
+	                    	position:relative; right:20px;">
+	                        <div style="width:75%; display:flex;">
+	                            <div style="display:flex; width:100%;">
+	                                <div style="width:10%;" class="relative-left">${dto.name}</div>
+	                                <div style="width:90%;">${dto.content}</div>
+	                            </div>
+	                        </div>
+	                        <div style="width:20%; display:flex; justify-content:flex-end; align-items:center;">
+	                            <span style="display:block;" class="relative-right">
+	                            	<c:if test="${date.year==dto.writedate.year && date.month==dto.writedate.month && date.date==dto.writedate.date}">
+									<fmt:formatDate value="${dto.writedate}" pattern="HH:mm:ss" />
+									</c:if>
+									<c:if test="${date.year!=dto.writedate.year || 
+									date.month!=dto.writedate.month || date.date!=dto.writedate.date}">
+									<fmt:formatDate value="${dto.writedate}" pattern="yy-MM-dd(E)" />
+									</c:if>
+	                            </span>
+	                            <input style="width:1rem; height:1rem; padding:0; border-width:1px; font-size:0.4rem;" type="submit"  value="x"/>
+	                        </div>
+	                    </div>
+                    </div>
+                    	</c:if>
                 </div>
                 <!-- //덧글 한 묶음-->
+                	<c:set var="current_comment_ref" value="${dto.comment_ref}"/>
+                	</c:forEach>
+                </c:if>
             </div>
-            <div><hr/></div>
-            <div>
+            <div class="nocomment"><hr/></div>
+            <!-- 덧글페이지 -->
+            <form style="display:flex; justify-content: center; margin-bottom: 7px;" class="nocomment">
+            	<input type="hidden" name="currentPage" value="${currentPage}"/>
+            	<input type="hidden" name="bidx" value="${itboardDTO.bidx}"/>
+	            <c:forEach var="page" begin="${iTcommentList.startPage}" end="${iTcommentList.totalPage}">
+	            		<c:if test="${comment_currentPage==page}">
+	            			<button style="inline;" class="pageButton" disabled="disabled">${page}</button>
+	            		</c:if>
+	            		<c:if test="${comment_currentPage!=page}">
+	            			<button style="inline;" class="pageButton" type="submit" 
+	            			name="comment_currentPage" value="${page}">${page}</button>
+	            		</c:if>
+	            </c:forEach>
+            </form>
+            <!-- //덧글페이지 -->
+            <form id="clientToServerText" action="contentView/registerComment" method="post" onsubmit="return emptyContentCheck()">
+            	<input type="hidden" name="bidx" value="${itboardDTO.bidx}"/>
+                <input type="hidden" name="currentPage" value="${currentPage}"/>
                 <!--덧글작성-->
-                <textarea  onkeydown="resize(this)" onkeyup="fn_checkByte(this,300)" placeholder="내용을 입력해주세요"
-                    style="width: 100%; min-height: 3rem; max-height: 9rem; resize: none;"
+                <textarea  name="content" onkeydown="resize(this)" onkeyup="fn_checkByte(this,300)" placeholder="내용을 입력해주세요"
+                    style="width: 100%; min-height: 3rem; max-height: 9rem; resize: none;" class="unloginSet"
                 ></textarea>
                 <!--//덧글작성-->
-            </div>
+            </form>
             <div>
-                <div style="display: flex; justify-content: space-between;">
-                    <div style="font-size: 0.8rem;" class="relative-left">
+                <div style="display: flex; justify-content: space-between;" id="bottom_part">
+                    <div style="font-size: 0.8rem;" class="relative-left unloginSet">
                         <div id="commentByte">
                             <div>
                                 <span>Totalbyte</span>
@@ -222,28 +294,45 @@
                         </div>
                     </div>
                     <div style="width:50%; display: flex; justify-content: flex-end;">
-                        <input class="BlackWhite"style="width:24%; height:6vh; font-size:1rem;" type="button" value="댓글등록" onclick="location.href='insert'"/>
-                        <form action="../itboard/contentView/replyBoard" method="get" onsubmit="return loginCheck();" style="margin-left:7px; width:24%; height:6vh; font-size:1rem;">
+                        <input form="clientToServerText" type="submit" value="댓글등록" class="BlackWhite unloginSet"style="width:24%; height:6vh; font-size:1rem;"/>
+                        <form class="unloginSet" action="../itboard/contentView/replyBoard" method="get" onsubmit="return loginCheck();" style="margin-left:7px; width:24%; height:6vh; font-size:1rem;">
                         	<input type="hidden" name="bidx" value="${itboardDTO.bidx}"/>
                         	<input type="hidden" name="board_ref" value="${itboardDTO.board_ref}"/>
-                        	<input type="hidden" name="board_lev" value="${itboardDTO.board_lev}"/>
-                        	<input type="hidden" name="board_seq" value="${itboardDTO.board_seq}"/>
                         	<input type="hidden" name="currentPage" value="${currentPage}"/>
                         	<input class="GrayWhite" style="display:block; width:100%; height:100%;" type="submit" value="게시글답변"/>
                         </form>
-                        <!-- 
-                        <input class="GrayWhite"style="margin-left:7px; width:24%; height:6vh; font-size:1rem;" type="button" value="게시글답변" 
-                        	onclick="location.href='../itboard/contentView/replyBoard?currentPage=${currentPage}'"/>
-                        	 -->
                         <input class="BlackWhite"style="margin-left:7px; width:24%; height:6vh; font-size:1rem;" type="button" value="돌아가기" onclick="location.href='../itboard?currentPage=${currentPage}'"/>
                     </div>
                 </div>
             </div>
         </div>
+        <div style="height:50px;">
+        </div>
     </div>
     <!-- 중단 끝 -->
     <script type="text/javascript" src="../js/board.js"></script>
     <script>
+    	window.onload=function(){
+    		//비로그인 일경우
+    		var Session_userID='${Session_userID}';
+    		if(Session_userID.trim().length==0){
+    			var unloginSet=document. getElementsByClassName('unloginSet');
+    			for(var i=0;i<unloginSet.length;i++){
+    				unloginSet[i].setAttribute('style','display: none;');
+    			}
+     			var bottom_part=document.getElementById('bottom_part');
+     			bottom_part.setAttribute('style','display: flex; justify-content: flex-end;');
+    		}
+    		
+    		//덧글이없을경우
+    		var comment_totalCount='${comment_totalCount}';
+    		if(comment_totalCount==0){
+    			var nocomment=document. getElementsByClassName('nocomment');
+    			for(var i=0;i<nocomment.length;i++){
+    				nocomment[i].setAttribute('style','display: none;');
+    			}
+    		}
+    	}
     	function goodup(){
     		var Session_userID='${Session_userID}';
     		var bidx_='${itboardDTO.bidx}'
@@ -253,7 +342,6 @@
     		}
      		if(Session_userID.length!=0){
      			//로그인중임
-     			var label_text=document.getElementById('good_label');
      			$.ajax({
      	            url: "asyncGood",
      	            type: "POST",
@@ -299,6 +387,20 @@
     			return true;
     		}
     	}
+    	function replyComment(obj){
+    		if (loginCheck()==false ){
+    			return false;
+    		}else{
+    			obj.nextElementSibling.classList.toggle("display_visible");
+    		}
+    	}
+    	function emptyContentCheck(){
+    		var content=document.getElementsByName('content')[0];
+    		if(content.value.trim().length==0){
+    			alert('내용을 입력해주세요.');
+    			return false;
+    		}
+    	}    
     </script>
 </body>
 </html>

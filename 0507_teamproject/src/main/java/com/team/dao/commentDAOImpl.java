@@ -42,4 +42,10 @@ public class commentDAOImpl implements commentDAO{
 		System.out.println("commentDAOImpl-selectList");
 		return sqlSession.selectList(Namespace+".selectList", hmap);
 	}
+
+	@Override
+	public void deleteComment(int cidx) {
+		System.out.println("commentDAOImpl-deleteComment");
+		sqlSession.delete(Namespace+".deleteComment", cidx);
+	}
 }

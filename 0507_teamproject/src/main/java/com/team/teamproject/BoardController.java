@@ -155,18 +155,20 @@ public class BoardController {
 		int comment_totalCount = commentservice.selectCount(bidx);
 		AbstractApplicationContext ctx = new GenericXmlApplicationContext("classpath:applicationCTX.xml");
 		ITcommentList iTcommentList = ctx.getBean("ITcommentList", ITcommentList.class);
-		iTcommentList.initITcommentList(comment_totalCount, comment_currentPage);
-		HashMap<String, Integer> hmap = new HashMap<String, Integer>();
-		hmap.put("startNo", iTcommentList.getStartNo());
-		hmap.put("noSize", iTcommentList.getNoSize());
-		hmap.put("bidx", bidx);
-		iTcommentList.setList(commentservice.selectList(hmap));
-		
+		if(comment_totalCount!=0) {
+			iTcommentList.initITcommentList(comment_totalCount, comment_currentPage);
+			HashMap<String, Integer> hmap = new HashMap<String, Integer>();
+			hmap.put("startNo", iTcommentList.getStartNo());
+			hmap.put("noSize", iTcommentList.getNoSize());
+			hmap.put("bidx", bidx);
+			iTcommentList.setList(commentservice.selectList(hmap));
+		}
 		model.addAttribute("currentPage", currentPage);
 		model.addAttribute("itboardDTO", itboardDTO);
 		model.addAttribute("comment_currentPage", comment_currentPage);
 		model.addAttribute("iTcommentList", iTcommentList);
 		model.addAttribute("comment_totalCount",comment_totalCount);
+		model.addAttribute("enter", "\n");//개행문자처리
 		return "contentView";
 	}
 	

@@ -38,5 +38,11 @@ public class commentServiceImpl implements commentService{
 		System.out.println("commentServiceImpl-selectList");
 		return dao.selectList(hmap);
 	}
+
+	@Override
+	public void deleteComment(int cidx) {
+		System.out.println("commentServiceImpl-deleteComment");
+		dao.deleteComment(cidx);
+	}
 	
 }

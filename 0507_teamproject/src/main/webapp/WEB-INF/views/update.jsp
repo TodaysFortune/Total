@@ -132,6 +132,7 @@
             <div><hr/></div>
             <form style="margin-top:10px;" action="updateBoard" method="post" onsubmit="return emptyCheck();">
                 <div style="margin-bottom:5px; display:flex; justify-content:space-between;">
+                	
                     <input type="text" name="subject" onkeyup="fn_checkByte_subject(this,100)" placeholder="제목을 입력해주세요" style="height:1.7rem; width:40rem" value="${iTboardDTO.subject}"/>
                 	<div>
                 		<span>조회수 ${iTboardDTO.board_hit}</span>&nbsp;<span>|</span>&nbsp;

@@ -13,4 +13,6 @@ public interface commentService {
 	int selectCount(int bidx);
 
 	List<ITcommentDTO> selectList(HashMap<String, Integer> hmap);
+
+	void deleteComment(int cidx);
 }

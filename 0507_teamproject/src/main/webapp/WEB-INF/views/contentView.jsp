@@ -130,7 +130,9 @@
             <div style="font-size:1.5rem; font-weight:900; position:relative; top:5px; left:5px;">IT 게시판</div>
             <div><hr/></div>
             <div class="relative-left">
-                <span>${itboardDTO.subject}</span>
+            	<c:set var="boardSubject" value="${fn:replace(itboardDTO.subject,'<','&lt;')}" />
+				<c:set var="boardSubject" value="${fn:replace(boardSubject,'>','&gt;')}" />
+                <span>${boardSubject}</span>
             </div>
             <div style="display:flex; justify-content: space-between;">
                 <div class="relative-left">
@@ -153,7 +155,8 @@
             <div><hr/></div>
             <!-- contents -->
             <div style="min-height: 5rem;">
-                <form style="float:right;" class="relative-right unloginSet" method="post" onsubmit="return idmatching();">
+                <form style="float:right;" class="relative-right unloginSet" method="post" onsubmit="return idmatching(this);">
+                	<input type="hidden" value="${itboardDTO.id}"/>
                 	<input type="hidden" name="bidx" value="${itboardDTO.bidx}"/>
                 	<input type="hidden" name="currentPage" value="${currentPage}"/>
                     <button style="cursor:pointer;background-color: white;border:0;" type="submit" formaction="../itboard/contentView/update">수정</button>
@@ -165,7 +168,7 @@
                     border:0; resize:none;" class="relative-left">${itboardDTO.content}</textarea>
             </div>
             <!-- //contents -->
-            <div style="display:flex; justify-content: space-between; margin-bottom: 3px;">
+            <div style="display:flex; justify-content: space-between; margin-bottom: 10px;">
 	            <div class="relative-left">
 	                <span>전체 댓글</span><span style="color:red;"> ${comment_totalCount} </span><span>개</span>
 	            </div>
@@ -186,20 +189,35 @@
 				<c:set var="list" value="${iTcommentList.list}"/>
                 <c:if test="${list.size()!=0}">
                 	<c:forEach var="dto" items="${list}">
+                	<c:set var="commentcontent" value="${fn:replace(fn:trim(dto.content),'<','&lt;')}"/>
+					<c:set var="commentcontent" value="${fn:replace(commentcontent,'>','&gt;')}"/>
+                	<c:set var="commentcontent" value='${fn:replace(commentcontent,enter,"<br>")}'/>
+
                 <!-- 덧글 한 묶음-->
                 <div style="width:100%;">
-                    <hr/>
+                	<c:if test="${dto.comment_ref!=current_comment_ref}">
+                    	<hr style="margin-top:1px; margin-bottom:1px;"/>
+                    </c:if>
+                    <c:if test="${dto.comment_ref==current_comment_ref}">
+                    	<hr style="margin-top:1px; margin-bottom:1px; color:white; background-color: white;"/>
+                    </c:if>
                     	<c:if test="${dto.comment_ref!=current_comment_ref}">
                     <!-- 메인댓글  + 대댓글까지(ref 오름차순)-->
-                    <div style="display:flex;  justify-content: space-between; width:100%;" onclick="replyComment(this)">
-                        <div style="width:75%; display:flex;" class="relative-left">
+                    <div style="display:flex;  justify-content: space-between; width:100%; margin-top:1rem; margin-bottom:1rem;">
+                        <div style="width:75%; display:flex;" class="relative-left" onclick="replyComment(this)">
                             <div style="display:flex; width:100%;">
                                 <div style="width:10%;">${dto.name}</div>
-                                <div style="width:90%;">${dto.content}</div>
+                                <div style="width:90%;">${commentcontent}</div>
                             </div>
                         </div>
-                        <div style="width:20%; display:flex; justify-content:flex-end;"
+                        <form action="contentView/deleteComment" method="post" onsubmit="return idmatching(this)"
+                         style="width:20%; display:flex; justify-content:flex-end; align-items: center;"
                          	class="relative-right">
+                         	<input type="hidden" value="${dto.id}"/>
+                         	<input type="hidden" name="cidx" value="${dto.cidx}"/>
+                         	<input type="hidden" name="bidx" value="${itboardDTO.bidx}"/>
+                         	<input type="hidden" name="currentPage" value="${currentPage}"/>
+                         	<input type="hidden" name="comment_currentPage" value="${comment_currentPage}"/>
                             <span style="display:block;" class="relative-right">
 	                            <c:if test="${date.year==dto.writedate.year && date.month==dto.writedate.month && date.date==dto.writedate.date}">
 								<fmt:formatDate value="${dto.writedate}" pattern="HH:mm:ss" />
@@ -209,44 +227,59 @@
 								<fmt:formatDate value="${dto.writedate}" pattern="yy-MM-dd(E)" />
 								</c:if>
                             </span>
-                            <input style="width:1rem; height:1rem; padding:0; border-width:1px; font-size:0.4rem;"  type="submit"  value="x"/>
-                        </div>
+                            <input type="image" src="../images/xbutton.png" style="width:1rem; height:1rem;"/>
+                        </form>
                     </div>
                     <!--대덧글작성-->
-                    <div style="width:100%; margin-top: 5px; margin-bottom: 5px;" class="container-row display_visible">
+                    <form action="contentView/registerComment" method="post" onsubmit="return emptyContentCheck(this);" style="width:100%; margin-top: 5px; margin-bottom: 5px;" class="container-row display_visible">
 		                <textarea  onkeydown="resize(this)" onkeyup="fn_checkByte(this,300)" placeholder="내용을 입력해주세요"
-		                    style=" width:90%; min-height: 3rem; max-height: 9rem; resize: none;"
+		                    style=" width:90%; min-height: 3rem; max-height: 9rem; resize: none;" name="content"
 		                     class="relative-left"></textarea>
 		                <div class="relative-left" style="width:7%; display:flex; align-items:flex-end; justify-content: flex-start;">
-		                	<input style="max-height:2rem; max-width:3rem;" type="button" value="등록"/>
+		                	<input style="max-height:2rem; max-width:3rem;" type="submit" value="등록"/>
 		                </div>
-	                </div>
+		                <input type="hidden" name="bidx" value="${itboardDTO.bidx}"/>
+		                <input type="hidden" name="currentPage" value="${currentPage}"/>
+		                <input type="hidden" name="reply_comment_ref" value="${dto.comment_ref}"/>
+		                <input type="hidden" name="comment_currentPage" value="${comment_currentPage}"/>		                
+	                </form>
 	                <!--//대덧글작성-->
 	                	</c:if>
                     
                     	<c:if test="${dto.comment_ref==current_comment_ref}">
                     <!-- 이미작성된대댓글  -->
                     <div style="width:100%; display:flex; justify-content: flex-end;">
-	                    <div style="display:flex; background-color:#E6E7EA; justify-content: space-between; width:95%;
-	                    	position:relative; right:20px;">
-	                        <div style="width:75%; display:flex;">
-	                            <div style="display:flex; width:100%;">
-	                                <div style="width:10%;" class="relative-left">${dto.name}</div>
-	                                <div style="width:90%;">${dto.content}</div>
-	                            </div>
-	                        </div>
-	                        <div style="width:20%; display:flex; justify-content:flex-end; align-items:center;">
-	                            <span style="display:block;" class="relative-right">
-	                            	<c:if test="${date.year==dto.writedate.year && date.month==dto.writedate.month && date.date==dto.writedate.date}">
-									<fmt:formatDate value="${dto.writedate}" pattern="HH:mm:ss" />
-									</c:if>
-									<c:if test="${date.year!=dto.writedate.year || 
-									date.month!=dto.writedate.month || date.date!=dto.writedate.date}">
-									<fmt:formatDate value="${dto.writedate}" pattern="yy-MM-dd(E)" />
-									</c:if>
-	                            </span>
-	                            <input style="width:1rem; height:1rem; padding:0; border-width:1px; font-size:0.4rem;" type="submit"  value="x"/>
-	                        </div>
+                    	<div style="width:95%; display:flex; justify-content: flex-end; background-color:#E6E7EA;">
+                    
+		                    <div style="margin-top:1rem;margin-bottom:1rem; display:flex; justify-content: space-between; width:95%;">
+		                        <div style="width:75%; display:flex;">
+		                            <div style="display:flex; width:100%;">
+		                                <div style="width:10%;" class="relative-left">${dto.name}</div>
+		                                <div style="width:90%;">${commentcontent}</div>
+		                            </div>
+		                        </div>
+		                        <form action="contentView/deleteComment" method="post" onsubmit="return idmatching(this)"
+		                        style="width:20%; display:flex; justify-content:flex-end; align-items:center;">
+		                        	<input type="hidden" value="${dto.id}"/>
+		                        	<input type="hidden" name="cidx" value="${dto.cidx}"/>
+		                        	<input type="hidden" name="bidx" value="${itboardDTO.bidx}"/>
+		                        	<input type="hidden" name="currentPage" value="${currentPage}"/>
+		                        	<input type="hidden" name="comment_currentPage" value="${comment_currentPage}"/>
+		                            <span style="display:block;" class="relative-right">
+		                            	<c:if test="${date.year==dto.writedate.year && date.month==dto.writedate.month && date.date==dto.writedate.date}">
+										<fmt:formatDate value="${dto.writedate}" pattern="HH:mm:ss" />
+										</c:if>
+										<c:if test="${date.year!=dto.writedate.year || 
+										date.month!=dto.writedate.month || date.date!=dto.writedate.date}">
+										<fmt:formatDate value="${dto.writedate}" pattern="yy-MM-dd(E)" />
+										</c:if>
+		                            </span>
+		                            <input type="image" src="../images/xbutton.png" style="width:1rem; height:1rem;"/>
+		                        </form>
+		                    </div>
+		                    <div style="width:20px;">
+		                    </div>
+	                    
 	                    </div>
                     </div>
                     	</c:if>
@@ -272,14 +305,14 @@
 	            </c:forEach>
             </form>
             <!-- //덧글페이지 -->
-            <form id="clientToServerText" action="contentView/registerComment" method="post" onsubmit="return emptyContentCheck()">
-            	<input type="hidden" name="bidx" value="${itboardDTO.bidx}"/>
-                <input type="hidden" name="currentPage" value="${currentPage}"/>
+            <form id="clientToServerText" action="contentView/registerComment" method="post" onsubmit="return emptyContentCheck(this);">
                 <!--덧글작성-->
                 <textarea  name="content" onkeydown="resize(this)" onkeyup="fn_checkByte(this,300)" placeholder="내용을 입력해주세요"
                     style="width: 100%; min-height: 3rem; max-height: 9rem; resize: none;" class="unloginSet"
                 ></textarea>
                 <!--//덧글작성-->
+            	<input type="hidden" name="bidx" value="${itboardDTO.bidx}"/>
+                <input type="hidden" name="currentPage" value="${currentPage}"/>
             </form>
             <div>
                 <div style="display: flex; justify-content: space-between;" id="bottom_part">
@@ -365,12 +398,12 @@
      			alert("로그인을 해주세요.");
      		}
     	}
-    	function idmatching(){
+    	function idmatching(obj){
     		var userID='${Session_userID}';
-    		var boardUserID='${itboardDTO.id}';
+    		var itemOwner=obj.firstElementChild.value;
     		console.log(userID);
-    		console.log(boardUserID);
-    		if(userID==boardUserID){
+    		console.log(itemOwner);
+    		if(userID==itemOwner){
     			return true;
     		}
     		else{
@@ -391,13 +424,14 @@
     		if (loginCheck()==false ){
     			return false;
     		}else{
-    			obj.nextElementSibling.classList.toggle("display_visible");
+    			obj.parentElement.nextElementSibling.classList.toggle("display_visible");
     		}
     	}
-    	function emptyContentCheck(){
-    		var content=document.getElementsByName('content')[0];
+    	function emptyContentCheck(obj){
+    		var content=obj.firstElementChild;
     		if(content.value.trim().length==0){
     			alert('내용을 입력해주세요.');
+    			content.focus();
     			return false;
     		}
     	}    

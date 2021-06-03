@@ -32,5 +32,17 @@ public class userinfoServiceImpl implements userinfoService{
 		return dao.selectName(userid);
 	}
 
+	@Override
+	public int selectIdCount(String data4Check) {
+		System.out.println("userinfoServiceImpl - selectIdCount");
+		return dao.selectIdCount(data4Check);
+	}
+
+	@Override
+	public int selectNameCount(String data4Check) {
+		System.out.println("userinfoServiceImpl - selectNameCount");
+		return dao.selectNameCount(data4Check);
+	}
+
 	
 }

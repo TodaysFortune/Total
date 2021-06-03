@@ -1,46 +1,70 @@
 @charset "EUC-KR";
- .container-column-align{
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        .container-column{
-            display: flex;
-            flex-direction: column;
-        }
-        .table-menu{
-            text-align: center;
-            font-size: 1rem;
-        }
-        .pageButton{
-            padding: 0px; border-width: 0px;
-            width:7%;height:100%; font-size:0.5rem;
-            cursor: pointer;
-            background-color: white;
-        }
-        .pageButton:active,.BlackWhite:active,.GrayWhite:active{
-             box-shadow: 1px 1px 0 rgb(0,0,0,0.5); 
-             position: relative; 
-             top:1px; 
-             text-decoration:underline;
-        }
-        .pageButton:hover{
-            text-decoration:underline;
-            color:red;
-        }
-        .BlackWhite{
-            background-color: rgb(94, 93, 93);
-            color:white;
-            font-weight: bold;
-            border:0;
-            border-radius: 3px;
-            outline: 0;
-        }
-        .GrayWhite{
-            background-color:white;
-            color:rgb(49, 49, 49);
-            font-weight: bold;
-            border-radius: 3px;
-            outline: 1;
-        }
+
+.container-column-align {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.container-column {
+	display: flex;
+	flex-direction: column;
+}
+.table-menu {
+	text-align: center;
+	font-size: 1rem;
+}
+.pageButton {
+	padding: 0px;
+	border-width: 0px;
+	width: 7%;
+	height: 100%;
+	font-size: 0.5rem;
+	cursor: pointer;
+	background-color: white;
+}
+.pageButton:active, .BlackWhite:active, .GrayWhite:active {
+	box-shadow: 1px 1px 0 rgb(0, 0, 0, 0.5);
+	position: relative;
+	top: 1px;
+}
+
+.pageButton:hover {
+	text-decoration: underline;
+	color: red;
+}
+.BlackWhite {
+	background-color: rgb(94, 93, 93);
+	color: white;
+	font-weight: bold;
+	border: 0;
+	border-radius: 5px;
+	outline: 0;
+}
+.GrayWhite {
+	background-color: white;
+	color: #505050494949;
+	font-weight: bold;
+	border-radius: 5px;
+	outline: 1;
+}
+.signin-font-color{
+	color: #ced4da;
+}
+.text_guide_fail{
+	display:block;
+	margin-left:1rem;
+	color:#F78B8B;
+	text-align:center;
+	font: normal normal bold 1.2rem arial;
+}
+.text_guide_success{
+	display:block;
+	margin-left:1rem;
+	color:#90E15B;
+	text-align:center;
+	font: normal normal bold 1.2rem arial;
+}
+.text_guide_hidden{
+	display: none;	
+}

@@ -15,5 +15,11 @@
   </select>
   <select id="selectName" parameterType="string" resultType="string">
         select name from userinfo where id=#{_parameter}
-  </select>  
+  </select>
+  <select id="selectIdCount" parameterType="String" resultType="int">
+  		select count(*) from userinfo where id=#{_parameter}
+  </select>
+  <select id="selectNameCount" parameterType="String" resultType="int">
+  		select count(*) from userinfo where name=#{_parameter}
+  </select>
 </mapper>

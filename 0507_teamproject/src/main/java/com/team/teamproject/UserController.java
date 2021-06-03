@@ -90,6 +90,35 @@ public class UserController {
 			session.invalidate();
 			return "redirect:..";
 	}
+	@RequestMapping(value = "/main/data_confirm", 
+	        produces = { MediaType.APPLICATION_JSON_VALUE} , method=RequestMethod.POST)     
+	    public @ResponseBody Map<String,Integer> IsUnique(@RequestBody Map<String,String> map) {         
+	        System.out.println("UserController-IsUnique");
+	        String dataType=map.get("dataType");
+	        String data4Check=map.get("data4Check");
+	        Map<String,Integer> response_map=new HashMap<String,Integer>();
+	        if(dataType.equals("id")) {					//id check
+	        	int id_count=service.selectIdCount(data4Check);
+	        	if(id_count==0) 
+	        		response_map.put("name",1);//ok id 만들어
+	        	else 
+	        		response_map.put("name",0);//no id 못만들어
+	        }else if(dataType.equals("name")){			//name check
+	        	int name_count=service.selectNameCount(data4Check);
+	        	if(name_count==0) 
+	        		response_map.put("name",1);//ok name 만들어
+	        	else 
+	        		response_map.put("name",0);//no name 못만들어
+	        }else {
+	        	
+	        }
+	        return response_map;
+	    }
+
+	
+	
+	
+	
 	
 	//test mapping
 	@RequestMapping(value="/test",method = RequestMethod.GET)

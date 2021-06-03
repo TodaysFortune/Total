@@ -61,7 +61,7 @@
 	
 <!-- script -->
 <script>
-// 일반 텍스트 데이터  주도받는 함수
+// 일반 텍스트 데이터  주고받는 함수
 function ajaxTest(){
         var form = {
                 name: "jamong",

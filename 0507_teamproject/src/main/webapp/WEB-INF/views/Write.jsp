@@ -26,8 +26,8 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarColor03">
-      <ul class="navbar-nav me-auto">
+    <div class="collapse navbar-collapse" style="justify-content: space-between">
+      <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link active" href="#">Luck</a>
         </li>
@@ -37,7 +37,7 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">community</a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="../itboard">It 시사</a>
+            <a class="dropdown-item" href="main/itboard">It 시사</a>
             <a class="dropdown-item" href="#">유머</a>
             <a class="dropdown-item" href="#">좋은글</a>
             <a class="dropdown-item" href="#">Java</a>
@@ -52,33 +52,36 @@
             <a class="dropdown-item" href="https://opentutorials.org/course/1">생활코딩</a>
           </div>
         </li>
-        <li class="nav-item">
-         <form class="d-flex ms-sm-5">
-         	<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-  				<button type="button" class="btn btn-primary">Subject</button>
-  				<div class="btn-group" role="group">
-	    			<button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-	    			<div class="dropdown-menu" aria-labelledby="btnGroupDrop1" style="">
-		      			<a class="dropdown-item" href="#">제목</a>
-		      			<a class="dropdown-item" href="#">내용</a>
-		      			<a class="dropdown-item" href="#">작성자</a>
-	    			</div>
-  				</div>
-			</div>
-       	 	<input class="form-control me-sm-2 board-search" type="text" placeholder="검색">
-       	 	<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-    	 </form>
-    	</li>
+        
       </ul>
       
-      <div id="greet"></div>
-      <form id="logoutForm"></form>
-      <form method="get" action="main/login" id="userLogin">
-      	<button type="submit" class="btn me-sm-1 rounded-pill btn-info">Login</button>
+      
+      <form class="d-flex">
+	         	<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+	  				<button type="button" class="btn btn-primary">Subject</button>
+	  				<div class="btn-group" role="group">
+		    			<button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+		    			<div class="dropdown-menu" aria-labelledby="btnGroupDrop1" style="">
+			      			<a class="dropdown-item" href="#">제목</a>
+			      			<a class="dropdown-item" href="#">내용</a>
+			      			<a class="dropdown-item" href="#">작성자</a>
+		    			</div>
+	  				</div>
+				</div>
+	       	 	<input class="form-control ms-sm-2 me-sm-2 board-search" type="text" placeholder="검색">
+    	   	 	<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
       </form>
-      <form method="get" action="main/signin" id="userSign">
-      	<button type="submit" class="btn me-sm-5 rounded-pill btn-outline-info">Sign</button>
-      </form>
+      
+      <div style="display:flex;">
+	      <div id="greet"></div>
+	      <form id="logoutForm"></form>
+	      <form method="get" action="main/login" id="userLogin">
+	      	<button type="submit" class="btn me-sm-1 rounded-pill btn-info">Login</button>
+	      </form>
+	      <form method="get" action="main/signin" id="userSign">
+	      	<button type="submit" class="btn rounded-pill btn-outline-info">Sign</button>
+	      </form>
+      </div>
       
       
       <script>
@@ -99,7 +102,11 @@
 	        img.width = 30;
 	        hyperlink.append(img);
 	        document.getElementById('greet').append(hyperlink);
- 	 		document.getElementById('greet').append(Session_userID+" 님 안녕하세요.");
+	        var WelcomUser = document.createElement("span");
+	        WelcomUser.setAttribute('style','font-size:0.8rem;');
+	        WelcomUser.textContent=Session_userID;
+	        
+ 	 		document.getElementById('greet').append(WelcomUser);
  	 		
  	 		var logoutButton= document.createElement('button');
  	 		logoutButton.setAttribute('type','submit');
@@ -123,7 +130,7 @@
 </nav>
     <!--//상단 -->
 <!-- 중단 -->
-	<div class="container-column-align" style="height: 100%; margin-top: 3px;">
+	<div class="container-column-align" style="height: 100%; margin-top:1rem;">
         <div class="container-column" style="width: 80vw; min-width: 259.2px;">
             <div style="font-size:1.5rem; font-weight:900; position:relative; top:5px; left:5px;">IT 게시판</div>
             <div><hr/></div>

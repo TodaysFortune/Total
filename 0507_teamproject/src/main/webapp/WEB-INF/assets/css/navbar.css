@@ -1,6 +1,6 @@
 @charset "EUC-KR";
 .th-user-fonesize{
-				font-size:	0.8125rem;
+	font-size:	0.8125rem;
 }
 .td-user-fontsize{
 	font-size:	0.625rem;
@@ -16,7 +16,7 @@
 	padding: .1rem .1rem;
 }
 .form-control.board-search{
-	width:25em;
+	min-width:27rem;
 }
 .form-control{
 	width:300px;

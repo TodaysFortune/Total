@@ -22,19 +22,17 @@
 <body>
 	
     <!--상단 https://bootswatch.com/sketchy/-->
-   <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="../">Navbar</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarColor03">
-      <ul class="navbar-nav me-auto">
+    <div class="collapse navbar-collapse" style="justify-content: space-between">
+      <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" href="#">Luck
-            <span class="visually-hidden">(current)</span>
-          </a>
+          <a class="nav-link active" href="#">Luck</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Notice</a>
@@ -57,39 +55,43 @@
             <a class="dropdown-item" href="https://opentutorials.org/course/1">생활코딩</a>
           </div>
         </li>
-        <li class="nav-item">
-         <form class="d-flex ms-sm-5">
-         	<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-  				<button type="button" class="btn btn-primary">Subject</button>
-  				<div class="btn-group" role="group">
-	    			<button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-	    			<div class="dropdown-menu" aria-labelledby="btnGroupDrop1" style="">
-		      			<a class="dropdown-item" href="#">제목</a>
-		      			<a class="dropdown-item" href="#">내용</a>
-		      			<a class="dropdown-item" href="#">작성자</a>
-	    			</div>
-  				</div>
-			</div>
-       	 	<input class="form-control me-sm-2 board-search" type="text" placeholder="검색">
-       	 	<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-    	 </form>
-    	</li>
+        
       </ul>
       
       
-      <form method="get" action="login" id="userLogin">
-      	<button type="submit" class="btn me-sm-1 rounded-pill btn-info" >Login</button>
+      <form class="d-flex">
+	         	<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+	  				<button type="button" class="btn btn-primary">Subject</button>
+	  				<div class="btn-group" role="group">
+		    			<button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+		    			<div class="dropdown-menu" aria-labelledby="btnGroupDrop1" style="">
+			      			<a class="dropdown-item" href="#">제목</a>
+			      			<a class="dropdown-item" href="#">내용</a>
+			      			<a class="dropdown-item" href="#">작성자</a>
+		    			</div>
+	  				</div>
+				</div>
+	       	 	<input class="form-control ms-sm-2 me-sm-2 board-search" type="text" placeholder="검색">
+    	   	 	<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
       </form>
-      <form method="get" action="signin" id="userSign">
-      	<button type="submit" class="btn me-sm-5 rounded-pill btn-outline-info">Sign</button>
-      </form>
+      
+      <div style="display:flex;">
+	      <div id="greet"></div>
+	      <form id="logoutForm"></form>
+	      <form method="get" action="login" id="userLogin">
+	      	<button type="submit" class="btn me-sm-1 rounded-pill btn-info">Login</button>
+	      </form>
+	      <form method="get" action="signin" id="userSign">
+	      	<button type="submit" class="btn rounded-pill btn-outline-info">Sign</button>
+	      </form>
+      </div>
 
     </div>
   </div>
 </nav>
+<!-- //상단 -->
 
-
-<div class="IdinputAndPwinputbox">
+<div class="IdinputAndPwinputbox" style="margin-top:1rem;">
 	<h1>오늘의 운세는?</h1>
 	<hr class="one">
 	

@@ -34,6 +34,27 @@
         destroy-method="clearCache">
         <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
     </bean>
+    
+    <!-- 회원가입 메일 인증 -->
+	<bean id="mailSender"	class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com" />
+		<property name="port" value="587" /><!-- 465 or 25 -->
+		<property name="username" value="fortuneCookiewebsite@gmail.com" />
+		<property name="password" value="sdfjnlsajfn2ljf" />
+		<property name="defaultEncoding" value="utf-8" />
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.transport.protocol">smtp</prop>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+				<prop key="mail.debug">true</prop>
+			</props>
+		</property>
+	</bean>
+
+    
+    
+    
 		
 	<!-- DAOIMPL 빈 등록 -->
 	<context:component-scan base-package="com.team.dao"></context:component-scan>

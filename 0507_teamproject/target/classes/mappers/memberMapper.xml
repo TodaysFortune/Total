@@ -22,4 +22,7 @@
   <select id="selectNameCount" parameterType="String" resultType="int">
   		select count(*) from userinfo where name=#{_parameter}
   </select>
+  <select id="selectEmailCount" parameterType="String" resultType="int">
+  		select count(*) from userinfo where email=#{_parameter}
+  </select>
 </mapper>

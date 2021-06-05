@@ -92,30 +92,51 @@ public class UserController {
 	}
 	@RequestMapping(value = "/main/data_confirm", 
 	        produces = { MediaType.APPLICATION_JSON_VALUE} , method=RequestMethod.POST)     
-	    public @ResponseBody Map<String,Integer> IsUnique(@RequestBody Map<String,String> map) {         
+	    public @ResponseBody Map<String,Integer> IsUnique(@RequestBody Map<String,String> map,HttpSession session) {         
 	        System.out.println("UserController-IsUnique");
 	        String dataType=map.get("dataType");
 	        String data4Check=map.get("data4Check");
 	        Map<String,Integer> response_map=new HashMap<String,Integer>();
-	        if(dataType.equals("id")) {					//id check
+	        if(dataType.equals("id")) {							//id check
 	        	int id_count=service.selectIdCount(data4Check);
 	        	if(id_count==0) 
-	        		response_map.put("name",1);//ok id 만들어
+	        		response_map.put("name",1);
 	        	else 
-	        		response_map.put("name",0);//no id 못만들어
-	        }else if(dataType.equals("name")){			//name check
+	        		response_map.put("name",0);
+	        }else if(dataType.equals("name")){					//name check
 	        	int name_count=service.selectNameCount(data4Check);
 	        	if(name_count==0) 
-	        		response_map.put("name",1);//ok name 만들어
+	        		response_map.put("name",1);
 	        	else 
-	        		response_map.put("name",0);//no name 못만들어
-	        }else {
-	        	
+	        		response_map.put("name",0);
+	        }else if(dataType.equals("email")) { 				// email key check
+	        	int signal=service.IsSameKey(session,data4Check);
+	        	if(signal==0)//동일키아님
+	        		response_map.put("name",0);
+	        	else if(signal==1)//동일키임
+	        		response_map.put("name",1);
+	        	else//세션맨료
+	        		response_map.put("name",-1);
 	        }
 	        return response_map;
 	    }
 
-	
+	@RequestMapping(value="/main/signin/createEmailKey",
+			produces = { MediaType.APPLICATION_JSON_VALUE},method=RequestMethod.POST)
+	public @ResponseBody Map<String,Integer> emailAuthentication(@RequestBody Map<String,String> map,HttpSession session){
+		System.out.println("UserController - emailAuthentication");
+		String usermail=map.get("usermail");
+		Map<String,Integer> response_map=new HashMap<String, Integer>();
+		
+		if(service.selectEmailCount(usermail)==1) {
+			response_map.put("name", 0);
+		}
+		else {
+			service.createEmailKey(session,usermail);
+			response_map.put("name", 1);
+		}
+		return response_map;
+	}
 	
 	
 	

@@ -1,5 +1,5 @@
 @charset "EUC-KR";
-.modal {
+.modal,.email_modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -9,7 +9,7 @@
   justify-content: center;
   align-items: center;
 }
-.modal__overlay {
+.modal__overlay,.email_modal__overlay{
   position: absolute;
   background-color: rgba(0, 0, 0, 0.6);
   width: 100%;
@@ -31,9 +31,46 @@
 	hegith:1.2rem;
 	font: normal normal bold 1rem arial;
 	color:white;
+	border-radius: 5px;
 }
-h1 {
-  margin:0;
+.email_modal__content {
+  position: relative;
+  top: 0px;
+  display:flex;
+  flex-direction:column;
+  width: 20rem;
+  background-color:white;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 1px 10px 20px rgba(0, 0, 0, 0.19), 1px 6px 6px rgba(0, 0, 0, 0.23);
+}
+.email_modal_text_parent{
+	display:flex;
+	justify-content: flex-start;
+}
+.email_modal_text{
+	font: normal normal 100 1rem arial;
+}
+.email_modal_buttons_parent{
+	display:flex;
+	justify-content: center;
+}
+.email_modal_button{
+	margin-top:0.2rem;
+	padding:0.6rem 2rem;
+	hegith:1.2rem;
+	font: normal normal bold 1rem arial;
+	border: 0;
+	border-radius: 5px;
+}
+.email_modal_button_ok{
+	background-color: rgb(94, 93, 93);
+	color: white;
+}
+.email_modal_button_cancel{
+	background-color: #EAEAEA;
+	color: #505050494949;
+	margin-left: 1rem;
 }
 .hidden {
   display: none;

@@ -49,5 +49,12 @@ public class userinfoDAOImpl implements userinfoDAO{
 		System.out.println("userinfoDAOImpl - selectNameCount");
 		return sqlSession.selectOne(Namespace+".selectNameCount",data4Check);
 	}
+
+
+	@Override
+	public int selectEmailCount(String usermail) {
+		System.out.println("userinfoDAOImpl - selectEmailCount");
+		return sqlSession.selectOne(Namespace+".selectEmailCount",usermail);
+	}
 	
 }

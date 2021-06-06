@@ -40,7 +40,7 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">community</a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="main/itboard">It 시사</a>
+            <a class="dropdown-item" href="contentView?bidx=${itboardDTO.bidx}">It 시사</a>
             <a class="dropdown-item" href="#">유머</a>
             <a class="dropdown-item" href="#">좋은글</a>
             <a class="dropdown-item" href="#">Java</a>
@@ -78,10 +78,10 @@
       <div style="display:flex;">
 	      <div id="greet"></div>
 	      <form id="logoutForm"></form>
-	      <form method="get" action="main/login" id="userLogin">
+	      <form method="get" action="../login" id="userLogin">
 	      	<button type="submit" class="btn me-sm-1 rounded-pill btn-info">Login</button>
 	      </form>
-	      <form method="get" action="main/signin" id="userSign">
+	      <form method="get" action="../signin" id="userSign">
 	      	<button type="submit" class="btn rounded-pill btn-outline-info">Sign</button>
 	      </form>
       </div>
@@ -162,7 +162,7 @@
             <div><hr/></div>
             <!-- contents -->
             <div style="min-height: 5rem;">
-                <form style="float:right;" class="relative-right unloginSet" method="post" onsubmit="return idmatching(this);">
+                <form style="float:right;" class="relative-right unloginSet" method="post" onsubmit="return idmatching(this,'${Session_userID}');">
                 	<input type="hidden" value="${itboardDTO.id}"/>
                 	<input type="hidden" name="bidx" value="${itboardDTO.bidx}"/>
                 	<input type="hidden" name="currentPage" value="${currentPage}"/>
@@ -180,7 +180,7 @@
 	                <span>전체 댓글</span><span style="color:red;"> ${comment_totalCount} </span><span>개</span>
 	            </div>
 	            <div class="relative-right">
-	            	<label  style="cursor:pointer" onclick="goodup()">
+	            	<label  style="cursor:pointer" onclick="goodup('${Session_userID}','${itboardDTO.bidx}')">
 	            		<c:if test="${heart==0}">
 		                <img alt="좋아요" src="../images/empty_heart.png" id="heartbeat" style="width:1rem; height:1rem;"/>&nbsp;
 		                </c:if>
@@ -211,13 +211,13 @@
                     	<c:if test="${dto.comment_ref!=current_comment_ref}">
                     <!-- 메인댓글  + 대댓글까지(ref 오름차순)-->
                     <div style="display:flex;  justify-content: space-between; width:100%; margin-top:1rem; margin-bottom:1rem;">
-                        <div style="width:75%; display:flex;" class="relative-left" onclick="replyComment(this)">
+                        <div style="width:75%; display:flex;" class="relative-left" onclick="replyComment(this,'${Session_userID}')">
                             <div style="display:flex; width:100%;">
                                 <div style="width:10%;">${dto.name}</div>
                                 <div style="width:90%;">${commentcontent}</div>
                             </div>
                         </div>
-                        <form action="contentView/deleteComment" method="post" onsubmit="return idmatching(this)"
+                        <form action="contentView/deleteComment" method="post" onsubmit="return idmatching(this,'${Session_userID}')"
                          style="width:20%; display:flex; justify-content:flex-end; align-items: center;"
                          	class="relative-right">
                          	<input type="hidden" value="${dto.id}"/>
@@ -239,7 +239,7 @@
                         </form>
                     </div>
                     <!--대덧글작성-->
-                    <form action="contentView/registerComment" method="post" onsubmit="return emptyContentCheck(this);" style="width:100%; margin-top: 5px; margin-bottom: 5px;" class="container-row display_visible">
+                    <form action="contentView/registerComment" method="post" onsubmit="return emptyTextCheck(this);" style="width:100%; margin-top: 5px; margin-bottom: 5px;" class="container-row display_visible">
 		                <textarea  onkeydown="resize(this)" onkeyup="fn_checkByte(this,300)" placeholder="내용을 입력해주세요"
 		                    style=" width:90%; min-height: 3rem; max-height: 9rem; resize: none;" name="content"
 		                     class="relative-left"></textarea>
@@ -266,7 +266,7 @@
 		                                <div style="width:90%;">${commentcontent}</div>
 		                            </div>
 		                        </div>
-		                        <form action="contentView/deleteComment" method="post" onsubmit="return idmatching(this)"
+		                        <form action="contentView/deleteComment" method="post" onsubmit="return idmatching(this,'${Session_userID}')"
 		                        style="width:20%; display:flex; justify-content:flex-end; align-items:center;">
 		                        	<input type="hidden" value="${dto.id}"/>
 		                        	<input type="hidden" name="cidx" value="${dto.cidx}"/>
@@ -313,7 +313,7 @@
 	            </c:forEach>
             </form>
             <!-- //덧글페이지 -->
-            <form id="clientToServerText" action="contentView/registerComment" method="post" onsubmit="return emptyContentCheck(this);">
+            <form id="clientToServerText" action="contentView/registerComment" method="post" onsubmit="return emptyTextCheck(this);">
                 <!--덧글작성-->
                 <textarea  name="content" onkeydown="resize(this)" onkeyup="fn_checkByte(this,300)" placeholder="내용을 입력해주세요"
                     style="width: 100%; min-height: 3rem; max-height: 9rem; resize: none;" class="unloginSet"
@@ -336,7 +336,7 @@
                     </div>
                     <div style="width:50%; display: flex; justify-content: flex-end;">
                         <input form="clientToServerText" type="submit" value="댓글등록" class="BlackWhite unloginSet"style="width:24%; height:6vh; font-size:1rem;"/>
-                        <form class="unloginSet" action="../itboard/contentView/replyBoard" method="get" onsubmit="return loginCheck();" style="margin-left:7px; width:24%; height:6vh; font-size:1rem;">
+                        <form class="unloginSet" action="../itboard/contentView/replyBoard" method="get" onsubmit="return loginCheck('${Session_userID}');" style="margin-left:7px; width:24%; height:6vh; font-size:1rem;">
                         	<input type="hidden" name="bidx" value="${itboardDTO.bidx}"/>
                         	<input type="hidden" name="board_ref" value="${itboardDTO.board_ref}"/>
                         	<input type="hidden" name="currentPage" value="${currentPage}"/>
@@ -352,6 +352,8 @@
     </div>
     <!-- 중단 끝 -->
     <script type="text/javascript" src="../js/board.js"></script>
+    <script type="text/javascript" src="../js/contentView.js"></script>
+    <script type="text/javascript" src="../js/common.js"></script>
     <script>
     	window.onload=function(){
     		//비로그인 일경우
@@ -374,75 +376,6 @@
     			}
     		}
     	}
-    	function goodup(){
-    		var Session_userID='${Session_userID}';
-    		var bidx_='${itboardDTO.bidx}'
-    		var form={
-    				bidx: bidx_,
-    				id: Session_userID
-    		}
-     		if(Session_userID.length!=0){
-     			//로그인중임
-     			$.ajax({
-     	            url: "asyncGood",
-     	            type: "POST",
-     	            data: JSON.stringify(form),
-     	            contentType: "application/json",
-     	            dataType: "json",
-     	            success: function(data){
-     	            	if(data.clicked==0){
-     	            		$('#heartbeat').attr('src','../images/empty_heart.png');
-     	            	}else{
-     	            		$('#heartbeat').attr('src','../images/full_heart.png');
-     	            	}
-     	                $('#good_label').text(data.goodCount);
-     	            },
-     	            error: function(){
-     	                alert("asyncGood err");
-     	            }
-     	        });
-     		}
-     		else{
-     			alert("로그인을 해주세요.");
-     		}
-    	}
-    	function idmatching(obj){
-    		var userID='${Session_userID}';
-    		var itemOwner=obj.firstElementChild.value;
-    		console.log(userID);
-    		console.log(itemOwner);
-    		if(userID==itemOwner){
-    			return true;
-    		}
-    		else{
-    			alert('게시글 작성자만이 이용할 수 있습니다!');
-    			return false;
-    		}
-    	}
-    	function loginCheck(){
-    		var userID='${Session_userID}';
-    		if(userID.trim().length==0){
-    			alert("로그인을 먼저 해주세요.");
-    			return false;
-    		}else{
-    			return true;
-    		}
-    	}
-    	function replyComment(obj){
-    		if (loginCheck()==false ){
-    			return false;
-    		}else{
-    			obj.parentElement.nextElementSibling.classList.toggle("display_visible");
-    		}
-    	}
-    	function emptyContentCheck(obj){
-    		var content=obj.firstElementChild;
-    		if(content.value.trim().length==0){
-    			alert('내용을 입력해주세요.');
-    			content.focus();
-    			return false;
-    		}
-    	}    
     </script>
 </body>
 </html>

@@ -40,7 +40,7 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">community</a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="main/itboard">It 시사</a>
+            <a class="dropdown-item" href="../../itboard">It 시사</a>
             <a class="dropdown-item" href="#">유머</a>
             <a class="dropdown-item" href="#">좋은글</a>
             <a class="dropdown-item" href="#">Java</a>
@@ -137,7 +137,7 @@
         <div class="container-column" style="width: 80vw; min-width: 259.2px;">
             <div style="font-size:1.5rem; font-weight:900; position:relative; top:5px; left:5px;">IT 게시판</div>
             <div><hr/></div>
-            <form style="margin-top:10px;" action="updateBoard" method="post" onsubmit="return emptyCheck();">
+            <form style="margin-top:10px;" action="updateBoard" method="post" onsubmit="return emptySubjectContentCheck();">
                 <div style="margin-bottom:5px; display:flex; justify-content:space-between;">
                 	
                     <input type="text" name="subject" onkeyup="fn_checkByte_subject(this,100)" placeholder="제목을 입력해주세요" style="height:1.7rem; width:40rem" value="${iTboardDTO.subject}"/>
@@ -186,16 +186,7 @@
         </div>
     </div>
 <!-- //중단 -->
-<script>
-	function emptyCheck(){
-		var subject=document.getElementsByName('subject')[0];
-		var content=document.getElementsByName('content')[0];
-		if(subject.value.trim().length==0 || content.value.trim().length==0){
-			alert('제목 혹은 내용을 입력해주세요.');
-			return false;
-		}
-	}    
-</script>
+<script type="text/javascript" src="../../js/common.js"></script>
 <script type="text/javascript" src="../../js/board.js"></script>
 </body>
 </html>

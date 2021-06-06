@@ -268,7 +268,7 @@
                            	</c:if>
                         </div>
                     </span>
-                    <form style="width:12%; height:6vh;" method="get" action="itboard/write" onsubmit="return login_Check();">
+                    <form style="width:12%; height:6vh;" method="get" action="itboard/write" onsubmit="return loginCheck('${Session_userID}');">
                     	<input class="BlackWhite" id="boardWrite" style="width:100%;height:100%; font-size:1rem;" type="submit" value="글쓰기"/>
                		</form>
                 </div>
@@ -289,14 +289,6 @@
             </div>
         </div>
     </div>
-    <script>
-    	function login_Check(){
-    		var Session_userID='${Session_userID}';
-    		console.log(Session_userID);
-    		if(Session_userID.trim().length==0){
-	 			alert("로그인이 필요합니다.");
-	 		}
-    	}
-	</script>
+    <script type="text/javascript" src="js/common.js"></script>
 </body>
 </html>

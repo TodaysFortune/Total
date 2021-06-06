@@ -37,9 +37,8 @@ public class BoardController {
 	private commentService commentservice;
 	
 	@RequestMapping("/main/itboard")
-	public String ITboard(@RequestParam(value="currentPage",required=false,defaultValue="1") int currentPage,
+	public String ITboardList(@RequestParam(value="currentPage",required=false,defaultValue="1") int currentPage,
 			Model model) {
-		System.out.println("BoardController의 ITboard() 메소드");
 		int totalCount = boardservice.selectCount();
 		
 		AbstractApplicationContext ctx = new GenericXmlApplicationContext("classpath:applicationCTX.xml");
@@ -55,12 +54,9 @@ public class BoardController {
 		model.addAttribute("iTboardList", iTboardList);
 		return "ITboard";
 	}
-	
 	@RequestMapping(value="/main/itboardsearch",method=RequestMethod.GET)
-	public String ITboardsearch(@RequestParam(value="currentPage",required=false,defaultValue="1") int currentPage,
+	public String ITboardSearch(@RequestParam(value="currentPage",required=false,defaultValue="1") int currentPage,
 		HttpServletRequest request,Model model) {
-		
-		System.out.println("BoardController의 ITboardsearch() 메소드");
 		
 		String searchType=request.getParameter("searchType");
 		String searchText=request.getParameter("searchText").trim();
@@ -83,7 +79,7 @@ public class BoardController {
 		return "ITboard";
 	}
 	@RequestMapping(value="/main/itboard/write",method=RequestMethod.GET)
-	public String getwrite(@RequestParam(value="currentPage",required=false,defaultValue="1") int currentPage,Model model,HttpSession session) {
+	public String getWriteBoard(@RequestParam(value="currentPage",required=false,defaultValue="1") int currentPage,Model model,HttpSession session) {
 		System.out.println("BoardController-getwrite");
 		String Session_userID=(String)session.getAttribute("Session_userID");
 		if(Session_userID!=null) {
@@ -96,8 +92,7 @@ public class BoardController {
 		return "redirect:../login";//비정상적 경로로 입장시 로그인페이지로 이동
 	}
 	@RequestMapping(value="/main/itboard/write",method=RequestMethod.POST)
-	public String postwrite(HttpSession session,ITboardDTO iTboardDTO) {
-		System.out.println("BoardController-postwrite");
+	public String postWriteBoard(HttpSession session,ITboardDTO iTboardDTO) {
 		String Session_userID=(String)session.getAttribute("Session_userID");
 		if(Session_userID!=null) {
 			//레이스 컨디션 방지를 위해서
@@ -118,7 +113,6 @@ public class BoardController {
 	}
 	@RequestMapping(value="/main/itboard/increment",method=RequestMethod.GET)
 	public String incrementBoard(HttpServletRequest request,Model model) {
-		System.out.println("BoardController-incrementBoard");
 		String currentPage=request.getParameter("currentPage");
 		model.addAttribute("currentPage", currentPage);
 		int bidx;
@@ -136,7 +130,6 @@ public class BoardController {
 	public String boardContentView(@RequestParam(value="currentPage",required=false,defaultValue="1") int currentPage,
 			@RequestParam(value="comment_currentPage",required=false,defaultValue="1") int comment_currentPage,
 			HttpServletRequest request,Model model) {
-		System.out.println("BoardController-boardContentView");
 		int bidx=Integer.valueOf(request.getParameter("bidx"));
 		ITboardDTO itboardDTO=boardservice.selectBoard(bidx);
 		
@@ -171,13 +164,10 @@ public class BoardController {
 		model.addAttribute("enter", "\n");//개행문자처리
 		return "contentView";
 	}
-	
-	
 	@RequestMapping(value = "main/itboard/contentView/update",method=RequestMethod.POST)
-	public String getupdate(@RequestParam(value="currentPage",required=false,defaultValue="1") int currentPage,
+	public String getUpdateBoard(@RequestParam(value="currentPage",required=false,defaultValue="1") int currentPage,
 			@RequestParam(value="bidx",required=true) int bidx,
 			Model model) { //오는것 bidx,currentPage
-		System.out.println("BoardController-getupdate");
 		ITboardDTO iTboardDTO=boardservice.selectBoard(bidx);
 		
 		model.addAttribute("iTboardDTO", iTboardDTO);
@@ -185,10 +175,9 @@ public class BoardController {
 		return "update";
 	}
 	@RequestMapping(value = "main/itboard/contentView/updateBoard",method=RequestMethod.POST)
-	public String postupdate(@RequestParam(value="currentPage",required=false,defaultValue="1") int currentPage,
+	public String postUpdateBoard(@RequestParam(value="currentPage",required=false,defaultValue="1") int currentPage,
 			ITboardDTO iTboardDTO,
 			Model model) { //오는것 bidx,currentPage
-		System.out.println("BoardController-postupdate");
 		
 		boardservice.updateBoard(iTboardDTO);
 		
@@ -200,26 +189,22 @@ public class BoardController {
 	public String deleteBoard(@RequestParam(value="currentPage",required=false,defaultValue="1") int currentPage,
 			@RequestParam(value="bidx",required=true) int bidx,
 			Model model) {  //오는것 bidx,currentPage
-		System.out.println("BoardController-deleteBoard");
 		boardservice.deleteBoard(bidx);
 		model.addAttribute("currentPage", currentPage);
 		return "redirect:../../itboard";
 	}
-	
 	@RequestMapping(value = "main/itboard/contentView/replyBoard",method=RequestMethod.GET)
-	public String getreplyBoard(@RequestParam(value="currentPage",required=false,defaultValue="1") int currentPage,
+	public String getReplyBoard(@RequestParam(value="currentPage",required=false,defaultValue="1") int currentPage,
 			Model model,@ModelAttribute("itboardDTO") ITboardDTO iTboardDTO,
 			HttpSession session) {
-		System.out.println("BoardController-replyBoard");
 		String name=userinfoservice.selectName((String)session.getAttribute("Session_userID"));
 		model.addAttribute("currentPage", currentPage);
 		model.addAttribute("name", name);
 		return "replyBoard";
 	}
 	@RequestMapping(value = "main/itboard/contentView/replyBoard",method=RequestMethod.POST)
-	public String postreplyBoard(@RequestParam(value="currentPage",required=false,defaultValue="1") int currentPage,
+	public String postReplyBoard(@RequestParam(value="currentPage",required=false,defaultValue="1") int currentPage,
 			Model model,ITboardDTO iTboardDTO) {
-		System.out.println("BoardController-postreplyBoard");
 		//1.boardnextval에 의해 증가된 bidx를 우선적으로 받아와서 int next_bidx에 저장한다.  (레이스컨디션은 방지되었음)
 		int next_bidx=boardservice.selectBoardNextbidx(iTboardDTO.getCategory());
 		//2.이용할 ref는 기존의 iTboardDTO에 그대로 있음
@@ -233,12 +218,9 @@ public class BoardController {
 		model.addAttribute("currentPage", currentPage);
 		return "redirect:../../itboard";
 	}
-	
-	
 	@RequestMapping(value = "/main/itboard/asyncGood", 
 			produces = { MediaType.APPLICATION_JSON_VALUE} , method=RequestMethod.POST)
-	public @ResponseBody Map<String,Integer>asyncGood(@RequestBody Map<String,String> map){
-		System.out.println("BoardController-asyncGood");
+	public @ResponseBody Map<String,Integer>clickGood(@RequestBody Map<String,String> map){
 		Map<String,Integer> response_map=new HashMap<String, Integer>();
 		int bidx=Integer.valueOf(map.get("bidx"));
 		if(boardservice.selectGoodChecked(map)==1) {//특정아이디에 해당하는 이미 좋아요 누른 상태이면

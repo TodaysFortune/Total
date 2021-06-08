@@ -25,7 +25,7 @@
 	 <!--상단 https://bootswatch.com/sketchy/-->
  <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="../">Navbar</a>
+    <a class="navbar-brand" href="../">Home</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -42,7 +42,7 @@
           <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">community</a>
           <div class="dropdown-menu">
             <a class="dropdown-item" href="itboard">It 시사</a>
-            <a class="dropdown-item" href="#">유머</a>
+            <a class="dropdown-item" href="humorboard">유머</a>
             <a class="dropdown-item" href="#">좋은글</a>
             <a class="dropdown-item" href="#">Java</a>
             <a class="dropdown-item" href="#">JavaScript</a>
@@ -142,9 +142,9 @@
             	<!--  오늘 날짜를 기억하는 Date클래스 객체를 만든다. -->
 				<jsp:useBean id="date" class="java.util.Date"/>
 				<!--  메인글을 받는다. -->
-				<c:set var="list" value="${iTboardList.list}"/>
+				<c:set var="list" value="${boardList.list}"/>
 				<!-- 게시글번호를 받는다. -->
-				<c:set var="No" value="${iTboardList.totalCount-iTboardList.startNo}"/>
+				<c:set var="No" value="${boardList.totalCount-boardList.startNo}"/>
 				
                 <!--테이블-->
                 <div style="margin-bottom:5px;">
@@ -186,7 +186,7 @@
 										</c:if>
 										<c:set var="subject" value="${fn:replace(dto.subject,'<','&lt;')}" />
 										<c:set var="subject" value="${fn:replace(subject,'>','&gt;')}" />
-										<a href="itboard/increment?bidx=${dto.bidx}&currentPage=${iTboardList.currentPage}">
+										<a href="itboard/increment?bidx=${dto.bidx}&currentPage=${boardList.currentPage}">
 											${subject}
 										</a>
 									</td>
@@ -229,41 +229,41 @@
                     <span style="display:flex; width:70%; height:6vh;justify-content:center;align-items: center;">
                         <div style="display:flex; justify-content:center; width:80%;height:80%;">
                             <!--  맨 앞으로 -->
-                            <c:if test="${iTboardList.currentPage> 1}">
+                            <c:if test="${boardList.currentPage> 1}">
                             	<button class="pageButton"  title="첫 번째 페이지로 이동" onclick="location.href='?currentPage=1&searchType=${searchType}&searchText=${searchText}'">처음</button>
                             </c:if>
-                            <c:if test="${iTboardList.currentPage <= 1}">
+                            <c:if test="${boardList.currentPage <= 1}">
                             	<button class="pageButton" disabled="disabled" title="이미 첫 번째 페이지입니다.">처음</button>
                             </c:if>	
                             <!--  10페이지 앞으로 -->	
-                            <c:if test='${iTboardList.startPage>1}'>
-                            	<button class="pageButton" title="이전 10페이지로 이동" onclick="location.href='?currentPage=${iTboardList.startPage -1}&searchType=${searchType}&searchText=${searchText}'">이전</button>
+                            <c:if test='${boardList.startPage>1}'>
+                            	<button class="pageButton" title="이전 10페이지로 이동" onclick="location.href='?currentPage=${boardList.startPage -1}&searchType=${searchType}&searchText=${searchText}'">이전</button>
                             </c:if>
-                            <c:if test='${iTboardList.startPage<=1}'>
+                            <c:if test='${boardList.startPage<=1}'>
                             	<button class="pageButton" disabled="disabled">이전</button>
                             </c:if>
                             <!--  페이지 이동 -->
-                            <c:forEach var="i" begin="${iTboardList.startPage}" end="${iTboardList.endPage}">
-                            	<c:if test="${iTboardList.currentPage==i}">
+                            <c:forEach var="i" begin="${boardList.startPage}" end="${boardList.endPage}">
+                            	<c:if test="${boardList.currentPage==i}">
                             		<button class="pageButton" disabled="disabled">${i}</button>
                             	</c:if>
-                            	<c:if test="${iTboardList.currentPage!=i}">
+                            	<c:if test="${boardList.currentPage!=i}">
                             		<button class="pageButton" onclick="location.href='?currentPage=${i}&searchType=${searchType}&searchText=${searchText}'">${i}</button>
                             	</c:if>
                             </c:forEach>
                             <!--  10페이지 뒤로 -->
-                            <c:if test="${iTboardList.endPage < iTboardList.totalPage}">
-                            	<button class="pageButton" title="다음 10페이지로 이동" onclick="location.href='?currentPage=${iTboardList.endPage +1}&searchType=${searchType}&searchText=${searchText}'">다음</button>
+                            <c:if test="${boardList.endPage < boardList.totalPage}">
+                            	<button class="pageButton" title="다음 10페이지로 이동" onclick="location.href='?currentPage=${boardList.endPage +1}&searchType=${searchType}&searchText=${searchText}'">다음</button>
                             </c:if>
                             
-                            <c:if test="${iTboardList.endPage >= iTboardList.totalPage}">
+                            <c:if test="${boardList.endPage >= boardList.totalPage}">
                             	<button class="pageButton" disabled="disabled" title="이미 마지막 10페이지입니다.">다음</button>
                             </c:if>
                             <!--  맨 뒤로 -->
-                            <c:if test="${iTboardList.currentPage < iTboardList.totalPage}">
-                            	<button class="pageButton" title="마지막 페이지로 이동" onclick="location.href='?currentPage=${iTboardList.totalPage}&searchType=${searchType}&searchText=${searchText}'">끝</button>
+                            <c:if test="${boardList.currentPage < boardList.totalPage}">
+                            	<button class="pageButton" title="마지막 페이지로 이동" onclick="location.href='?currentPage=${boardList.totalPage}&searchType=${searchType}&searchText=${searchText}'">끝</button>
                             </c:if>
-                            <c:if test="${iTboardList.currentPage >= iTboardList.totalPage}">
+                            <c:if test="${boardList.currentPage >= boardList.totalPage}">
                            		<button class="pageButton" disabled="disabled" title="이미 마지막 페이지입니다.">끝</button>
                            	</c:if>
                         </div>

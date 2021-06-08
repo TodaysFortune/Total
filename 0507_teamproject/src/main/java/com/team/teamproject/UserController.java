@@ -137,36 +137,6 @@ public class UserController {
 		}
 		return response_map;
 	}
+		
 	
-	
-	
-	
-	//test mapping
-	@RequestMapping(value="/test",method = RequestMethod.GET)
-	public String test() {
-		System.out.println("controller - test");
-			return "test";
-	}
-	//test ajax1
-	 @RequestMapping(value="/requestObject", method=RequestMethod.POST)
-	    @ResponseBody
-	    public String simpleWithObject(HttpServletRequest request) {
-	        //필요한 로직 처리
-		 	String name=request.getParameter("name");
-		 	String age=request.getParameter("age");
-		 	
-		 	System.out.println("name");
-		 	System.out.println("age");
-		 	
-		 	
-		 	
-	        return name + age;
-	 }
-	//test ajax2
-	 @RequestMapping(value = "/stringify", 
-	    		produces = { MediaType.APPLICATION_JSON_VALUE} , method=RequestMethod.POST)	 
-		public @ResponseBody Map<String,Object> getTodayChart(@RequestBody Map<String,Object> map) {     	
-	    	System.out.println(map);
-	    	return map;
-		}
 }

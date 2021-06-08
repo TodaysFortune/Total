@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.team.mapper.totalboardMapper"> 
+ 	<insert id="inserthumorBoard" parameterType="HumorboardDTO">
+ 		insert into totalboard (good,bidx,url,subject) values (0,#{bidx},#{categoryname},#{subject})
+ 	</insert>
+ 	<insert id="insertitBoard" parameterType="ITboardDTO">
+ 		insert into totalboard (good,bidx,url,subject) values (0,#{bidx},#{categoryname},#{subject})
+ 	</insert>
+    <update id="updateHumorBoardGood" parameterType="java.util.HashMap">
+    	update totalboard set good=#{good} where url='humorboard' and bidx=#{bidx}
+    </update>
+    <update id="updateItBoardGood" parameterType="java.util.HashMap">
+    	update totalboard set good=#{good} where url='itboard' and bidx=#{bidx}
+    </update>
+    <update id="updateHumorBoard" parameterType="HumorboardDTO">
+    	update totalboard set subject=#{subject} where url=#{categoryname} and bidx=#{bidx}
+    </update>
+    <update id="updateITBoard" parameterType="ITboardDTO">
+    	update totalboard set subject=#{subject} where url=#{categoryname} and bidx=#{bidx}
+    </update>
+    <delete id="deleteHumorBoard" parameterType="int">
+    	delete from totalboard where url='humorboard' and bidx=#{_parameter}
+    </delete>
+    <delete id="deleteITBoard" parameterType="int">
+    	delete from totalboard where url='itboard' and bidx=#{_parameter}
+    </delete>
+</mapper>

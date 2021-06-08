@@ -21,7 +21,7 @@
     <!--상단 https://bootswatch.com/sketchy/-->
  <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="main">Navbar</a>
+    <a class="navbar-brand" href="main">Home</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -38,7 +38,7 @@
           <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">community</a>
           <div class="dropdown-menu">
             <a class="dropdown-item" href="main/itboard">It 시사</a>
-            <a class="dropdown-item" href="#">유머</a>
+            <a class="dropdown-item" href="main/humorboard">유머</a>
             <a class="dropdown-item" href="#">좋은글</a>
             <a class="dropdown-item" href="#">Java</a>
             <a class="dropdown-item" href="#">JavaScript</a>
@@ -142,7 +142,7 @@
 		<table class="table table-hover" style="width:99%; height:99%; background-color: #fff; border-bottom-left-radius: 7px; border-bottom-right-radius: 7px; align-item: center; margin:1px;">
 			  <thead>
 			    <tr class="th-user-fonesize">
-			      <th scope="col" class="col-2 text-center">번호</th>
+			      <th scope="col" class="col-2 text-center">분류</th>
 			      <th scope="col" class="col-8 text-center">제목</th>
 			      <th scope="col" class="col-2 text-center">추천</th>
 			    </tr>
@@ -203,7 +203,7 @@
 	<table class="table table-hover" style="width:99%; height:99%; background-color: #fff; border-bottom-left-radius: 7px; border-bottom-right-radius: 7px; margin:1px;">
 		  <thead>
 		    <tr class="th-user-fonesize">
-		      <th scope="col" class="col-2 text-center">번호</th>
+		      <th scope="col" class="col-2 text-center">분류</th>
 		      <th scope="col" class="col-8 text-center">제목</th>
 		      <th scope="col" class="col-2 text-center">추천</th>
 		    </tr>

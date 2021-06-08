@@ -6,9 +6,16 @@
  		
  		 <typeAliases>
             <typeAlias type="com.team.vo.UserinfoVO" alias="UserinfoVO"/>
+            
             <typeAlias type="com.team.dto.ITboardDTO" alias="ITboardDTO"/>
             <typeAlias type="com.team.vo.ITboardList" alias="ITboardList"/>
             <typeAlias type="com.team.dto.ITcommentDTO" alias="ITcommentDTO"/>
+            
+            <typeAlias type="com.team.dto.HumorboardDTO" alias="HumorboardDTO"/>
+            <typeAlias type="com.team.vo.HumorboardList" alias="HumorboardList"/>
+            <typeAlias type="com.team.dto.HumorcommentDTO" alias="HumorcommentDTO"/>
+            
+            <typeAlias type="com.team.dto.TotalboardDTO" alias="TotalboardDTO"/>
         </typeAliases>
         
     </configuration>

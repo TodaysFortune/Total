@@ -6,7 +6,7 @@ import java.util.List;
 import com.team.dto.ITcommentDTO;
 
 public interface commentDAO {
-	void insertComment(ITcommentDTO iTcommentDTO);
+	void insertComment(ITcommentDTO commentDTO);
 
 	int ITcommentnextval(int bidx);
 

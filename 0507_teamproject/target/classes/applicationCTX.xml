@@ -6,4 +6,9 @@
 	<bean id="ITboardDTO" class="com.team.dto.ITboardDTO"/>
 	<bean id="ITcommentDTO" class="com.team.dto.ITcommentDTO"/>
 	<bean id="ITcommentList" class="com.team.vo.ITcommentList"/>
+	
+	<bean id="HumorboardList" class="com.team.vo.HumorboardList"/>
+	<bean id="HumorboardDTO" class="com.team.dto.HumorboardDTO"/>
+	<bean id="HumorcommentDTO" class="com.team.dto.HumorcommentDTO"/>
+	<bean id="HumorcommentList" class="com.team.vo.HumorcommentList"/>
 </beans>

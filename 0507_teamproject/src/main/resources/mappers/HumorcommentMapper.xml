@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.team.mapper.HumorcommentMapper"> 
+ 	<select id="Humorcommentnextval" parameterType="int" resultType="int">
+ 		select Humorcommentnextval(#{_parameter})
+ 	</select>
+ 	<select id="selectCount" parameterType="int" resultType="int">
+ 		select count(*) from humorcomment where bidx=#{_parameter}
+ 	</select>
+ 	<select id="selectList" parameterType="java.util.HashMap" resultType="HumorcommentDTO">
+ 		select * from humorcomment where bidx=#{bidx} order by comment_ref asc,cidx asc limit #{startNo},#{noSize}
+ 	</select>
+ 	<insert id="insertComment" parameterType="HumorcommentDTO">
+ 		insert into humorcomment (bidx,id,name,content,comment_ref) values 
+ 		(#{bidx},#{id},#{name},#{content},#{comment_ref})
+ 	</insert>
+  	<delete id="deleteComment" parameterType="int">
+  		delete from humorcomment where cidx=#{_parameter}
+  	</delete>
+</mapper>

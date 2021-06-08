@@ -21,7 +21,7 @@
     <!--상단 https://bootswatch.com/sketchy/-->
    <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="../..">Navbar</a>
+    <a class="navbar-brand" href="../..">Home</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -38,7 +38,7 @@
           <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">community</a>
           <div class="dropdown-menu">
             <a class="dropdown-item" href="main/itboard">It 시사</a>
-            <a class="dropdown-item" href="#">유머</a>
+            <a class="dropdown-item" href="main/humorboard">유머</a>
             <a class="dropdown-item" href="#">좋은글</a>
             <a class="dropdown-item" href="#">Java</a>
             <a class="dropdown-item" href="#">JavaScript</a>

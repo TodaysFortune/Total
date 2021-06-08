@@ -16,9 +16,9 @@ public class commentServiceImpl implements commentService{
 	private commentDAO dao;
 
 	@Override
-	public void insertComment(ITcommentDTO iTcommentDTO) {
+	public void insertComment(ITcommentDTO commentDTO) {
 		System.out.println("commentServiceImpl-insertComment");
-		dao.insertComment(iTcommentDTO);
+		dao.insertComment(commentDTO);
 	}
 
 	@Override

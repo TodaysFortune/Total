@@ -14,8 +14,14 @@ public class ITboardDTO {
 	private Date recentupdate;
 	private int good;
 	private int category=1;
+	private String categoryname="itboard";
 	
-	
+	public String getCategoryname() {
+		return categoryname;
+	}
+	public void setCategoryname(String categoryname) {
+		this.categoryname = categoryname;
+	}
 	public int getCategory() {
 		return category;
 	}
@@ -86,7 +92,8 @@ public class ITboardDTO {
 	public String toString() {
 		return "ITboardDTO [bidx=" + bidx + ", id=" + id + ", name=" + name + ", subject=" + subject + ", content="
 				+ content + ", board_ref=" + board_ref + ", board_hit=" + board_hit + ", writedate=" + writedate
-				+ ", recentupdate=" + recentupdate + ", good=" + good + ", category=" + category + "]";
+				+ ", recentupdate=" + recentupdate + ", good=" + good + ", category=" + category + ", categoryname="
+				+ categoryname + "]";
 	}
 	
 	

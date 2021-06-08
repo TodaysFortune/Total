@@ -9,7 +9,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.team.dto.ITcommentDTO;
-import com.team.service.commentService;
 
 @Repository
 public class commentDAOImpl implements commentDAO{
@@ -20,9 +19,9 @@ public class commentDAOImpl implements commentDAO{
 	private static final String Namespace = "com.team.mapper.commentMapper";
 
 	@Override
-	public void insertComment(ITcommentDTO iTcommentDTO) {
+	public void insertComment(ITcommentDTO commentDTO) {
 		System.out.println("commentDAOImpl-insertComment");
-		sqlSession.insert(Namespace+".insertComment", iTcommentDTO);
+		sqlSession.insert(Namespace+".insertComment", commentDTO);
 	}
 
 	@Override

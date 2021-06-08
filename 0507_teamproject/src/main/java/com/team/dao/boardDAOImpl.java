@@ -31,19 +31,19 @@ public class boardDAOImpl implements boardDAO {
 		return sqlSession.selectList(Namespace+".selectList",hmap);
 	}
 	@Override
-	public int selectTypeCount(ITboardList iTboardList) {
+	public int selectTypeCount(ITboardList boardList) {
 		System.out.println("boardDAOImpl - selectTypeCount");
-		return sqlSession.selectOne(Namespace+".selectTypeCount",iTboardList);
+		return sqlSession.selectOne(Namespace+".selectTypeCount",boardList);
 	}
 	@Override
-	public List<ITboardDTO> selectTypeList(ITboardList iTboardList) {
+	public List<ITboardDTO> selectTypeList(ITboardList boardList) {
 		System.out.println("boardDAOImpl - selectTypeList");
-		return sqlSession.selectList(Namespace+".selectTypeList",iTboardList);
+		return sqlSession.selectList(Namespace+".selectTypeList",boardList);
 	}
 	@Override
-	public void insertBoard(ITboardDTO iTboardDTO) {
+	public void insertBoard(ITboardDTO boardDTO) {
 		System.out.println("boardDAOImpl - insertBoard");
-		sqlSession.insert(Namespace+".insertBoard", iTboardDTO);
+		sqlSession.insert(Namespace+".insertBoard", boardDTO);
 	}
 	@Override
 	public void incrementBoard(int bidx) {
@@ -86,9 +86,9 @@ public class boardDAOImpl implements boardDAO {
 		sqlSession.update(Namespace+".updateGoodupBoard", bidx);
 	}
 	@Override
-	public void updateBoard(ITboardDTO iTboardDTO) {
+	public void updateBoard(ITboardDTO boardDTO) {
 		System.out.println("boardDAOImpl - updateBoard");
-		sqlSession.update(Namespace+".updateBoard", iTboardDTO);
+		sqlSession.update(Namespace+".updateBoard", boardDTO);
 	}
 	@Override
 	public void deleteBoard(int bidx) {
@@ -96,9 +96,9 @@ public class boardDAOImpl implements boardDAO {
 		sqlSession.delete(Namespace+".deleteBoard", bidx);
 	}
 	@Override
-	public void insertreplyBoard(ITboardDTO iTboardDTO) {
+	public void insertreplyBoard(ITboardDTO boardDTO) {
 		System.out.println("boardDAOImpl - insertreplyBoard");
-		sqlSession.insert(Namespace+".insertreplyBoard", iTboardDTO);
+		sqlSession.insert(Namespace+".insertreplyBoard", boardDTO);
 	}
 	@Override
 	public int selectBoardNextbidx(int category) {

@@ -24,7 +24,7 @@
     <!--상단 https://bootswatch.com/sketchy/-->
    <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="../../..">Navbar</a>
+    <a class="navbar-brand" href="../../..">Home</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -41,7 +41,7 @@
           <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">community</a>
           <div class="dropdown-menu">
             <a class="dropdown-item" href="../../itboard">It 시사</a>
-            <a class="dropdown-item" href="#">유머</a>
+            <a class="dropdown-item" href="../../humorboard">유머</a>
             <a class="dropdown-item" href="#">좋은글</a>
             <a class="dropdown-item" href="#">Java</a>
             <a class="dropdown-item" href="#">JavaScript</a>
@@ -140,24 +140,24 @@
             <form style="margin-top:10px;" action="updateBoard" method="post" onsubmit="return emptySubjectContentCheck();">
                 <div style="margin-bottom:5px; display:flex; justify-content:space-between;">
                 	
-                    <input type="text" name="subject" onkeyup="fn_checkByte_subject(this,100)" placeholder="제목을 입력해주세요" style="height:1.7rem; width:40rem" value="${iTboardDTO.subject}"/>
+                    <input type="text" name="subject" onkeyup="fn_checkByte_subject(this,100)" placeholder="제목을 입력해주세요" style="height:1.7rem; width:40rem" value="${boardDTO.subject}"/>
                 	<div>
-                		<span>조회수 ${iTboardDTO.board_hit}</span>&nbsp;<span>|</span>&nbsp;
-                		<span>추천</span>&nbsp;<span style="color:red;">${iTboardDTO.good}</span>
+                		<span>조회수 ${boardDTO.board_hit}</span>&nbsp;<span>|</span>&nbsp;
+                		<span>추천</span>&nbsp;<span style="color:red;">${boardDTO.good}</span>
                 	</div>
                 </div>
                 <div style="display:flex; justify-content:space-between; margin-bottom:5px; ">
                     <div style="position:relative; left:10px;">
                     	<jsp:useBean id="date" class="java.util.Date"/>
-                        <span>${iTboardDTO.name}</span>&nbsp;<span>|</span>&nbsp;
+                        <span>${boardDTO.name}</span>&nbsp;<span>|</span>&nbsp;
                         <span>마지막 수정 : </span>
                         <span>
-                        	<c:if test="${date.year==iTboardDTO.recentupdate.year && date.month==iTboardDTO.recentupdate.month && date.date==iTboardDTO.recentupdate.date}">
-							<fmt:formatDate value="${iTboardDTO.recentupdate}" pattern="HH:mm:ss" />
+                        	<c:if test="${date.year==boardDTO.recentupdate.year && date.month==boardDTO.recentupdate.month && date.date==boardDTO.recentupdate.date}">
+							<fmt:formatDate value="${boardDTO.recentupdate}" pattern="HH:mm:ss" />
 							</c:if>
-							<c:if test="${date.year!=iTboardDTO.recentupdate.year || 
-							date.month!=iTboardDTO.recentupdate.month || date.date!=iTboardDTO.recentupdate.date}">
-							<fmt:formatDate value="${iTboardDTO.recentupdate}" pattern="yy-MM-dd(E)" />
+							<c:if test="${date.year!=boardDTO.recentupdate.year || 
+							date.month!=boardDTO.recentupdate.month || date.date!=boardDTO.recentupdate.date}">
+							<fmt:formatDate value="${boardDTO.recentupdate}" pattern="yy-MM-dd(E)" />
 						</c:if>
                         </span>
                     </div>
@@ -171,16 +171,16 @@
                     </div>
                 </div>
                 <div style="align-items: center; border: 1px solid black;">
-                    <textarea  name="content" onkeydown="resize(this)" onkeyup="fn_checkByte(this,6000)" style="resize: none; width: 99%; min-height: 15rem; padding:0;border:0;margin:0;">${iTboardDTO.content}</textarea>
+                    <textarea  name="content" onkeydown="resize(this)" onkeyup="fn_checkByte(this,6000)" style="resize: none; width: 99%; min-height: 15rem; padding:0;border:0;margin:0;">${boardDTO.content}</textarea>
                 </div>
                 <div><hr/></div>
                 <input type="hidden" name="currentPage" value="${currentPage}"/>
-                <input type="hidden" name="bidx" value="${iTboardDTO.bidx}"/>
+                <input type="hidden" name="bidx" value="${boardDTO.bidx}"/>
                 <div style="display:flex; justify-content: flex-end;">
                 	<input type="hidden" name="id" value="${id}"/>
                 	<input type="hidden" name="name" value="${name}"/>
                     <input class="BlackWhite"style="width:12%; height:6vh; font-size:1rem;" type="submit" value="등록"/>
-                    <input class="GrayWhite"style="margin-left:7px;width:12%; height:6vh; font-size:1rem;" type="button" value="돌아가기" onclick="location.href='../../itboard/contentView?currentPage=${currentPage}&bidx=${iTboardDTO.bidx}'"/>
+                    <input class="GrayWhite"style="margin-left:7px;width:12%; height:6vh; font-size:1rem;" type="button" value="돌아가기" onclick="location.href='../../itboard/contentView?currentPage=${currentPage}&bidx=${boardDTO.bidx}'"/>
                 </div>
             </form>
         </div>

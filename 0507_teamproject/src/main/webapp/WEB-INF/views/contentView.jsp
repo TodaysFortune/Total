@@ -24,7 +24,7 @@
     <!--상단 https://bootswatch.com/sketchy/-->
    <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="../..">Navbar</a>
+    <a class="navbar-brand" href="../..">Home</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -40,8 +40,8 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">community</a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="contentView?bidx=${itboardDTO.bidx}">It 시사</a>
-            <a class="dropdown-item" href="#">유머</a>
+            <a class="dropdown-item" href="itboard">It 시사</a>
+            <a class="dropdown-item" href="humorboard">유머</a>
             <a class="dropdown-item" href="#">좋은글</a>
             <a class="dropdown-item" href="#">Java</a>
             <a class="dropdown-item" href="#">JavaScript</a>
@@ -137,34 +137,34 @@
             <div style="font-size:1.5rem; font-weight:900; position:relative; top:5px; left:5px;">IT 게시판</div>
             <div><hr/></div>
             <div class="relative-left">
-            	<c:set var="boardSubject" value="${fn:replace(itboardDTO.subject,'<','&lt;')}" />
+            	<c:set var="boardSubject" value="${fn:replace(boardDTO.subject,'<','&lt;')}" />
 				<c:set var="boardSubject" value="${fn:replace(boardSubject,'>','&gt;')}" />
                 <span>${boardSubject}</span>
             </div>
             <div style="display:flex; justify-content: space-between;">
                 <div class="relative-left">
 					<jsp:useBean id="date" class="java.util.Date"/>
-                    <span>${itboardDTO.name}</span>&nbsp;<span>|</span>&nbsp;
+                    <span>${boardDTO.name}</span>&nbsp;<span>|</span>&nbsp;
                     <span>
-	                    <c:if test="${date.year==itboardDTO.writedate.year && date.month==itboardDTO.writedate.month && date.date==itboardDTO.writedate.date}">
-							<fmt:formatDate value="${itboardDTO.writedate}" pattern="HH:mm:ss" />
+	                    <c:if test="${date.year==boardDTO.writedate.year && date.month==boardDTO.writedate.month && date.date==boardDTO.writedate.date}">
+							<fmt:formatDate value="${boardDTO.writedate}" pattern="HH:mm:ss" />
 						</c:if>
-						<c:if test="${date.year!=itboardDTO.writedate.year || 
-							date.month!=itboardDTO.writedate.month || date.date!=itboardDTO.writedate.date}">
-							<fmt:formatDate value="${itboardDTO.writedate}" pattern="yy-MM-dd(E)" />
+						<c:if test="${date.year!=boardDTO.writedate.year || 
+							date.month!=boardDTO.writedate.month || date.date!=boardDTO.writedate.date}">
+							<fmt:formatDate value="${boardDTO.writedate}" pattern="yy-MM-dd(E)" />
 						</c:if>
                     </span>
                 </div>
                 <div class="relative-right">
-                    <span>조회수 ${itboardDTO.board_hit}</span>&nbsp;<span>|</span>&nbsp;<span>추천 </span><span style="color: red;">${itboardDTO.good}</span>
+                    <span>조회수 ${boardDTO.board_hit}</span>&nbsp;<span>|</span>&nbsp;<span>추천 </span><span style="color: red;">${boardDTO.good}</span>
                 </div>
             </div>
             <div><hr/></div>
             <!-- contents -->
             <div style="min-height: 5rem;">
                 <form style="float:right;" class="relative-right unloginSet" method="post" onsubmit="return idmatching(this,'${Session_userID}');">
-                	<input type="hidden" value="${itboardDTO.id}"/>
-                	<input type="hidden" name="bidx" value="${itboardDTO.bidx}"/>
+                	<input type="hidden" value="${boardDTO.id}"/>
+                	<input type="hidden" name="bidx" value="${boardDTO.bidx}"/>
                 	<input type="hidden" name="currentPage" value="${currentPage}"/>
                     <button style="cursor:pointer;background-color: white;border:0;" type="submit" formaction="../itboard/contentView/update">수정</button>
                     &nbsp;<span>|</span>&nbsp;
@@ -172,7 +172,7 @@
                 </form>
                 <textarea onkeydown="resize(this)" onkeyup="resize(this)" readonly
                     style="min-height: 10rem; width:95%; outline: none;
-                    border:0; resize:none;" class="relative-left">${itboardDTO.content}</textarea>
+                    border:0; resize:none;" class="relative-left">${boardDTO.content}</textarea>
             </div>
             <!-- //contents -->
             <div style="display:flex; justify-content: space-between; margin-bottom: 10px;">
@@ -180,20 +180,20 @@
 	                <span>전체 댓글</span><span style="color:red;"> ${comment_totalCount} </span><span>개</span>
 	            </div>
 	            <div class="relative-right">
-	            	<label  style="cursor:pointer" onclick="goodup('${Session_userID}','${itboardDTO.bidx}')">
+	            	<label  style="cursor:pointer" onclick="goodup('${Session_userID}','${boardDTO.bidx}')">
 	            		<c:if test="${heart==0}">
 		                <img alt="좋아요" src="../images/empty_heart.png" id="heartbeat" style="width:1rem; height:1rem;"/>&nbsp;
 		                </c:if>
 		                <c:if test="${heart!=0}">
 		                <img alt="좋아요" src="../images/full_heart.png" id="heartbeat" style="width:1rem; height:1rem;"/>&nbsp;
 		                </c:if>
-	                	<span id="good_label">${itboardDTO.good}</span>
+	                	<span id="good_label">${boardDTO.good}</span>
 	                </label>
 	            </div>
             </div>
             <div>
 				<!--  덧글을 받는다. -->
-				<c:set var="list" value="${iTcommentList.list}"/>
+				<c:set var="list" value="${commentList.list}"/>
                 <c:if test="${list.size()!=0}">
                 	<c:forEach var="dto" items="${list}">
                 	<c:set var="commentcontent" value="${fn:replace(fn:trim(dto.content),'<','&lt;')}"/>
@@ -222,7 +222,7 @@
                          	class="relative-right">
                          	<input type="hidden" value="${dto.id}"/>
                          	<input type="hidden" name="cidx" value="${dto.cidx}"/>
-                         	<input type="hidden" name="bidx" value="${itboardDTO.bidx}"/>
+                         	<input type="hidden" name="bidx" value="${boardDTO.bidx}"/>
                          	<input type="hidden" name="currentPage" value="${currentPage}"/>
                          	<input type="hidden" name="comment_currentPage" value="${comment_currentPage}"/>
                             <span style="display:block;" class="relative-right">
@@ -246,7 +246,7 @@
 		                <div class="relative-left" style="width:7%; display:flex; align-items:flex-end; justify-content: flex-start;">
 		                	<input style="max-height:2rem; max-width:3rem;" type="submit" value="등록"/>
 		                </div>
-		                <input type="hidden" name="bidx" value="${itboardDTO.bidx}"/>
+		                <input type="hidden" name="bidx" value="${boardDTO.bidx}"/>
 		                <input type="hidden" name="currentPage" value="${currentPage}"/>
 		                <input type="hidden" name="reply_comment_ref" value="${dto.comment_ref}"/>
 		                <input type="hidden" name="comment_currentPage" value="${comment_currentPage}"/>		                
@@ -270,7 +270,7 @@
 		                        style="width:20%; display:flex; justify-content:flex-end; align-items:center;">
 		                        	<input type="hidden" value="${dto.id}"/>
 		                        	<input type="hidden" name="cidx" value="${dto.cidx}"/>
-		                        	<input type="hidden" name="bidx" value="${itboardDTO.bidx}"/>
+		                        	<input type="hidden" name="bidx" value="${boardDTO.bidx}"/>
 		                        	<input type="hidden" name="currentPage" value="${currentPage}"/>
 		                        	<input type="hidden" name="comment_currentPage" value="${comment_currentPage}"/>
 		                            <span style="display:block;" class="relative-right">
@@ -299,15 +299,15 @@
             </div>
             <div class="nocomment"><hr/></div>
             <!-- 덧글페이지 -->
-            <form style="display:flex; justify-content: center; margin-bottom: 7px;" class="nocomment">
+            <form action="contentView" style="display:flex; justify-content: center; margin-bottom: 7px;" class="nocomment">
             	<input type="hidden" name="currentPage" value="${currentPage}"/>
-            	<input type="hidden" name="bidx" value="${itboardDTO.bidx}"/>
-	            <c:forEach var="page" begin="${iTcommentList.startPage}" end="${iTcommentList.totalPage}">
+            	<input type="hidden" name="bidx" value="${boardDTO.bidx}"/>
+	            <c:forEach var="page" begin="${commentList.startPage}" end="${commentList.totalPage}">
 	            		<c:if test="${comment_currentPage==page}">
-	            			<button style="inline;" class="pageButton" disabled="disabled">${page}</button>
+	            			<button class="pageButton" disabled="disabled">${page}</button>
 	            		</c:if>
 	            		<c:if test="${comment_currentPage!=page}">
-	            			<button style="inline;" class="pageButton" type="submit" 
+	            			<button class="pageButton" type="submit" 
 	            			name="comment_currentPage" value="${page}">${page}</button>
 	            		</c:if>
 	            </c:forEach>
@@ -319,7 +319,7 @@
                     style="width: 100%; min-height: 3rem; max-height: 9rem; resize: none;" class="unloginSet"
                 ></textarea>
                 <!--//덧글작성-->
-            	<input type="hidden" name="bidx" value="${itboardDTO.bidx}"/>
+            	<input type="hidden" name="bidx" value="${boardDTO.bidx}"/>
                 <input type="hidden" name="currentPage" value="${currentPage}"/>
             </form>
             <div>
@@ -337,8 +337,8 @@
                     <div style="width:50%; display: flex; justify-content: flex-end;">
                         <input form="clientToServerText" type="submit" value="댓글등록" class="BlackWhite unloginSet"style="width:24%; height:6vh; font-size:1rem;"/>
                         <form class="unloginSet" action="../itboard/contentView/replyBoard" method="get" onsubmit="return loginCheck('${Session_userID}');" style="margin-left:7px; width:24%; height:6vh; font-size:1rem;">
-                        	<input type="hidden" name="bidx" value="${itboardDTO.bidx}"/>
-                        	<input type="hidden" name="board_ref" value="${itboardDTO.board_ref}"/>
+                        	<input type="hidden" name="bidx" value="${boardDTO.bidx}"/>
+                        	<input type="hidden" name="board_ref" value="${boardDTO.board_ref}"/>
                         	<input type="hidden" name="currentPage" value="${currentPage}"/>
                         	<input class="GrayWhite" style="display:block; width:100%; height:100%;" type="submit" value="게시글답변"/>
                         </form>

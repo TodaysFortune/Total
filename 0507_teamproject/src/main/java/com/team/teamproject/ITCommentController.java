@@ -14,7 +14,7 @@ import com.team.service.commentService;
 import com.team.service.userinfoService;
 
 @Controller
-public class CommentController {
+public class ITCommentController {
 	
 	@Inject
 	private userinfoService userinfoservice;
@@ -25,7 +25,8 @@ public class CommentController {
 	String registerComment(@RequestParam(value="currentPage",required=false,defaultValue="1") int currentPage,
 				@RequestParam(value="reply_comment_ref",required=false,defaultValue="0") int reply_comment_ref,
 				@RequestParam(value="comment_currentPage",required=false,defaultValue="1") int comment_currentPage,
-			HttpSession session,ITcommentDTO iTcommentDTO,Model model) {
+			HttpSession session,Model model,
+			@ModelAttribute("commentDTO") ITcommentDTO iTcommentDTO) {
 		//currentPage,bidx,content,id(세션으로획득),name(sql로 획득),comment_ref(함수로획득)     
 		System.out.println("CommentController-registerComment");
 		
@@ -53,7 +54,7 @@ public class CommentController {
 	}
 
 	@RequestMapping(value="main/itboard/contentView/deleteComment")
-	String deleteComment(ITcommentDTO iTcommentDTO,
+	String deleteComment(@ModelAttribute("commentDTO") ITcommentDTO iTcommentDTO,
 			@RequestParam(value="currentPage",required=false,defaultValue="1") int currentPage,
 			@RequestParam(value="comment_currentPage",required=false,defaultValue="1") int comment_currentPage,
 			Model model) {

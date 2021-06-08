@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.team.mapper.HumorboardMapper"> 
+ 
+  <select id="selectCount" resultType="int">
+       select count(*) from humorboard 
+  </select>
+  
+  <select id="selectList" parameterType="java.util.HashMap" resultType="HumorboardDTO">
+        select * from humorboard order by board_ref desc,bidx asc limit #{startNo},#{noSize}
+  </select>
+    
+   <select id="selectTypeCount" resultType="int" parameterType="HumorboardList">
+        select count(*) from humorboard
+        <where>
+        	<choose>
+	        	<when test='searchType.equals("all")'> <!-- 제목+본문 탐색수행 -->
+	        		subject LIKE CONCAT('%',#{searchText},'%') OR content LIKE CONCAT('%',#{searchText},'%')
+	        	</when>
+	        	<otherwise>
+		        	${searchType} LIKE CONCAT('%',#{searchText},'%')
+	        	</otherwise>
+        	</choose>
+        </where>
+  </select> 
+  <select id="selectTypeList" parameterType="HumorboardList" resultType="HumorboardDTO">
+        select * from humorboard
+        <where>
+        	<choose>
+	        	<when test='searchText.equals("")'> <!-- 텍스트에 아무것도 적지 않았을 경우 -->
+	        		1=1
+	        	</when>
+	        	<when test='searchType.equals("all")'> <!-- 제목+본문 탐색수행 -->
+	        		subject LIKE CONCAT('%',#{searchText},'%') OR content LIKE CONCAT('%',#{searchText},'%')
+	        	</when>
+	        	<otherwise>
+	        		${searchType} LIKE CONCAT('%',#{searchText},'%')
+	        	</otherwise>
+        	</choose>
+        </where> 
+        <choose>
+        	<when test='searchType.equals("recommendedNumber")'>
+        		order by good desc,board_ref desc,bidx asc limit #{startNo},#{noSize}
+        	</when>
+        	<otherwise>
+        		order by board_ref desc,bidx asc limit #{startNo},#{noSize}
+        	</otherwise>
+        </choose>
+  </select>
+  <select id="selectBoard" parameterType="int" resultType="HumorboardDTO">
+  	select * from humorboard where bidx=#{_parameter}
+  </select>
+  <select id="selectGoodChecked" parameterType="java.util.Map" resultType="int">
+  	select count(*) from humorgood where bidx=#{bidx} and id=#{id}
+  </select>
+  <select id="selectGoodCount" parameterType="int" resultType="int">
+  	select count(*) from humorgood where bidx=#{_parameter}
+  </select>
+  <select id="selectBoardNextbidx" parameterType="int" resultType="int">
+  	select boardnextval(#{_parameter})
+  </select>
+  <!-- 프로시져 -->
+  <select id="callProcedure4sequence" parameterType="int">
+  	call create_Humorcommentsequence(#{_parameter})
+  </select>
+  
+  <insert id="insertBoard" parameterType="HumorboardDTO">
+  		insert into humorboard (bidx,id,name,subject,content,board_ref,board_hit,good,recentupdate) values
+  		(#{bidx},#{id},#{name},#{subject},#{content},#{board_ref},0,0,CURRENT_TIMESTAMP)
+  </insert>
+  <insert id="updateGoodup" parameterType="java.util.Map">
+  		insert into humorgood (bidx,id) values (#{bidx},#{id})
+  </insert>
+  <insert id="insertreplyBoard" parameterType="HumorboardDTO">
+  		insert into humorboard (bidx,id,name,subject,content,board_ref,board_hit,good,recentupdate) values
+  		 (#{bidx},#{id},#{name},#{subject},#{content},#{board_ref},0,0,CURRENT_TIMESTAMP)
+  </insert>
+  <delete id="updateGooddown" parameterType="java.util.Map">
+  		delete from humorgood where bidx=#{bidx} and id=#{id}
+  </delete>
+  <delete id="deleteBoard" parameterType="int">
+  		delete from humorboard where bidx=#{_parameter}
+  </delete>
+  <update id="incrementBoard" parameterType="int">
+  		update humorboard set board_hit=board_hit+1 where bidx=#{_parameter}
+  </update>
+  <update id="updateGooddownBoard" parameterType="int">
+  		update humorboard set good=good-1 where bidx=#{_parameter}
+  </update>
+  <update id="updateGoodupBoard" parameterType="int">
+  		update humorboard set good=good+1 where bidx=#{_parameter}
+  </update>
+  <update id="updateBoard" parameterType="HumorboardDTO">
+  		update humorboard set subject=#{subject} , content=#{content} , recentupdate=CURRENT_TIMESTAMP where bidx=#{bidx}
+  </update>
+</mapper>

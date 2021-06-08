@@ -16,7 +16,7 @@ public class ITcommentList {
 	private int endNo = 0;
 	private int startPage = 1;
 	private int endPage = 0;
-	public void initITcommentList(int totalCount, int currentPage) {
+	public void initcommentList(int totalCount, int currentPage) {
 		this.totalCount = totalCount;
 		this.currentPage = currentPage;
 		calculator();

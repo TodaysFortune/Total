@@ -62,6 +62,9 @@
   <select id="selectBoardNextbidx" parameterType="int" resultType="int">
   	select boardnextval(#{_parameter})
   </select>
+  <select id="selectMainList" parameterType="int" resultType="ITboardDTO">
+  	select * from itboard order by writedate desc limit 0,#{_parameter}
+  </select>
   <!-- 프로시져 -->
   <select id="callProcedure4sequence" parameterType="int">
   	call create_ITcommentsequence(#{_parameter})

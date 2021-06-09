@@ -132,6 +132,12 @@ public class boardServiceImpl implements boardService {
 		dao.callProcedure4sequence(next_bidx);
 	}
 
+	@Override
+	public List<ITboardDTO> selectMainList(int num) {
+		System.out.println("boardServiceImpl - selectMainList");
+		return dao.selectMainList(num);
+	}
+
 
 
 

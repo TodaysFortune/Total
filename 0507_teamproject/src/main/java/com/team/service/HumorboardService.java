@@ -26,4 +26,5 @@ public interface HumorboardService {
 	public void insertreplyBoard(HumorboardDTO boardDTO);
 	public int selectBoardNextbidx(int category);
 	public void callProcedure4sequence(int next_bidx);
+	public List<HumorboardDTO> selectMainList(int num);
 }

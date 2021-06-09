@@ -1,6 +1,7 @@
 package com.team.service;
 
 import java.util.HashMap;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.team.dao.totalboardDAO;
 import com.team.dto.HumorboardDTO;
 import com.team.dto.ITboardDTO;
+import com.team.dto.TotalboardDTO;
 
 @Service
 public class totalboardServiceImpl implements totalboardService{
@@ -62,5 +64,17 @@ public class totalboardServiceImpl implements totalboardService{
 	public void deleteITBoard(int bidx) {
 		System.out.println("totalboardServiceImpl-deleteITBoard");
 		dao.deleteITBoard(bidx);
+	}
+
+	@Override
+	public List<TotalboardDTO> selectNewList(int num) {
+		System.out.println("totalboardServiceImpl-selectNewList");
+		return dao.selectNewList(num);
+	}
+
+	@Override
+	public List<TotalboardDTO> selectGoodList(int num) {
+		System.out.println("totalboardServiceImpl-selectGoodList");
+		return dao.selectGoodList(num);
 	}
 }

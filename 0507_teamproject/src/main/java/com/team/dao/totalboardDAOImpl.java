@@ -1,6 +1,7 @@
 package com.team.dao;
 
 import java.util.HashMap;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.team.dto.HumorboardDTO;
 import com.team.dto.ITboardDTO;
+import com.team.dto.TotalboardDTO;
 
 @Repository
 public class totalboardDAOImpl implements totalboardDAO{
@@ -64,6 +66,18 @@ public class totalboardDAOImpl implements totalboardDAO{
 	public void deleteITBoard(int bidx) {
 		System.out.println("totalboardDAOImpl-deleteITBoard");
 		sqlSession.delete(Namespace+".deleteITBoard", bidx);
+	}
+
+	@Override
+	public List<TotalboardDTO> selectNewList(int num) {
+		System.out.println("totalboardDAOImpl-selectNewList");
+		return sqlSession.selectList(Namespace+".selectNewList",num);
+	}
+
+	@Override
+	public List<TotalboardDTO> selectGoodList(int num) {
+		System.out.println("totalboardDAOImpl-selectGoodList");
+		return sqlSession.selectList(Namespace+".selectGoodList",num);
 	}
 	
 }

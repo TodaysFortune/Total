@@ -26,4 +26,5 @@ public interface boardDAO {
 	public void insertreplyBoard(ITboardDTO boardDTO);
 	public int selectBoardNextbidx(int category);
 	public void callProcedure4sequence(int next_bidx);
+	public List<ITboardDTO> selectMainList(int num);
 }

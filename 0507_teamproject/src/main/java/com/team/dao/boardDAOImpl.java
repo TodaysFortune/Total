@@ -110,5 +110,10 @@ public class boardDAOImpl implements boardDAO {
 		System.out.println("boardDAOImpl - callProcedure4sequence");
 		sqlSession.selectOne(Namespace+".callProcedure4sequence", next_bidx);
 	}
+	@Override
+	public List<ITboardDTO> selectMainList(int num) {
+		System.out.println("boardDAOImpl - selectMainList");
+		return sqlSession.selectList(Namespace+".selectMainList",num);
+	}
 
 }

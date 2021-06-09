@@ -132,6 +132,12 @@ public class HumorboardServiceImpl implements HumorboardService {
 		dao.callProcedure4sequence(next_bidx);
 	}
 
+	@Override
+	public List<HumorboardDTO> selectMainList(int num) {
+		System.out.println("boardServiceImpl - selectMainList");
+		return dao.selectMainList(num);
+	}
+
 
 
 

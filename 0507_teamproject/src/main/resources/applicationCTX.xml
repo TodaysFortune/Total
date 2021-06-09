@@ -12,5 +12,6 @@
 	<bean id="HumorcommentDTO" class="com.team.dto.HumorcommentDTO"/>
 	<bean id="HumorcommentList" class="com.team.vo.HumorcommentList"/>
 	
-	<bean id="TotalboardList" class="com.team.vo.TotalboardList"/>
+	<bean id="TotalboardList1" class="com.team.vo.TotalboardList"/>
+	<bean id="TotalboardList2" class="com.team.vo.TotalboardList"/>
 </beans>

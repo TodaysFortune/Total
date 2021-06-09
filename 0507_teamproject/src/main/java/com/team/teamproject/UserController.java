@@ -27,15 +27,9 @@ import com.team.vo.UserinfoVO;
 @Controller
 public class UserController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
-	
 	@Inject
 	private userinfoService service;
 	
-	@RequestMapping(value= {"/","/main"})
-	public String main() {
-		return "main";
-	}
 	@RequestMapping(value= "/main/signin",method = RequestMethod.GET)
 	public String getSignin() {
 		System.out.println("controller - Signin-GET");

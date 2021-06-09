@@ -1,9 +1,11 @@
 package com.team.dao;
 
 import java.util.HashMap;
+import java.util.List;
 
 import com.team.dto.HumorboardDTO;
 import com.team.dto.ITboardDTO;
+import com.team.dto.TotalboardDTO;
 
 public interface totalboardDAO {
 
@@ -22,5 +24,9 @@ public interface totalboardDAO {
 	void deleteHumorBoard(int bidx);
 
 	void deleteITBoard(int bidx);
+
+	List<TotalboardDTO> selectNewList(int num);
+
+	List<TotalboardDTO> selectGoodList(int num);
 
 }

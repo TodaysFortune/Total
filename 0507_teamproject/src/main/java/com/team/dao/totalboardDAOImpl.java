@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.team.dto.HumorboardDTO;
 import com.team.dto.ITboardDTO;
 import com.team.dto.TotalboardDTO;
+import com.team.vo.TotalboardList;
 
 @Repository
 public class totalboardDAOImpl implements totalboardDAO{
@@ -78,6 +79,30 @@ public class totalboardDAOImpl implements totalboardDAO{
 	public List<TotalboardDTO> selectGoodList(int num) {
 		System.out.println("totalboardDAOImpl-selectGoodList");
 		return sqlSession.selectList(Namespace+".selectGoodList",num);
+	}
+
+	@Override
+	public void incrementItBoard(int bidx) {
+		System.out.println("totalboardDAOImpl-incrementItBoard");
+		sqlSession.update(Namespace+".incrementItBoard",bidx);
+	}
+
+	@Override
+	public void incrementHumorBoard(int bidx) {
+		System.out.println("totalboardDAOImpl-incrementHumorBoard");
+		sqlSession.update(Namespace+".incrementHumorBoard",bidx);
+	}
+
+	@Override
+	public int selectTypeCount(TotalboardList totalboardList) {
+		System.out.println("totalboardDAOImpl-selectTypeCount");
+		return sqlSession.selectOne(Namespace+".selectTypeCount",totalboardList);
+	}
+
+	@Override
+	public List<TotalboardDTO> selectTypeList(TotalboardList totalboardList) {
+		System.out.println("totalboardDAOImpl-selectTypeList");
+		return sqlSession.selectList(Namespace+".selectTypeList",totalboardList);
 	}
 	
 }

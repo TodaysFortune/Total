@@ -6,6 +6,7 @@ import java.util.List;
 import com.team.dto.HumorboardDTO;
 import com.team.dto.ITboardDTO;
 import com.team.dto.TotalboardDTO;
+import com.team.vo.TotalboardList;
 
 public interface totalboardService {
 
@@ -28,5 +29,13 @@ public interface totalboardService {
 	List<TotalboardDTO> selectNewList(int num);
 
 	List<TotalboardDTO> selectGoodList(int num);
+
+	void incrementItBoard(int bidx);
+
+	void incrementHumorBoard(int bidx);
+
+	int selectTypeCount(TotalboardList totalboardList);
+
+	List<TotalboardDTO> selectTypeList(TotalboardList totalboardList);
 
 }

@@ -131,6 +131,7 @@ public class HumorBoardController {
 		}
 		model.addAttribute("bidx", bidx);
 		boardservice.incrementBoard(bidx);
+		totalboardservice.incrementHumorBoard(bidx);
 		
 		return "redirect:../humorboard/contentView";
 	}

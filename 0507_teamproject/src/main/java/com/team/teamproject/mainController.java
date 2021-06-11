@@ -37,15 +37,10 @@ public class mainController {
 				
 		//15개씩 가져오기.
 		int num=15;
-		totalNewList.setList(totalboardservice.selectNewList(20));
-		totalGoodList.setList(totalboardservice.selectGoodList(20));
-		iTboardList.setList(iTboardservice.selectMainList(20));
-		humorboardList.setList(humorboardservice.selectMainList(20));
-		
-		System.out.println("totalNewList :"+totalNewList);
-		System.out.println("totalGoodList :"+totalGoodList);
-		System.out.println("iTboardList :"+iTboardList);
-		System.out.println("humorboardList :"+humorboardList);
+		totalNewList.setList(totalboardservice.selectNewList(num));
+		totalGoodList.setList(totalboardservice.selectGoodList(num));
+		iTboardList.setList(iTboardservice.selectMainList(num));
+		humorboardList.setList(humorboardservice.selectMainList(num));
 		
 		model.addAttribute("totalNewList", totalNewList);
 		model.addAttribute("totalGoodList", totalGoodList);
@@ -61,6 +56,46 @@ public class mainController {
 			@RequestParam(value="url",required=true) String url){
 		model.addAttribute("bidx", bidx);
 		return "redirect:"+url+"/contentView";
+	}
+	
+	@RequestMapping("main/totalBoard")
+	public String totalBoard(@RequestParam(value="itcurrentPage",required=false,defaultValue="1") int itcurrentPage,
+			@RequestParam(value="humorcurrentPage",required=false,defaultValue="1") int humorcurrentPage,
+			@RequestParam(value="totalcurrentPage",required=false,defaultValue="1") int totalcurrentPage,
+			HttpServletRequest request,Model model){
+			String searchType=request.getParameter("searchType");
+			String searchText=request.getParameter("searchText").trim();
+			
+			AbstractApplicationContext ctx = new GenericXmlApplicationContext("classpath:applicationCTX.xml");
+			ITboardList itboardList = ctx.getBean("ITboardList", ITboardList.class);
+			HumorboardList humorboardList = ctx.getBean("HumorboardList", HumorboardList.class);
+			TotalboardList totalboardList = ctx.getBean("TotalboardList1", TotalboardList.class);
+			
+			itboardList.setSearchText(searchText);
+			itboardList.setSearchType(searchType);
+			humorboardList.setSearchText(searchText);
+			humorboardList.setSearchType(searchType);
+			totalboardList.setSearchText(searchText);
+			totalboardList.setSearchType(searchType);
+			
+			int ittotalCount = iTboardservice.selectTypeCount(itboardList);
+			int humortotalCount = humorboardservice.selectTypeCount(humorboardList);
+			int totalCount = totalboardservice.selectTypeCount(totalboardList);
+			
+			itboardList.initboardList(ittotalCount,itcurrentPage);
+			humorboardList.initboardList(humortotalCount,humorcurrentPage);
+			totalboardList.initboardList(totalCount,totalcurrentPage);
+			
+			itboardList.setList(iTboardservice.selectTypeList(itboardList));
+			humorboardList.setList(humorboardservice.selectTypeList(humorboardList));
+			totalboardList.setList(totalboardservice.selectTypeList(totalboardList));
+			
+			model.addAttribute("itboardList", itboardList);
+			model.addAttribute("humorboardList", humorboardList);
+			model.addAttribute("totalboardList", totalboardList);
+			model.addAttribute("searchType",searchType);
+			model.addAttribute("searchText",searchText);
+			return "Totalboard";
 	}
 	
 }

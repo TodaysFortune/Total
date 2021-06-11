@@ -68,3 +68,7 @@
 .text_guide_hidden{
 	display: none;	
 }
+.subject{
+	text-decoration: none;
+	color:black;
+}

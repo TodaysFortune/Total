@@ -130,6 +130,7 @@ public class ITBoardController {
 		}
 		model.addAttribute("bidx", bidx);
 		boardservice.incrementBoard(bidx);
+		totalboardservice.incrementItBoard(bidx);
 		
 		return "redirect:../itboard/contentView";
 	}

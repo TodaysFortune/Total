@@ -37,8 +37,8 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">community</a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="main/itboard">It 시사</a>
-            <a class="dropdown-item" href="main/humorboard">유머</a>
+            <a class="dropdown-item" href="../itboard">It 시사</a>
+            <a class="dropdown-item" href="../humorboard">유머</a>
             <a class="dropdown-item" href="#">좋은글</a>
             <a class="dropdown-item" href="#">Java</a>
             <a class="dropdown-item" href="#">JavaScript</a>
@@ -56,29 +56,31 @@
       </ul>
       
       
-      <form class="d-flex">
+      <form class="d-flex" action="../../totalBoard" method="get">
 	         	<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-	  				<button type="button" class="btn btn-primary">Subject</button>
+	  				<input type="button" class="btn btn-primary" id="searchType_view" value="전체"/>
+	  				<input type="hidden" id="searchType" name="searchType" value="all"/>
 	  				<div class="btn-group" role="group">
 		    			<button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-		    			<div class="dropdown-menu" aria-labelledby="btnGroupDrop1" style="">
-			      			<a class="dropdown-item" href="#">제목</a>
-			      			<a class="dropdown-item" href="#">내용</a>
-			      			<a class="dropdown-item" href="#">작성자</a>
+		    			<div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+			      			<a class="dropdown-item" href="#" onclick="dropdown(this)" id="all">전체</a>
+			      			<a class="dropdown-item" href="#" onclick="dropdown(this)" id="subject">제목</a>
+			      			<a class="dropdown-item" href="#" onclick="dropdown(this)" id="content">내용</a>
+			      			<a class="dropdown-item" href="#" onclick="dropdown(this)" id="name">작성자</a>
 		    			</div>
 	  				</div>
 				</div>
-	       	 	<input class="form-control ms-sm-2 me-sm-2 board-search" type="text" placeholder="검색">
+	       	 	<input name="searchText" class="form-control ms-sm-2 me-sm-2 board-search" type="text" placeholder="검색">
     	   	 	<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
       </form>
       
       <div style="display:flex;">
 	      <div id="greet"></div>
 	      <form id="logoutForm"></form>
-	      <form method="get" action="main/login" id="userLogin">
+	      <form method="get" action="../login" id="userLogin">
 	      	<button type="submit" class="btn me-sm-1 rounded-pill btn-info">Login</button>
 	      </form>
-	      <form method="get" action="main/signin" id="userSign">
+	      <form method="get" action="../signin" id="userSign">
 	      	<button type="submit" class="btn rounded-pill btn-outline-info">Sign</button>
 	      </form>
       </div>

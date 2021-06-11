@@ -10,11 +10,43 @@
 	<select id="selectGoodList" parameterType="int" resultType="TotalboardDTO">
 		select * from totalboard order by good desc,writedate desc limit 0,#{_parameter}
 	</select>
+	<select id="selectTypeCount" resultType="int"
+		parameterType="TotalboardList">
+		select count(*) from totalboard
+		<where>
+			<choose>
+				<when test='searchType.equals("all")'> <!-- 제목+본문 탐색수행 -->
+					subject LIKE CONCAT('%',#{searchText},'%') OR content LIKE
+					CONCAT('%',#{searchText},'%')
+				</when>
+				<otherwise>
+					${searchType} LIKE CONCAT('%',#{searchText},'%')
+				</otherwise>
+			</choose>
+		</where>
+	</select>
+	<select id="selectTypeList" parameterType="TotalboardList" resultType="TotalboardDTO">
+        select * from totalboard
+        <where>
+        	<choose>
+	        	<when test='searchText.equals("")'> <!-- 텍스트에 아무것도 적지 않았을 경우 -->
+	        		1=1
+	        	</when>
+	        	<when test='searchType.equals("all")'> <!-- 제목+본문 탐색수행 -->
+	        		subject LIKE CONCAT('%',#{searchText},'%') OR content LIKE CONCAT('%',#{searchText},'%')
+	        	</when>
+	        	<otherwise>
+	        		${searchType} LIKE CONCAT('%',#{searchText},'%')
+	        	</otherwise>
+        	</choose>
+        </where> 
+        	order by writedate desc limit #{startNo},#{noSize}
+  </select> 
  	<insert id="inserthumorBoard" parameterType="HumorboardDTO">
- 		insert into totalboard (good,bidx,url,subject) values (0,#{bidx},#{categoryname},#{subject})
+ 		insert into totalboard (good,bidx,url,subject,name,content,board_hit) values (0,#{bidx},#{categoryname},#{subject},#{name},#{content},0)
  	</insert>
  	<insert id="insertitBoard" parameterType="ITboardDTO">
- 		insert into totalboard (good,bidx,url,subject) values (0,#{bidx},#{categoryname},#{subject})
+ 		insert into totalboard (good,bidx,url,subject,name,content,board_hit) values (0,#{bidx},#{categoryname},#{subject},#{name},#{content},0)
  	</insert>
     <update id="updateHumorBoardGood" parameterType="java.util.HashMap">
     	update totalboard set good=#{good} where url='humorboard' and bidx=#{bidx}
@@ -23,10 +55,16 @@
     	update totalboard set good=#{good} where url='itboard' and bidx=#{bidx}
     </update>
     <update id="updateHumorBoard" parameterType="HumorboardDTO">
-    	update totalboard set subject=#{subject} where url=#{categoryname} and bidx=#{bidx}
+    	update totalboard set subject=#{subject},content=#{content} where url=#{categoryname} and bidx=#{bidx}
     </update>
     <update id="updateITBoard" parameterType="ITboardDTO">
-    	update totalboard set subject=#{subject} where url=#{categoryname} and bidx=#{bidx}
+    	update totalboard set subject=#{subject},content=#{content} where url=#{categoryname} and bidx=#{bidx}
+    </update>
+    <update id="incrementItBoard" parameterType="int">
+    	update totalboard set board_hit=board_hit+1 where url='itboard' and bidx=#{_parameter}
+    </update>
+    <update id="incrementHumorBoard" parameterType="int">
+    	update totalboard set board_hit=board_hit+1 where url='humorboard' and bidx=#{_parameter}
     </update>
     <delete id="deleteHumorBoard" parameterType="int">
     	delete from totalboard where url='humorboard' and bidx=#{_parameter}

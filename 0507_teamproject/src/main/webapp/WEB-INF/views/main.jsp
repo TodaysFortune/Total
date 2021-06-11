@@ -59,19 +59,21 @@
       </ul>
       
       
-      <form class="d-flex">
+      <form class="d-flex" action="main/totalBoard" method="get">
 	         	<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-	  				<button type="button" class="btn btn-primary" id="searchType">subject</button>
+	  				<input type="button" class="btn btn-primary" id="searchType_view" value="전체"/>
+	  				<input type="hidden" id="searchType" name="searchType" value="all"/>
 	  				<div class="btn-group" role="group">
 		    			<button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-		    			<div class="dropdown-menu" aria-labelledby="btnGroupDrop1" style="">
-			      			<a class="dropdown-item" href="#" onclick="dropdown(this)">제목</a>
-			      			<a class="dropdown-item" href="#" onclick="dropdown(this)">내용</a>
-			      			<a class="dropdown-item" href="#" onclick="dropdown(this)">작성자</a>
+		    			<div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+			      			<a class="dropdown-item" href="#" onclick="dropdown(this)" id="all">전체</a>
+			      			<a class="dropdown-item" href="#" onclick="dropdown(this)" id="subject">제목</a>
+			      			<a class="dropdown-item" href="#" onclick="dropdown(this)" id="content">내용</a>
+			      			<a class="dropdown-item" href="#" onclick="dropdown(this)" id="name">작성자</a>
 		    			</div>
 	  				</div>
 				</div>
-	       	 	<input class="form-control ms-sm-2 me-sm-2 board-search" type="text" placeholder="검색">
+	       	 	<input name="searchText" class="form-control ms-sm-2 me-sm-2 board-search" type="text" placeholder="검색">
     	   	 	<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
       </form>
       
@@ -295,10 +297,6 @@
  <!--//중단-->
  <div style="height:30px;">
  </div>
-<script>
-function dropdown(obj){
-	document.getElementById("searchType").textContent=obj.textContent;
-}
-</script>
+ <script type="text/javascript" src="js/common.js"></script>
 </body>
 </html>

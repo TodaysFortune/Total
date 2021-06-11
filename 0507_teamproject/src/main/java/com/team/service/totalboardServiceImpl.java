@@ -11,6 +11,7 @@ import com.team.dao.totalboardDAO;
 import com.team.dto.HumorboardDTO;
 import com.team.dto.ITboardDTO;
 import com.team.dto.TotalboardDTO;
+import com.team.vo.TotalboardList;
 
 @Service
 public class totalboardServiceImpl implements totalboardService{
@@ -76,5 +77,29 @@ public class totalboardServiceImpl implements totalboardService{
 	public List<TotalboardDTO> selectGoodList(int num) {
 		System.out.println("totalboardServiceImpl-selectGoodList");
 		return dao.selectGoodList(num);
+	}
+
+	@Override
+	public void incrementItBoard(int bidx) {
+		System.out.println("totalboardServiceImpl-incrementItBoard");
+		dao.incrementItBoard(bidx);
+	}
+
+	@Override
+	public void incrementHumorBoard(int bidx) {
+		System.out.println("totalboardServiceImpl-incrementHumorBoard");
+		dao.incrementHumorBoard(bidx);
+	}
+
+	@Override
+	public int selectTypeCount(TotalboardList totalboardList) {
+		System.out.println("totalboardServiceImpl-selectTypeCount");
+		return dao.selectTypeCount(totalboardList);
+	}
+
+	@Override
+	public List<TotalboardDTO> selectTypeList(TotalboardList totalboardList) {
+		System.out.println("totalboardServiceImpl-selectTypeList");
+		return dao.selectTypeList(totalboardList);
 	}
 }

@@ -16,6 +16,7 @@
             <typeAlias type="com.team.dto.HumorcommentDTO" alias="HumorcommentDTO"/>
             
             <typeAlias type="com.team.dto.TotalboardDTO" alias="TotalboardDTO"/>
+            <typeAlias type="com.team.vo.TotalboardList" alias="TotalboardList"/>
         </typeAliases>
         
     </configuration>

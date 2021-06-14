@@ -29,26 +29,11 @@
 
     <div class="collapse navbar-collapse" style="justify-content: space-between">
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" href="#">Luck</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Notice</a>
-        </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">community</a>
           <div class="dropdown-menu">
             <a class="dropdown-item" href="itboard">It 시사</a>
             <a class="dropdown-item" href="humorboard">유머</a>
-            <a class="dropdown-item" href="#">좋은글</a>
-            <a class="dropdown-item" href="#">Java</a>
-            <a class="dropdown-item" href="#">JavaScript</a>
-            <a class="dropdown-item" href="#">JSP</a>
-            <a class="dropdown-item" href="#">Node.js</a>
-            <a class="dropdown-item" href="#">React</a>
-            <a class="dropdown-item" href="#">Vue.js</a>
-            <a class="dropdown-item" href="#">angular.js</a>
-            <a class="dropdown-item" href="#">Spring</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="https://opentutorials.org/course/1">생활코딩</a>
           </div>
@@ -101,7 +86,7 @@
                 <input type="text" style="min-width: 20rem;"
                 class="form-control empty_confirm_Check" name="id" id="Input_id" placeholder=" "/>
                 <label for="Input_id" class="signin-font-color">아이디</label>
-                <input type="button" class="btn btn-lg btn-primary ms-3" value="중복확인" onclick="Isunique('id')"/>
+                <input type="button" class="btn btn-lg btn-primary ms-3" value="중복확인" onclick="Isunique('id',this)"/>
                 <div id="id_guide" class="text_guide_hidden"></div>
             </div>
             <div class="form-floating mb-3">								    								<!--password-->
@@ -123,7 +108,7 @@
                 <input type="text" style="min-width:20rem;"
                 	class="form-control empty_confirm_Check" name="name" id="Input_name" placeholder=" "/>
                 <label for="Input_name" class="signin-font-color">이름</label>
-                <input type="button" class="btn btn-lg btn-primary ms-3" value="중복확인" onclick="Isunique('name')"/>
+                <input type="button" class="btn btn-lg btn-primary ms-3" value="중복확인" onclick="Isunique('name',this)"/>
                 <div id="name_guide" class="text_guide_hidden"></div>
             </div>
             <div style="display:flex; justify-content: flex-start;"
@@ -162,7 +147,7 @@
       <div class="email_modal_text_parent">
       	<div class="email_modal_text">만료시간 </div><div style="color:red; margin-left:1rem;" id="email_time">03:00</div>
       </div>
-      <input id="email_modal_keyText" type="text" placeholder="인증번호 8자리를 입력해주세요"/>
+      	<input id="email_modal_keyText" type="text" placeholder="인증번호 8자리를 입력해주세요"/>
       <div class="email_modal_buttons_parent">
 	      <button class="email_modal_button email_modal_button_ok" id="email_modal_ok" onclick="emailAuth('email')">확인</button>
 	      <button class="email_modal_button email_modal_button_cancel" id="email_modal_close">취소</button>
@@ -170,7 +155,9 @@
     </div>
   </div>
 	<!-- //modal -->
-    
+   <div style="height:30px;">
+   &nbsp;
+   </div>
  <!-- //중단 -->
  <script type="text/javascript" src="js/signin.js"></script>
   <script type="text/javascript" src="js/common.js"></script>

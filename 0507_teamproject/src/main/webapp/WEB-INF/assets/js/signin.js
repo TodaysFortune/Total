@@ -150,6 +150,7 @@ function Isunique(obj){
 			item_guide=document.getElementById(obj+"_guide");
 			item_guide.textContent="사용가능한 "+obj+" 입니다.";
 			item_guide.className='text_guide_success';
+			item.readOnly=true;//readonly 활성화 
 		}
 }
 function ajax_communication(obj,link){

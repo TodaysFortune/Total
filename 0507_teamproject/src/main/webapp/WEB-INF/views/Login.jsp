@@ -31,26 +31,11 @@
 
     <div class="collapse navbar-collapse" style="justify-content: space-between">
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" href="#">Luck</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Notice</a>
-        </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">community</a>
           <div class="dropdown-menu">
             <a class="dropdown-item" href="itboard">It 시사</a>
             <a class="dropdown-item" href="humorboard">유머</a>
-            <a class="dropdown-item" href="#">좋은글</a>
-            <a class="dropdown-item" href="#">Java</a>
-            <a class="dropdown-item" href="#">JavaScript</a>
-            <a class="dropdown-item" href="#">JSP</a>
-            <a class="dropdown-item" href="#">Node.js</a>
-            <a class="dropdown-item" href="#">React</a>
-            <a class="dropdown-item" href="#">Vue.js</a>
-            <a class="dropdown-item" href="#">angular.js</a>
-            <a class="dropdown-item" href="#">Spring</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="https://opentutorials.org/course/1">생활코딩</a>
           </div>
@@ -94,7 +79,7 @@
 <!-- //상단 -->
 
 <div class="IdinputAndPwinputbox" style="margin-top:1rem;">
-	<h1>오늘의 운세는?</h1>
+	<h1 style="color:#3459e6; font-weight:bold;">LOGIN</h1>
 	<hr class="one">
 	
 	
@@ -119,11 +104,6 @@
 		        	<input class="form-check-input" type="checkbox" name="checkbox" id="flexCheckChecked">
 		        	<label class="form-check-label" for="flexCheckChecked">자동로그인</label>
 		    	</div>
-				<ul class="IdsearchAndPwsearch">
-		        	<a href="#">아이디찾기 </a>
-		        		<div>&nbsp;|&nbsp; </div>
-		        	<a href="#"> 비밀번호찾기</a>
-		        </ul>
 		    </div>
 		 </div>
      	<div class="d-grid gap-2 Btnoption1">

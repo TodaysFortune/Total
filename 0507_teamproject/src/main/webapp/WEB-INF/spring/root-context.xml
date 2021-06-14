@@ -40,7 +40,7 @@
 		<property name="host" value="smtp.gmail.com" />
 		<property name="port" value="587" /><!-- 465 or 25 -->
 		<property name="username" value="fortuneCookiewebsite@gmail.com" />
-		<property name="password" value="sdfjnlsajfn2ljf" />
+		<property name="password" value="비밀번호" />
 		<property name="defaultEncoding" value="utf-8" />
 		<property name="javaMailProperties">
 			<props>

@@ -36,7 +36,7 @@ public class mainController {
 		HumorboardList humorboardList=ctx.getBean("HumorboardList",HumorboardList.class);
 				
 		//15개씩 가져오기.
-		int num=15;
+		int num=10;
 		totalNewList.setList(totalboardservice.selectNewList(num));
 		totalGoodList.setList(totalboardservice.selectGoodList(num));
 		iTboardList.setList(iTboardservice.selectMainList(num));

@@ -31,26 +31,11 @@
 
     <div class="collapse navbar-collapse" style="justify-content: space-between">
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" href="#">Luck</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Notice</a>
-        </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">community</a>
           <div class="dropdown-menu">
             <a class="dropdown-item" href="../../itboard">It 시사</a>
             <a class="dropdown-item" href="../../humorboard">유머</a>
-            <a class="dropdown-item" href="#">좋은글</a>
-            <a class="dropdown-item" href="#">Java</a>
-            <a class="dropdown-item" href="#">JavaScript</a>
-            <a class="dropdown-item" href="#">JSP</a>
-            <a class="dropdown-item" href="#">Node.js</a>
-            <a class="dropdown-item" href="#">React</a>
-            <a class="dropdown-item" href="#">Vue.js</a>
-            <a class="dropdown-item" href="#">angular.js</a>
-            <a class="dropdown-item" href="#">Spring</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="https://opentutorials.org/course/1">생활코딩</a>
           </div>

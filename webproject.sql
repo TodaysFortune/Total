@@ -14,6 +14,8 @@ DROP TABLE IF EXISTS ITboard;
 DROP TABLE IF EXISTS userinfo;
 
 
+SELECT * FROM itcomment;
+
 SELECT * FROM userinfo;
 
 #ALTER TABLE userinfo MODIFY NAME VARCHAR(30);

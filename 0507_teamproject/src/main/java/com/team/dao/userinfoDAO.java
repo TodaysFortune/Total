@@ -9,4 +9,5 @@ public interface userinfoDAO {
 	public int selectIdCount(String data4Check);
 	public int selectNameCount(String data4Check);
 	public int selectEmailCount(String usermail);
+	public UserinfoVO getUserById(String username);
 }

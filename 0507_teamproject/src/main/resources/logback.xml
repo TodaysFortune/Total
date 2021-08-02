@@ -1,13 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <configuration>
-    <include resource="org/springframework/boot/logging/logback/base.xml"/>
-    
-    <!-- log4jdbc-log4j2 -->
-    <logger name="jdbc.sqlonly"     level="DEBUG" />
-    <logger name="jdbc.sqltiming"     level="INFO" />
-    <logger name="jdbc.audit"         level="WARN" />
-    <logger name="jdbc.resultset"     level="ERROR" />
-    <logger name="jdbc.resultsettable" level="ERROR" />
-    <logger name="jdbc.connection"     level="INFO" />
- 
+
+	<!-- Appenders -->
+	<!-- console LOG -->
+	<appender name="consoleAppender"
+		class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<charset>UTF-8</charset>
+			<!-- 로그 메시지 패턴 -->
+			<Pattern>
+				%d{HH:mm:ss.SSS} [%thread] %-5level %logger{5} - %msg%n
+			</Pattern>
+		</encoder>
+	</appender>
+
+	<!-- File LOG -->
+	<appender name="fileAppender"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>c:\GITbash\Total\0507_teamproject\log\logexample.log</file>
+		<encoder
+			class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<Pattern>
+				%d{HH:mm:ss.SSS} [%thread] %-5level %logger{5} - %msg%n
+			</Pattern>
+		</encoder>
+
+		<!-- 로그를 남기는 파일의 용량이 50KB가 넘으면 이를 압축 파일로 만들고 새로 로그 파일로 만들라는 정책 -->
+		<triggeringPolicy
+			class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<MaxFileSize>50KB</MaxFileSize>
+		</triggeringPolicy>
+		<!-- 파일을 덮어쓰는 정책 -->
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+			<FileNamePattern>c:\GITbash\Total\0507_teamproject\log\logexample.%i.log.zip
+			</FileNamePattern>
+			<!-- MinIndex가 1이고, MaxIndex가 10이므로, 위의 파일 이름 패턴에 따라 아래의 로그 파일이 생길 것이다. 
+				logexample2.1.log.zip logexample2.2.log.zip .... logexample2.10.log.zip 이 
+				상태에서 또 50KB가 넘으면 logexample2.1.log.zip이 된다. -->
+			<MinIndex>1</MinIndex>
+			<MaxIndex>10</MaxIndex>
+		</rollingPolicy>
+	</appender>
+
+
+	<!-- 3rdparty Loggers -->
+<!-- 	<logger name="org.springframework.core">
+		<level value="info" />
+	</logger>
+
+	<logger name="org.springframework.beans">
+		<level value="info" />
+	</logger>
+
+	<logger name="org.springframework.context">
+		<level value="info" />
+	</logger>
+
+	<logger name="org.springframework.web">
+		<level value="info" />
+	</logger> -->
+	
+	
+	<!--com.team.teamproject 아래 패키지 로그들만 consoleAppender, fileAppender 방법으로 
+		로그를 남긴다. 물론 <appender-ref ref="consoleAppender" />를 추가하여 콘솔로도 로그를 남길 수 있다. -->
+	<!-- additivity ,  true 이면 , 모든 상위로거들의 설정값을 상속받아 설정값이 덮어쓰기됨
+		 false이면 ,  해당 로거는 상위 로거의 설정내용을 상속받지 않습니다.
+	-->
+	<logger name="com.team" level="debug"
+		additivity="false">
+		<appender-ref ref="consoleAppender" />
+		<!-- <appender-ref ref="fileAppender"/> -->
+	</logger>
+
+	<!-- root는 글로벌 로거를 의미하며, 위의 logger에 해당하지 않으면 root 로거가 실행된다. -->
+	<root level="warn">
+		<appender-ref ref="consoleAppender" />
+	</root>
+
 </configuration>

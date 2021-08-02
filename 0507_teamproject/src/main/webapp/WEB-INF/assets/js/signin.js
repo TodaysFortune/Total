@@ -90,9 +90,12 @@ email_overlay.addEventListener('click', email_closeModal);
  	 var jsonData={
  		 usermail: item.value
  	 }
- 	 var signal=ajax_communication(jsonData,'signin/createEmailKey');
+ 	 var signal=ajax_communication(jsonData,'/signin/createEmailKey');//절대경로
  	 if(signal==0){
  		alert('중복된이메일입니다!'); 
+ 		item.value="";
+ 		return;
+ 	 }else if(signal==-1){
  		item.value="";
  		return;
  	 }
@@ -135,7 +138,7 @@ function Isunique(obj){
 			data4Check: item.value,
 			dataType: obj
 		}
-		var signal=ajax_communication(jsonData,'data_confirm');
+		var signal=ajax_communication(jsonData,'/data_confirm'); //절대경로
 		if(signal==0){
 			modal_item.textContent="이미 존재하는 "+obj+" 입니다.";
 			modal_button.setAttribute('style','background-color:#F78B8B;color:black;');
@@ -166,7 +169,8 @@ function ajax_communication(obj,link){
        	 success_data = data.name;
         },
         error: function(){
-            alert("communication-err");
+        	success_data=-1;
+            alert("없는 이메일 주소입니다");
         }
     });
     return success_data;

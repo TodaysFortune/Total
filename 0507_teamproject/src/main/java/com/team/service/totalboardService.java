@@ -3,6 +3,10 @@ package com.team.service;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.ui.Model;
+
 import com.team.dto.HumorboardDTO;
 import com.team.dto.ITboardDTO;
 import com.team.dto.TotalboardDTO;
@@ -37,5 +41,12 @@ public interface totalboardService {
 	int selectTypeCount(TotalboardList totalboardList);
 
 	List<TotalboardDTO> selectTypeList(TotalboardList totalboardList);
+
+	void welcome(Model model);
+
+	void connectBoard(Model model, int bidx);
+
+	void totalBoard(int itcurrentPage, int humorcurrentPage, int totalcurrentPage, HttpServletRequest request,
+			Model model);
 
 }

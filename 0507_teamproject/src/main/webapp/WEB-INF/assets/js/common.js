@@ -1,5 +1,5 @@
 function loginCheck(userID){
-	if(userID.trim().length==0){
+	if(userID=='anonymousUser'){
 		alert("로그인을 먼저 해주세요.");
 		return false;
 	}else{

@@ -25,4 +25,15 @@
   <select id="selectEmailCount" parameterType="String" resultType="int">
   		select count(*) from userinfo where email=#{_parameter}
   </select>
+  
+  <select id="selectUserById" parameterType="String" resultType="com.team.vo.UserinfoVO">
+        <![CDATA[
+            SELECT
+                *
+            FROM
+                userinfo
+            WHERE
+                id=#{_parameter}
+        ]]>
+    </select>
 </mapper>

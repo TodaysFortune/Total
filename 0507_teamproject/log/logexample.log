@@ -1,0 +1,358 @@
+20:33:13.414 [http-nio-8090-exec-1] DEBUG c.t.t.mainController - welcome
+20:33:13.419 [http-nio-8090-exec-1] DEBUG c.t.s.totalboardServiceImpl - welcome
+20:33:13.442 [http-nio-8090-exec-1] DEBUG c.t.s.totalboardServiceImpl - selectNewList
+20:33:13.442 [http-nio-8090-exec-1] DEBUG c.t.d.totalboardDAOImpl - selectNewList
+20:33:13.804 [http-nio-8090-exec-1] DEBUG c.t.m.t.selectNewList - ==>  Preparing: select * from totalboard order by writedate desc limit 0,? 
+20:33:13.828 [http-nio-8090-exec-1] DEBUG c.t.m.t.selectNewList - ==> Parameters: 10(Integer)
+20:33:13.855 [http-nio-8090-exec-1] DEBUG c.t.m.t.selectNewList - <==      Total: 10
+20:33:13.862 [http-nio-8090-exec-1] DEBUG c.t.s.totalboardServiceImpl - selectGoodList
+20:33:13.862 [http-nio-8090-exec-1] DEBUG c.t.d.totalboardDAOImpl - selectGoodList
+20:33:13.866 [http-nio-8090-exec-1] DEBUG c.t.m.t.selectGoodList - ==>  Preparing: select * from totalboard order by good desc,writedate desc limit 0,? 
+20:33:13.866 [http-nio-8090-exec-1] DEBUG c.t.m.t.selectGoodList - ==> Parameters: 10(Integer)
+20:33:13.872 [http-nio-8090-exec-1] DEBUG c.t.m.t.selectGoodList - <==      Total: 10
+20:33:13.872 [http-nio-8090-exec-1] DEBUG c.t.s.boardServiceImpl - selectMainList
+20:33:13.872 [http-nio-8090-exec-1] DEBUG c.t.d.boardDAOImpl - selectMainList
+20:33:13.876 [http-nio-8090-exec-1] DEBUG c.t.m.b.selectMainList - ==>  Preparing: select * from itboard order by writedate desc limit 0,? 
+20:33:13.876 [http-nio-8090-exec-1] DEBUG c.t.m.b.selectMainList - ==> Parameters: 10(Integer)
+20:33:13.881 [http-nio-8090-exec-1] DEBUG c.t.m.b.selectMainList - <==      Total: 10
+20:33:13.882 [http-nio-8090-exec-1] DEBUG c.t.s.HumorboardServiceImpl - selectMainList
+20:33:13.882 [http-nio-8090-exec-1] DEBUG c.t.d.HumorboardDAOImpl - selectMainList
+20:33:13.887 [http-nio-8090-exec-1] DEBUG c.t.m.H.selectMainList - ==>  Preparing: select * from humorboard order by writedate desc limit 0,? 
+20:33:13.888 [http-nio-8090-exec-1] DEBUG c.t.m.H.selectMainList - ==> Parameters: 10(Integer)
+20:33:13.891 [http-nio-8090-exec-1] DEBUG c.t.m.H.selectMainList - <==      Total: 10
+20:33:14.666 [http-nio-8090-exec-2] DEBUG c.t.t.mainController - welcome
+20:33:14.667 [http-nio-8090-exec-2] DEBUG c.t.s.totalboardServiceImpl - welcome
+20:33:14.696 [http-nio-8090-exec-2] DEBUG c.t.s.totalboardServiceImpl - selectNewList
+20:33:14.697 [http-nio-8090-exec-2] DEBUG c.t.d.totalboardDAOImpl - selectNewList
+20:33:14.705 [http-nio-8090-exec-2] DEBUG c.t.m.t.selectNewList - ==>  Preparing: select * from totalboard order by writedate desc limit 0,? 
+20:33:14.706 [http-nio-8090-exec-2] DEBUG c.t.m.t.selectNewList - ==> Parameters: 10(Integer)
+20:33:14.711 [http-nio-8090-exec-2] DEBUG c.t.m.t.selectNewList - <==      Total: 10
+20:33:14.712 [http-nio-8090-exec-2] DEBUG c.t.s.totalboardServiceImpl - selectGoodList
+20:33:14.712 [http-nio-8090-exec-2] DEBUG c.t.d.totalboardDAOImpl - selectGoodList
+20:33:14.720 [http-nio-8090-exec-2] DEBUG c.t.m.t.selectGoodList - ==>  Preparing: select * from totalboard order by good desc,writedate desc limit 0,? 
+20:33:14.721 [http-nio-8090-exec-2] DEBUG c.t.m.t.selectGoodList - ==> Parameters: 10(Integer)
+20:33:14.726 [http-nio-8090-exec-2] DEBUG c.t.m.t.selectGoodList - <==      Total: 10
+20:33:14.727 [http-nio-8090-exec-2] DEBUG c.t.s.boardServiceImpl - selectMainList
+20:33:14.727 [http-nio-8090-exec-2] DEBUG c.t.d.boardDAOImpl - selectMainList
+20:33:14.733 [http-nio-8090-exec-2] DEBUG c.t.m.b.selectMainList - ==>  Preparing: select * from itboard order by writedate desc limit 0,? 
+20:33:14.734 [http-nio-8090-exec-2] DEBUG c.t.m.b.selectMainList - ==> Parameters: 10(Integer)
+20:33:14.745 [http-nio-8090-exec-2] DEBUG c.t.m.b.selectMainList - <==      Total: 10
+20:33:14.746 [http-nio-8090-exec-2] DEBUG c.t.s.HumorboardServiceImpl - selectMainList
+20:33:14.746 [http-nio-8090-exec-2] DEBUG c.t.d.HumorboardDAOImpl - selectMainList
+20:33:14.752 [http-nio-8090-exec-2] DEBUG c.t.m.H.selectMainList - ==>  Preparing: select * from humorboard order by writedate desc limit 0,? 
+20:33:14.753 [http-nio-8090-exec-2] DEBUG c.t.m.H.selectMainList - ==> Parameters: 10(Integer)
+20:33:14.760 [http-nio-8090-exec-2] DEBUG c.t.m.H.selectMainList - <==      Total: 10
+20:33:18.888 [http-nio-8090-exec-3] DEBUG c.t.t.UserController - getLogin
+20:33:22.483 [http-nio-8090-exec-4] DEBUG c.t.s.userinfoServiceImpl - loadUserByUsername
+20:33:22.483 [http-nio-8090-exec-4] DEBUG c.t.d.userinfoDAOImpl - getUserById
+20:33:22.488 [http-nio-8090-exec-4] DEBUG c.t.m.m.selectUserById - ==>  Preparing: SELECT * FROM userinfo WHERE id=? 
+20:33:22.489 [http-nio-8090-exec-4] DEBUG c.t.m.m.selectUserById - ==> Parameters: abcdefg619(String)
+20:33:22.492 [http-nio-8090-exec-4] DEBUG c.t.m.m.selectUserById - <==      Total: 1
+20:33:22.495 [http-nio-8090-exec-4] DEBUG c.t.t.ITBoardController - registerIdCookie
+20:33:22.505 [http-nio-8090-exec-5] DEBUG c.t.t.mainController - welcome
+20:33:22.505 [http-nio-8090-exec-5] DEBUG c.t.s.totalboardServiceImpl - welcome
+20:33:22.526 [http-nio-8090-exec-5] DEBUG c.t.s.totalboardServiceImpl - selectNewList
+20:33:22.526 [http-nio-8090-exec-5] DEBUG c.t.d.totalboardDAOImpl - selectNewList
+20:33:22.530 [http-nio-8090-exec-5] DEBUG c.t.m.t.selectNewList - ==>  Preparing: select * from totalboard order by writedate desc limit 0,? 
+20:33:22.531 [http-nio-8090-exec-5] DEBUG c.t.m.t.selectNewList - ==> Parameters: 10(Integer)
+20:33:22.534 [http-nio-8090-exec-5] DEBUG c.t.m.t.selectNewList - <==      Total: 10
+20:33:22.535 [http-nio-8090-exec-5] DEBUG c.t.s.totalboardServiceImpl - selectGoodList
+20:33:22.535 [http-nio-8090-exec-5] DEBUG c.t.d.totalboardDAOImpl - selectGoodList
+20:33:22.540 [http-nio-8090-exec-5] DEBUG c.t.m.t.selectGoodList - ==>  Preparing: select * from totalboard order by good desc,writedate desc limit 0,? 
+20:33:22.541 [http-nio-8090-exec-5] DEBUG c.t.m.t.selectGoodList - ==> Parameters: 10(Integer)
+20:33:22.543 [http-nio-8090-exec-5] DEBUG c.t.m.t.selectGoodList - <==      Total: 10
+20:33:22.543 [http-nio-8090-exec-5] DEBUG c.t.s.boardServiceImpl - selectMainList
+20:33:22.544 [http-nio-8090-exec-5] DEBUG c.t.d.boardDAOImpl - selectMainList
+20:33:22.549 [http-nio-8090-exec-5] DEBUG c.t.m.b.selectMainList - ==>  Preparing: select * from itboard order by writedate desc limit 0,? 
+20:33:22.550 [http-nio-8090-exec-5] DEBUG c.t.m.b.selectMainList - ==> Parameters: 10(Integer)
+20:33:22.553 [http-nio-8090-exec-5] DEBUG c.t.m.b.selectMainList - <==      Total: 10
+20:33:22.553 [http-nio-8090-exec-5] DEBUG c.t.s.HumorboardServiceImpl - selectMainList
+20:33:22.553 [http-nio-8090-exec-5] DEBUG c.t.d.HumorboardDAOImpl - selectMainList
+20:33:22.557 [http-nio-8090-exec-5] DEBUG c.t.m.H.selectMainList - ==>  Preparing: select * from humorboard order by writedate desc limit 0,? 
+20:33:22.557 [http-nio-8090-exec-5] DEBUG c.t.m.H.selectMainList - ==> Parameters: 10(Integer)
+20:33:22.559 [http-nio-8090-exec-5] DEBUG c.t.m.H.selectMainList - <==      Total: 10
+20:34:06.896 [http-nio-8090-exec-10] DEBUG c.t.t.mainController - welcome
+20:34:06.896 [http-nio-8090-exec-10] DEBUG c.t.s.totalboardServiceImpl - welcome
+20:34:06.946 [http-nio-8090-exec-10] DEBUG c.t.s.totalboardServiceImpl - selectNewList
+20:34:06.946 [http-nio-8090-exec-10] DEBUG c.t.d.totalboardDAOImpl - selectNewList
+20:34:06.950 [http-nio-8090-exec-10] DEBUG c.t.m.t.selectNewList - ==>  Preparing: select * from totalboard order by writedate desc limit 0,? 
+20:34:06.950 [http-nio-8090-exec-10] DEBUG c.t.m.t.selectNewList - ==> Parameters: 10(Integer)
+20:34:06.953 [http-nio-8090-exec-10] DEBUG c.t.m.t.selectNewList - <==      Total: 10
+20:34:06.954 [http-nio-8090-exec-10] DEBUG c.t.s.totalboardServiceImpl - selectGoodList
+20:34:06.954 [http-nio-8090-exec-10] DEBUG c.t.d.totalboardDAOImpl - selectGoodList
+20:34:06.958 [http-nio-8090-exec-10] DEBUG c.t.m.t.selectGoodList - ==>  Preparing: select * from totalboard order by good desc,writedate desc limit 0,? 
+20:34:06.958 [http-nio-8090-exec-10] DEBUG c.t.m.t.selectGoodList - ==> Parameters: 10(Integer)
+20:34:06.961 [http-nio-8090-exec-10] DEBUG c.t.m.t.selectGoodList - <==      Total: 10
+20:34:06.962 [http-nio-8090-exec-10] DEBUG c.t.s.boardServiceImpl - selectMainList
+20:34:06.962 [http-nio-8090-exec-10] DEBUG c.t.d.boardDAOImpl - selectMainList
+20:34:06.966 [http-nio-8090-exec-10] DEBUG c.t.m.b.selectMainList - ==>  Preparing: select * from itboard order by writedate desc limit 0,? 
+20:34:06.967 [http-nio-8090-exec-10] DEBUG c.t.m.b.selectMainList - ==> Parameters: 10(Integer)
+20:34:06.970 [http-nio-8090-exec-10] DEBUG c.t.m.b.selectMainList - <==      Total: 10
+20:34:06.971 [http-nio-8090-exec-10] DEBUG c.t.s.HumorboardServiceImpl - selectMainList
+20:34:06.971 [http-nio-8090-exec-10] DEBUG c.t.d.HumorboardDAOImpl - selectMainList
+20:34:06.975 [http-nio-8090-exec-10] DEBUG c.t.m.H.selectMainList - ==>  Preparing: select * from humorboard order by writedate desc limit 0,? 
+20:34:06.976 [http-nio-8090-exec-10] DEBUG c.t.m.H.selectMainList - ==> Parameters: 10(Integer)
+20:34:06.979 [http-nio-8090-exec-10] DEBUG c.t.m.H.selectMainList - <==      Total: 10
+20:34:22.216 [http-nio-8090-exec-3] DEBUG c.t.t.UserController - getLogin
+20:34:23.509 [http-nio-8090-exec-4] DEBUG c.t.t.mainController - welcome
+20:34:23.509 [http-nio-8090-exec-4] DEBUG c.t.s.totalboardServiceImpl - welcome
+20:34:23.537 [http-nio-8090-exec-4] DEBUG c.t.s.totalboardServiceImpl - selectNewList
+20:34:23.538 [http-nio-8090-exec-4] DEBUG c.t.d.totalboardDAOImpl - selectNewList
+20:34:23.543 [http-nio-8090-exec-4] DEBUG c.t.m.t.selectNewList - ==>  Preparing: select * from totalboard order by writedate desc limit 0,? 
+20:34:23.544 [http-nio-8090-exec-4] DEBUG c.t.m.t.selectNewList - ==> Parameters: 10(Integer)
+20:34:23.546 [http-nio-8090-exec-4] DEBUG c.t.m.t.selectNewList - <==      Total: 10
+20:34:23.546 [http-nio-8090-exec-4] DEBUG c.t.s.totalboardServiceImpl - selectGoodList
+20:34:23.547 [http-nio-8090-exec-4] DEBUG c.t.d.totalboardDAOImpl - selectGoodList
+20:34:23.551 [http-nio-8090-exec-4] DEBUG c.t.m.t.selectGoodList - ==>  Preparing: select * from totalboard order by good desc,writedate desc limit 0,? 
+20:34:23.553 [http-nio-8090-exec-4] DEBUG c.t.m.t.selectGoodList - ==> Parameters: 10(Integer)
+20:34:23.556 [http-nio-8090-exec-4] DEBUG c.t.m.t.selectGoodList - <==      Total: 10
+20:34:23.557 [http-nio-8090-exec-4] DEBUG c.t.s.boardServiceImpl - selectMainList
+20:34:23.558 [http-nio-8090-exec-4] DEBUG c.t.d.boardDAOImpl - selectMainList
+20:34:23.562 [http-nio-8090-exec-4] DEBUG c.t.m.b.selectMainList - ==>  Preparing: select * from itboard order by writedate desc limit 0,? 
+20:34:23.562 [http-nio-8090-exec-4] DEBUG c.t.m.b.selectMainList - ==> Parameters: 10(Integer)
+20:34:23.565 [http-nio-8090-exec-4] DEBUG c.t.m.b.selectMainList - <==      Total: 10
+20:34:23.565 [http-nio-8090-exec-4] DEBUG c.t.s.HumorboardServiceImpl - selectMainList
+20:34:23.565 [http-nio-8090-exec-4] DEBUG c.t.d.HumorboardDAOImpl - selectMainList
+20:34:23.572 [http-nio-8090-exec-4] DEBUG c.t.m.H.selectMainList - ==>  Preparing: select * from humorboard order by writedate desc limit 0,? 
+20:34:23.572 [http-nio-8090-exec-4] DEBUG c.t.m.H.selectMainList - ==> Parameters: 10(Integer)
+20:34:23.574 [http-nio-8090-exec-4] DEBUG c.t.m.H.selectMainList - <==      Total: 10
+20:34:25.804 [http-nio-8090-exec-5] DEBUG c.t.t.ITBoardController - boardList
+20:34:25.804 [http-nio-8090-exec-5] DEBUG c.t.s.boardServiceImpl - selectCount
+20:34:25.804 [http-nio-8090-exec-5] DEBUG c.t.d.boardDAOImpl - selectCount
+20:34:25.808 [http-nio-8090-exec-5] DEBUG c.t.m.b.selectCount - ==>  Preparing: select count(*) from itboard 
+20:34:25.808 [http-nio-8090-exec-5] DEBUG c.t.m.b.selectCount - ==> Parameters: 
+20:34:25.810 [http-nio-8090-exec-5] DEBUG c.t.m.b.selectCount - <==      Total: 1
+20:34:25.826 [http-nio-8090-exec-5] DEBUG c.t.s.boardServiceImpl - selectList
+20:34:25.827 [http-nio-8090-exec-5] DEBUG c.t.d.boardDAOImpl - selectList
+20:34:25.831 [http-nio-8090-exec-5] DEBUG c.t.m.b.selectList - ==>  Preparing: select * from itboard order by board_ref desc,bidx asc limit ?,? 
+20:34:25.832 [http-nio-8090-exec-5] DEBUG c.t.m.b.selectList - ==> Parameters: 0(Integer), 10(Integer)
+20:34:25.836 [http-nio-8090-exec-5] DEBUG c.t.m.b.selectList - <==      Total: 10
+20:34:26.969 [http-nio-8090-exec-7] DEBUG c.t.t.UserController - getLogin
+20:34:31.127 [http-nio-8090-exec-9] DEBUG c.t.s.userinfoServiceImpl - loadUserByUsername
+20:34:31.127 [http-nio-8090-exec-9] DEBUG c.t.d.userinfoDAOImpl - getUserById
+20:34:31.134 [http-nio-8090-exec-9] DEBUG c.t.m.m.selectUserById - ==>  Preparing: SELECT * FROM userinfo WHERE id=? 
+20:34:31.135 [http-nio-8090-exec-9] DEBUG c.t.m.m.selectUserById - ==> Parameters: abcdefg619(String)
+20:34:31.137 [http-nio-8090-exec-9] DEBUG c.t.m.m.selectUserById - <==      Total: 1
+20:34:31.138 [http-nio-8090-exec-9] DEBUG c.t.t.ITBoardController - registerIdCookie
+20:34:31.162 [http-nio-8090-exec-10] DEBUG c.t.t.ITBoardController - getWriteBoard
+20:34:31.163 [http-nio-8090-exec-10] DEBUG c.t.s.userinfoServiceImpl - selectName
+20:34:31.163 [http-nio-8090-exec-10] DEBUG c.t.d.userinfoDAOImpl - selectName
+20:34:31.167 [http-nio-8090-exec-10] DEBUG c.t.m.m.selectName - ==>  Preparing: select name from userinfo where id=? 
+20:34:31.168 [http-nio-8090-exec-10] DEBUG c.t.m.m.selectName - ==> Parameters: abcdefg619(String)
+20:34:31.169 [http-nio-8090-exec-10] DEBUG c.t.m.m.selectName - <==      Total: 1
+20:35:48.046 [http-nio-8090-exec-4] DEBUG c.t.t.mainController - welcome
+20:35:48.046 [http-nio-8090-exec-4] DEBUG c.t.s.totalboardServiceImpl - welcome
+20:35:48.080 [http-nio-8090-exec-4] DEBUG c.t.s.totalboardServiceImpl - selectNewList
+20:35:48.080 [http-nio-8090-exec-4] DEBUG c.t.d.totalboardDAOImpl - selectNewList
+20:35:48.085 [http-nio-8090-exec-4] DEBUG c.t.m.t.selectNewList - ==>  Preparing: select * from totalboard order by writedate desc limit 0,? 
+20:35:48.085 [http-nio-8090-exec-4] DEBUG c.t.m.t.selectNewList - ==> Parameters: 10(Integer)
+20:35:48.087 [http-nio-8090-exec-4] DEBUG c.t.m.t.selectNewList - <==      Total: 10
+20:35:48.087 [http-nio-8090-exec-4] DEBUG c.t.s.totalboardServiceImpl - selectGoodList
+20:35:48.087 [http-nio-8090-exec-4] DEBUG c.t.d.totalboardDAOImpl - selectGoodList
+20:35:48.090 [http-nio-8090-exec-4] DEBUG c.t.m.t.selectGoodList - ==>  Preparing: select * from totalboard order by good desc,writedate desc limit 0,? 
+20:35:48.091 [http-nio-8090-exec-4] DEBUG c.t.m.t.selectGoodList - ==> Parameters: 10(Integer)
+20:35:48.093 [http-nio-8090-exec-4] DEBUG c.t.m.t.selectGoodList - <==      Total: 10
+20:35:48.093 [http-nio-8090-exec-4] DEBUG c.t.s.boardServiceImpl - selectMainList
+20:35:48.093 [http-nio-8090-exec-4] DEBUG c.t.d.boardDAOImpl - selectMainList
+20:35:48.096 [http-nio-8090-exec-4] DEBUG c.t.m.b.selectMainList - ==>  Preparing: select * from itboard order by writedate desc limit 0,? 
+20:35:48.097 [http-nio-8090-exec-4] DEBUG c.t.m.b.selectMainList - ==> Parameters: 10(Integer)
+20:35:48.098 [http-nio-8090-exec-4] DEBUG c.t.m.b.selectMainList - <==      Total: 10
+20:35:48.099 [http-nio-8090-exec-4] DEBUG c.t.s.HumorboardServiceImpl - selectMainList
+20:35:48.099 [http-nio-8090-exec-4] DEBUG c.t.d.HumorboardDAOImpl - selectMainList
+20:35:48.103 [http-nio-8090-exec-4] DEBUG c.t.m.H.selectMainList - ==>  Preparing: select * from humorboard order by writedate desc limit 0,? 
+20:35:48.103 [http-nio-8090-exec-4] DEBUG c.t.m.H.selectMainList - ==> Parameters: 10(Integer)
+20:35:48.105 [http-nio-8090-exec-4] DEBUG c.t.m.H.selectMainList - <==      Total: 10
+20:35:50.200 [http-nio-8090-exec-6] DEBUG c.t.t.UserController - getLogin
+20:41:25.235 [http-nio-8090-exec-1] DEBUG c.t.t.mainController - welcome
+20:41:25.240 [http-nio-8090-exec-1] DEBUG c.t.s.totalboardServiceImpl - welcome
+20:41:25.266 [http-nio-8090-exec-1] DEBUG c.t.s.totalboardServiceImpl - selectNewList
+20:41:25.266 [http-nio-8090-exec-1] DEBUG c.t.d.totalboardDAOImpl - selectNewList
+20:41:25.748 [http-nio-8090-exec-1] DEBUG c.t.m.t.selectNewList - ==>  Preparing: select * from totalboard order by writedate desc limit 0,? 
+20:41:25.769 [http-nio-8090-exec-1] DEBUG c.t.m.t.selectNewList - ==> Parameters: 10(Integer)
+20:41:25.796 [http-nio-8090-exec-1] DEBUG c.t.m.t.selectNewList - <==      Total: 10
+20:41:25.799 [http-nio-8090-exec-1] DEBUG c.t.s.totalboardServiceImpl - selectGoodList
+20:41:25.799 [http-nio-8090-exec-1] DEBUG c.t.d.totalboardDAOImpl - selectGoodList
+20:41:25.805 [http-nio-8090-exec-1] DEBUG c.t.m.t.selectGoodList - ==>  Preparing: select * from totalboard order by good desc,writedate desc limit 0,? 
+20:41:25.805 [http-nio-8090-exec-1] DEBUG c.t.m.t.selectGoodList - ==> Parameters: 10(Integer)
+20:41:25.810 [http-nio-8090-exec-1] DEBUG c.t.m.t.selectGoodList - <==      Total: 10
+20:41:25.811 [http-nio-8090-exec-1] DEBUG c.t.s.boardServiceImpl - selectMainList
+20:41:25.811 [http-nio-8090-exec-1] DEBUG c.t.d.boardDAOImpl - selectMainList
+20:41:25.815 [http-nio-8090-exec-1] DEBUG c.t.m.b.selectMainList - ==>  Preparing: select * from itboard order by writedate desc limit 0,? 
+20:41:25.815 [http-nio-8090-exec-1] DEBUG c.t.m.b.selectMainList - ==> Parameters: 10(Integer)
+20:41:25.820 [http-nio-8090-exec-1] DEBUG c.t.m.b.selectMainList - <==      Total: 10
+20:41:25.821 [http-nio-8090-exec-1] DEBUG c.t.s.HumorboardServiceImpl - selectMainList
+20:41:25.821 [http-nio-8090-exec-1] DEBUG c.t.d.HumorboardDAOImpl - selectMainList
+20:41:25.826 [http-nio-8090-exec-1] DEBUG c.t.m.H.selectMainList - ==>  Preparing: select * from humorboard order by writedate desc limit 0,? 
+20:41:25.827 [http-nio-8090-exec-1] DEBUG c.t.m.H.selectMainList - ==> Parameters: 10(Integer)
+20:41:25.830 [http-nio-8090-exec-1] DEBUG c.t.m.H.selectMainList - <==      Total: 10
+20:41:26.636 [http-nio-8090-exec-2] DEBUG c.t.t.mainController - welcome
+20:41:26.639 [http-nio-8090-exec-2] DEBUG c.t.s.totalboardServiceImpl - welcome
+20:41:26.663 [http-nio-8090-exec-2] DEBUG c.t.s.totalboardServiceImpl - selectNewList
+20:41:26.663 [http-nio-8090-exec-2] DEBUG c.t.d.totalboardDAOImpl - selectNewList
+20:41:26.670 [http-nio-8090-exec-2] DEBUG c.t.m.t.selectNewList - ==>  Preparing: select * from totalboard order by writedate desc limit 0,? 
+20:41:26.671 [http-nio-8090-exec-2] DEBUG c.t.m.t.selectNewList - ==> Parameters: 10(Integer)
+20:41:26.676 [http-nio-8090-exec-2] DEBUG c.t.m.t.selectNewList - <==      Total: 10
+20:41:26.677 [http-nio-8090-exec-2] DEBUG c.t.s.totalboardServiceImpl - selectGoodList
+20:41:26.677 [http-nio-8090-exec-2] DEBUG c.t.d.totalboardDAOImpl - selectGoodList
+20:41:26.684 [http-nio-8090-exec-2] DEBUG c.t.m.t.selectGoodList - ==>  Preparing: select * from totalboard order by good desc,writedate desc limit 0,? 
+20:41:26.685 [http-nio-8090-exec-2] DEBUG c.t.m.t.selectGoodList - ==> Parameters: 10(Integer)
+20:41:26.690 [http-nio-8090-exec-2] DEBUG c.t.m.t.selectGoodList - <==      Total: 10
+20:41:26.691 [http-nio-8090-exec-2] DEBUG c.t.s.boardServiceImpl - selectMainList
+20:41:26.691 [http-nio-8090-exec-2] DEBUG c.t.d.boardDAOImpl - selectMainList
+20:41:26.697 [http-nio-8090-exec-2] DEBUG c.t.m.b.selectMainList - ==>  Preparing: select * from itboard order by writedate desc limit 0,? 
+20:41:26.697 [http-nio-8090-exec-2] DEBUG c.t.m.b.selectMainList - ==> Parameters: 10(Integer)
+20:41:26.708 [http-nio-8090-exec-2] DEBUG c.t.m.b.selectMainList - <==      Total: 10
+20:41:26.709 [http-nio-8090-exec-2] DEBUG c.t.s.HumorboardServiceImpl - selectMainList
+20:41:26.709 [http-nio-8090-exec-2] DEBUG c.t.d.HumorboardDAOImpl - selectMainList
+20:41:26.717 [http-nio-8090-exec-2] DEBUG c.t.m.H.selectMainList - ==>  Preparing: select * from humorboard order by writedate desc limit 0,? 
+20:41:26.718 [http-nio-8090-exec-2] DEBUG c.t.m.H.selectMainList - ==> Parameters: 10(Integer)
+20:41:26.731 [http-nio-8090-exec-2] DEBUG c.t.m.H.selectMainList - <==      Total: 10
+20:41:28.531 [http-nio-8090-exec-3] DEBUG c.t.t.UserController - getLogin
+20:41:32.063 [http-nio-8090-exec-4] DEBUG c.t.s.userinfoServiceImpl - loadUserByUsername
+20:41:32.064 [http-nio-8090-exec-4] DEBUG c.t.d.userinfoDAOImpl - getUserById
+20:41:32.067 [http-nio-8090-exec-4] DEBUG c.t.m.m.selectUserById - ==>  Preparing: SELECT * FROM userinfo WHERE id=? 
+20:41:32.069 [http-nio-8090-exec-4] DEBUG c.t.m.m.selectUserById - ==> Parameters: abcdefg619(String)
+20:41:32.070 [http-nio-8090-exec-4] DEBUG c.t.m.m.selectUserById - <==      Total: 1
+20:41:32.072 [http-nio-8090-exec-4] DEBUG c.t.t.ITBoardController - registerIdCookie
+20:41:32.080 [http-nio-8090-exec-5] DEBUG c.t.t.mainController - welcome
+20:41:32.081 [http-nio-8090-exec-5] DEBUG c.t.s.totalboardServiceImpl - welcome
+20:41:32.100 [http-nio-8090-exec-5] DEBUG c.t.s.totalboardServiceImpl - selectNewList
+20:41:32.100 [http-nio-8090-exec-5] DEBUG c.t.d.totalboardDAOImpl - selectNewList
+20:41:32.108 [http-nio-8090-exec-5] DEBUG c.t.m.t.selectNewList - ==>  Preparing: select * from totalboard order by writedate desc limit 0,? 
+20:41:32.108 [http-nio-8090-exec-5] DEBUG c.t.m.t.selectNewList - ==> Parameters: 10(Integer)
+20:41:32.110 [http-nio-8090-exec-5] DEBUG c.t.m.t.selectNewList - <==      Total: 10
+20:41:32.111 [http-nio-8090-exec-5] DEBUG c.t.s.totalboardServiceImpl - selectGoodList
+20:41:32.111 [http-nio-8090-exec-5] DEBUG c.t.d.totalboardDAOImpl - selectGoodList
+20:41:32.115 [http-nio-8090-exec-5] DEBUG c.t.m.t.selectGoodList - ==>  Preparing: select * from totalboard order by good desc,writedate desc limit 0,? 
+20:41:32.116 [http-nio-8090-exec-5] DEBUG c.t.m.t.selectGoodList - ==> Parameters: 10(Integer)
+20:41:32.119 [http-nio-8090-exec-5] DEBUG c.t.m.t.selectGoodList - <==      Total: 10
+20:41:32.121 [http-nio-8090-exec-5] DEBUG c.t.s.boardServiceImpl - selectMainList
+20:41:32.122 [http-nio-8090-exec-5] DEBUG c.t.d.boardDAOImpl - selectMainList
+20:41:32.126 [http-nio-8090-exec-5] DEBUG c.t.m.b.selectMainList - ==>  Preparing: select * from itboard order by writedate desc limit 0,? 
+20:41:32.126 [http-nio-8090-exec-5] DEBUG c.t.m.b.selectMainList - ==> Parameters: 10(Integer)
+20:41:32.129 [http-nio-8090-exec-5] DEBUG c.t.m.b.selectMainList - <==      Total: 10
+20:41:32.129 [http-nio-8090-exec-5] DEBUG c.t.s.HumorboardServiceImpl - selectMainList
+20:41:32.129 [http-nio-8090-exec-5] DEBUG c.t.d.HumorboardDAOImpl - selectMainList
+20:41:32.133 [http-nio-8090-exec-5] DEBUG c.t.m.H.selectMainList - ==>  Preparing: select * from humorboard order by writedate desc limit 0,? 
+20:41:32.133 [http-nio-8090-exec-5] DEBUG c.t.m.H.selectMainList - ==> Parameters: 10(Integer)
+20:41:32.136 [http-nio-8090-exec-5] DEBUG c.t.m.H.selectMainList - <==      Total: 10
+20:43:56.750 [http-nio-8090-exec-9] DEBUG c.t.t.mainController - welcome
+20:43:56.751 [http-nio-8090-exec-9] DEBUG c.t.s.totalboardServiceImpl - welcome
+20:43:56.781 [http-nio-8090-exec-9] DEBUG c.t.s.totalboardServiceImpl - selectNewList
+20:43:56.781 [http-nio-8090-exec-9] DEBUG c.t.d.totalboardDAOImpl - selectNewList
+20:43:56.787 [http-nio-8090-exec-9] DEBUG c.t.m.t.selectNewList - ==>  Preparing: select * from totalboard order by writedate desc limit 0,? 
+20:43:56.787 [http-nio-8090-exec-9] DEBUG c.t.m.t.selectNewList - ==> Parameters: 10(Integer)
+20:43:56.790 [http-nio-8090-exec-9] DEBUG c.t.m.t.selectNewList - <==      Total: 10
+20:43:56.791 [http-nio-8090-exec-9] DEBUG c.t.s.totalboardServiceImpl - selectGoodList
+20:43:56.791 [http-nio-8090-exec-9] DEBUG c.t.d.totalboardDAOImpl - selectGoodList
+20:43:56.796 [http-nio-8090-exec-9] DEBUG c.t.m.t.selectGoodList - ==>  Preparing: select * from totalboard order by good desc,writedate desc limit 0,? 
+20:43:56.796 [http-nio-8090-exec-9] DEBUG c.t.m.t.selectGoodList - ==> Parameters: 10(Integer)
+20:43:56.799 [http-nio-8090-exec-9] DEBUG c.t.m.t.selectGoodList - <==      Total: 10
+20:43:56.799 [http-nio-8090-exec-9] DEBUG c.t.s.boardServiceImpl - selectMainList
+20:43:56.799 [http-nio-8090-exec-9] DEBUG c.t.d.boardDAOImpl - selectMainList
+20:43:56.803 [http-nio-8090-exec-9] DEBUG c.t.m.b.selectMainList - ==>  Preparing: select * from itboard order by writedate desc limit 0,? 
+20:43:56.804 [http-nio-8090-exec-9] DEBUG c.t.m.b.selectMainList - ==> Parameters: 10(Integer)
+20:43:56.808 [http-nio-8090-exec-9] DEBUG c.t.m.b.selectMainList - <==      Total: 10
+20:43:56.810 [http-nio-8090-exec-9] DEBUG c.t.s.HumorboardServiceImpl - selectMainList
+20:43:56.811 [http-nio-8090-exec-9] DEBUG c.t.d.HumorboardDAOImpl - selectMainList
+20:43:56.818 [http-nio-8090-exec-9] DEBUG c.t.m.H.selectMainList - ==>  Preparing: select * from humorboard order by writedate desc limit 0,? 
+20:43:56.818 [http-nio-8090-exec-9] DEBUG c.t.m.H.selectMainList - ==> Parameters: 10(Integer)
+20:43:56.821 [http-nio-8090-exec-9] DEBUG c.t.m.H.selectMainList - <==      Total: 10
+20:43:58.041 [http-nio-8090-exec-1] DEBUG c.t.t.UserController - getLogin
+20:44:00.854 [http-nio-8090-exec-2] DEBUG c.t.t.mainController - welcome
+20:44:00.854 [http-nio-8090-exec-2] DEBUG c.t.s.totalboardServiceImpl - welcome
+20:44:00.870 [http-nio-8090-exec-2] DEBUG c.t.s.totalboardServiceImpl - selectNewList
+20:44:00.870 [http-nio-8090-exec-2] DEBUG c.t.d.totalboardDAOImpl - selectNewList
+20:44:00.877 [http-nio-8090-exec-2] DEBUG c.t.m.t.selectNewList - ==>  Preparing: select * from totalboard order by writedate desc limit 0,? 
+20:44:00.877 [http-nio-8090-exec-2] DEBUG c.t.m.t.selectNewList - ==> Parameters: 10(Integer)
+20:44:00.880 [http-nio-8090-exec-2] DEBUG c.t.m.t.selectNewList - <==      Total: 10
+20:44:00.881 [http-nio-8090-exec-2] DEBUG c.t.s.totalboardServiceImpl - selectGoodList
+20:44:00.881 [http-nio-8090-exec-2] DEBUG c.t.d.totalboardDAOImpl - selectGoodList
+20:44:00.887 [http-nio-8090-exec-2] DEBUG c.t.m.t.selectGoodList - ==>  Preparing: select * from totalboard order by good desc,writedate desc limit 0,? 
+20:44:00.888 [http-nio-8090-exec-2] DEBUG c.t.m.t.selectGoodList - ==> Parameters: 10(Integer)
+20:44:00.890 [http-nio-8090-exec-2] DEBUG c.t.m.t.selectGoodList - <==      Total: 10
+20:44:00.891 [http-nio-8090-exec-2] DEBUG c.t.s.boardServiceImpl - selectMainList
+20:44:00.891 [http-nio-8090-exec-2] DEBUG c.t.d.boardDAOImpl - selectMainList
+20:44:00.897 [http-nio-8090-exec-2] DEBUG c.t.m.b.selectMainList - ==>  Preparing: select * from itboard order by writedate desc limit 0,? 
+20:44:00.897 [http-nio-8090-exec-2] DEBUG c.t.m.b.selectMainList - ==> Parameters: 10(Integer)
+20:44:00.900 [http-nio-8090-exec-2] DEBUG c.t.m.b.selectMainList - <==      Total: 10
+20:44:00.901 [http-nio-8090-exec-2] DEBUG c.t.s.HumorboardServiceImpl - selectMainList
+20:44:00.901 [http-nio-8090-exec-2] DEBUG c.t.d.HumorboardDAOImpl - selectMainList
+20:44:00.905 [http-nio-8090-exec-2] DEBUG c.t.m.H.selectMainList - ==>  Preparing: select * from humorboard order by writedate desc limit 0,? 
+20:44:00.906 [http-nio-8090-exec-2] DEBUG c.t.m.H.selectMainList - ==> Parameters: 10(Integer)
+20:44:00.908 [http-nio-8090-exec-2] DEBUG c.t.m.H.selectMainList - <==      Total: 10
+20:44:02.071 [http-nio-8090-exec-3] DEBUG c.t.t.UserController - getLogin
+20:44:06.004 [http-nio-8090-exec-4] DEBUG c.t.s.userinfoServiceImpl - loadUserByUsername
+20:44:06.004 [http-nio-8090-exec-4] DEBUG c.t.d.userinfoDAOImpl - getUserById
+20:44:06.010 [http-nio-8090-exec-4] DEBUG c.t.m.m.selectUserById - ==>  Preparing: SELECT * FROM userinfo WHERE id=? 
+20:44:06.011 [http-nio-8090-exec-4] DEBUG c.t.m.m.selectUserById - ==> Parameters: abcdefg619(String)
+20:44:06.012 [http-nio-8090-exec-4] DEBUG c.t.m.m.selectUserById - <==      Total: 1
+20:44:06.013 [http-nio-8090-exec-4] DEBUG c.t.t.ITBoardController - registerIdCookie
+20:44:06.023 [http-nio-8090-exec-5] DEBUG c.t.t.mainController - welcome
+20:44:06.023 [http-nio-8090-exec-5] DEBUG c.t.s.totalboardServiceImpl - welcome
+20:44:06.044 [http-nio-8090-exec-5] DEBUG c.t.s.totalboardServiceImpl - selectNewList
+20:44:06.045 [http-nio-8090-exec-5] DEBUG c.t.d.totalboardDAOImpl - selectNewList
+20:44:06.049 [http-nio-8090-exec-5] DEBUG c.t.m.t.selectNewList - ==>  Preparing: select * from totalboard order by writedate desc limit 0,? 
+20:44:06.050 [http-nio-8090-exec-5] DEBUG c.t.m.t.selectNewList - ==> Parameters: 10(Integer)
+20:44:06.051 [http-nio-8090-exec-5] DEBUG c.t.m.t.selectNewList - <==      Total: 10
+20:44:06.052 [http-nio-8090-exec-5] DEBUG c.t.s.totalboardServiceImpl - selectGoodList
+20:44:06.052 [http-nio-8090-exec-5] DEBUG c.t.d.totalboardDAOImpl - selectGoodList
+20:44:06.056 [http-nio-8090-exec-5] DEBUG c.t.m.t.selectGoodList - ==>  Preparing: select * from totalboard order by good desc,writedate desc limit 0,? 
+20:44:06.057 [http-nio-8090-exec-5] DEBUG c.t.m.t.selectGoodList - ==> Parameters: 10(Integer)
+20:44:06.061 [http-nio-8090-exec-5] DEBUG c.t.m.t.selectGoodList - <==      Total: 10
+20:44:06.062 [http-nio-8090-exec-5] DEBUG c.t.s.boardServiceImpl - selectMainList
+20:44:06.062 [http-nio-8090-exec-5] DEBUG c.t.d.boardDAOImpl - selectMainList
+20:44:06.066 [http-nio-8090-exec-5] DEBUG c.t.m.b.selectMainList - ==>  Preparing: select * from itboard order by writedate desc limit 0,? 
+20:44:06.067 [http-nio-8090-exec-5] DEBUG c.t.m.b.selectMainList - ==> Parameters: 10(Integer)
+20:44:06.068 [http-nio-8090-exec-5] DEBUG c.t.m.b.selectMainList - <==      Total: 10
+20:44:06.069 [http-nio-8090-exec-5] DEBUG c.t.s.HumorboardServiceImpl - selectMainList
+20:44:06.069 [http-nio-8090-exec-5] DEBUG c.t.d.HumorboardDAOImpl - selectMainList
+20:44:06.073 [http-nio-8090-exec-5] DEBUG c.t.m.H.selectMainList - ==>  Preparing: select * from humorboard order by writedate desc limit 0,? 
+20:44:06.074 [http-nio-8090-exec-5] DEBUG c.t.m.H.selectMainList - ==> Parameters: 10(Integer)
+20:44:06.077 [http-nio-8090-exec-5] DEBUG c.t.m.H.selectMainList - <==      Total: 10
+20:44:07.005 [http-nio-8090-exec-8] DEBUG c.t.t.UserController - getLogin
+20:44:09.228 [http-nio-8090-exec-7] DEBUG c.t.t.mainController - welcome
+20:44:09.228 [http-nio-8090-exec-7] DEBUG c.t.s.totalboardServiceImpl - welcome
+20:44:09.248 [http-nio-8090-exec-7] DEBUG c.t.s.totalboardServiceImpl - selectNewList
+20:44:09.248 [http-nio-8090-exec-7] DEBUG c.t.d.totalboardDAOImpl - selectNewList
+20:44:09.252 [http-nio-8090-exec-7] DEBUG c.t.m.t.selectNewList - ==>  Preparing: select * from totalboard order by writedate desc limit 0,? 
+20:44:09.252 [http-nio-8090-exec-7] DEBUG c.t.m.t.selectNewList - ==> Parameters: 10(Integer)
+20:44:09.254 [http-nio-8090-exec-7] DEBUG c.t.m.t.selectNewList - <==      Total: 10
+20:44:09.254 [http-nio-8090-exec-7] DEBUG c.t.s.totalboardServiceImpl - selectGoodList
+20:44:09.254 [http-nio-8090-exec-7] DEBUG c.t.d.totalboardDAOImpl - selectGoodList
+20:44:09.259 [http-nio-8090-exec-7] DEBUG c.t.m.t.selectGoodList - ==>  Preparing: select * from totalboard order by good desc,writedate desc limit 0,? 
+20:44:09.260 [http-nio-8090-exec-7] DEBUG c.t.m.t.selectGoodList - ==> Parameters: 10(Integer)
+20:44:09.262 [http-nio-8090-exec-7] DEBUG c.t.m.t.selectGoodList - <==      Total: 10
+20:44:09.262 [http-nio-8090-exec-7] DEBUG c.t.s.boardServiceImpl - selectMainList
+20:44:09.262 [http-nio-8090-exec-7] DEBUG c.t.d.boardDAOImpl - selectMainList
+20:44:09.266 [http-nio-8090-exec-7] DEBUG c.t.m.b.selectMainList - ==>  Preparing: select * from itboard order by writedate desc limit 0,? 
+20:44:09.267 [http-nio-8090-exec-7] DEBUG c.t.m.b.selectMainList - ==> Parameters: 10(Integer)
+20:44:09.269 [http-nio-8090-exec-7] DEBUG c.t.m.b.selectMainList - <==      Total: 10
+20:44:09.270 [http-nio-8090-exec-7] DEBUG c.t.s.HumorboardServiceImpl - selectMainList
+20:44:09.270 [http-nio-8090-exec-7] DEBUG c.t.d.HumorboardDAOImpl - selectMainList
+20:44:09.275 [http-nio-8090-exec-7] DEBUG c.t.m.H.selectMainList - ==>  Preparing: select * from humorboard order by writedate desc limit 0,? 
+20:44:09.276 [http-nio-8090-exec-7] DEBUG c.t.m.H.selectMainList - ==> Parameters: 10(Integer)
+20:44:09.277 [http-nio-8090-exec-7] DEBUG c.t.m.H.selectMainList - <==      Total: 10
+20:44:10.688 [http-nio-8090-exec-10] DEBUG c.t.t.UserController - getLogin
+20:44:12.515 [http-nio-8090-exec-9] DEBUG c.t.t.mainController - welcome
+20:44:12.516 [http-nio-8090-exec-9] DEBUG c.t.s.totalboardServiceImpl - welcome
+20:44:12.547 [http-nio-8090-exec-9] DEBUG c.t.s.totalboardServiceImpl - selectNewList
+20:44:12.548 [http-nio-8090-exec-9] DEBUG c.t.d.totalboardDAOImpl - selectNewList
+20:44:12.552 [http-nio-8090-exec-9] DEBUG c.t.m.t.selectNewList - ==>  Preparing: select * from totalboard order by writedate desc limit 0,? 
+20:44:12.553 [http-nio-8090-exec-9] DEBUG c.t.m.t.selectNewList - ==> Parameters: 10(Integer)
+20:44:12.556 [http-nio-8090-exec-9] DEBUG c.t.m.t.selectNewList - <==      Total: 10
+20:44:12.557 [http-nio-8090-exec-9] DEBUG c.t.s.totalboardServiceImpl - selectGoodList
+20:44:12.558 [http-nio-8090-exec-9] DEBUG c.t.d.totalboardDAOImpl - selectGoodList
+20:44:12.562 [http-nio-8090-exec-9] DEBUG c.t.m.t.selectGoodList - ==>  Preparing: select * from totalboard order by good desc,writedate desc limit 0,? 
+20:44:12.563 [http-nio-8090-exec-9] DEBUG c.t.m.t.selectGoodList - ==> Parameters: 10(Integer)
+20:44:12.565 [http-nio-8090-exec-9] DEBUG c.t.m.t.selectGoodList - <==      Total: 10
+20:44:12.566 [http-nio-8090-exec-9] DEBUG c.t.s.boardServiceImpl - selectMainList
+20:44:12.566 [http-nio-8090-exec-9] DEBUG c.t.d.boardDAOImpl - selectMainList
+20:44:12.571 [http-nio-8090-exec-9] DEBUG c.t.m.b.selectMainList - ==>  Preparing: select * from itboard order by writedate desc limit 0,? 
+20:44:12.572 [http-nio-8090-exec-9] DEBUG c.t.m.b.selectMainList - ==> Parameters: 10(Integer)
+20:44:12.576 [http-nio-8090-exec-9] DEBUG c.t.m.b.selectMainList - <==      Total: 10
+20:44:12.578 [http-nio-8090-exec-9] DEBUG c.t.s.HumorboardServiceImpl - selectMainList
+20:44:12.578 [http-nio-8090-exec-9] DEBUG c.t.d.HumorboardDAOImpl - selectMainList
+20:44:12.582 [http-nio-8090-exec-9] DEBUG c.t.m.H.selectMainList - ==>  Preparing: select * from humorboard order by writedate desc limit 0,? 
+20:44:12.583 [http-nio-8090-exec-9] DEBUG c.t.m.H.selectMainList - ==> Parameters: 10(Integer)
+20:44:12.585 [http-nio-8090-exec-9] DEBUG c.t.m.H.selectMainList - <==      Total: 10

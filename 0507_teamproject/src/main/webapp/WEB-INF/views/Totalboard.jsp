@@ -9,116 +9,22 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-	 <link rel="shortcut icon" href="#"> <!-- favicon -->
      <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1">
      <title>레이아웃</title>
      <!-- Bootstrap core CSS , js -->
-     <link type="text/css" href="css/bootstrap.min.css" rel="stylesheet"> 
-     <script type="text/javascript" src="js/bootstrap.js"></script>
+     <link type="text/css" href="/css/bootstrap.min.css" rel="stylesheet"> 
+     <script type="text/javascript" src="/js/bootstrap.js"></script>
         
     <!-- Custom styles for this template -->
-	<link type="text/css" href="css/navbar.css" rel="stylesheet"> 
-	<link type="text/css" href="css/board.css" rel="stylesheet"> 
+	<link type="text/css" href="/css/navbar.css" rel="stylesheet"> 
+	<link type="text/css" href="/css/board.css" rel="stylesheet"> 
 </head>
 <body>
 	 <!--상단 https://bootswatch.com/sketchy/-->
- <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="../">Home</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" style="justify-content: space-between">
-      <ul class="navbar-nav">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">community</a>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="itboard">It 시사</a>
-            <a class="dropdown-item" href="humorboard">유머</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="https://opentutorials.org/course/1">생활코딩</a>
-          </div>
-        </li>
-        
-      </ul>
-      
-      
-      <form class="d-flex" action="totalBoard" method="get">
-	         	<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-	  				<input type="button" class="btn btn-primary" id="searchType_view" value="전체"/>
-	  				<input type="hidden" id="searchType" name="searchType" value="all"/>
-	  				<div class="btn-group" role="group">
-		    			<button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-		    			<div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-			      			<a class="dropdown-item" href="#" onclick="dropdown(this)" id="all">전체</a>
-			      			<a class="dropdown-item" href="#" onclick="dropdown(this)" id="subject">제목</a>
-			      			<a class="dropdown-item" href="#" onclick="dropdown(this)" id="content">내용</a>
-			      			<a class="dropdown-item" href="#" onclick="dropdown(this)" id="name">작성자</a>
-		    			</div>
-	  				</div>
-				</div>
-	       	 	<input name="searchText" class="form-control ms-sm-2 me-sm-2 board-search" type="text" placeholder="검색">
-    	   	 	<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-      </form>
-      
-      <div style="display:flex;">
-	      <div id="greet"></div>
-	      <form id="logoutForm"></form>
-	      <form method="get" action="login" id="userLogin">
-	      	<button type="submit" class="btn me-sm-1 rounded-pill btn-info">Login</button>
-	      </form>
-	      <form method="get" action="signin" id="userSign">
-	      	<button type="submit" class="btn rounded-pill btn-outline-info">Sign</button>
-	      </form>
-      </div>
-      
-      
-      <script>
-      (function () {//익명즉시실행함수 
-    	  
- 		var Session_userID='${Session_userID}';
- 		if(Session_userID.length!=0){
- 			var userLogin=document.getElementById('userLogin');
- 	 		var userSign=document.getElementById('userSign');
- 	 		userLogin.setAttribute('style','display:none');
- 	 		userSign.setAttribute('style','display:none');
- 	 		
- 	 		var hyperlink = document.createElement("a");
- 	 		hyperlink.href="http://www.naver.com";
- 			var img = document.createElement("img");
-	        img.src = "images/userlogin.png"; 
-	        img.height = 30; 
-	        img.width = 30;
-	        hyperlink.append(img);
-	        document.getElementById('greet').append(hyperlink);
-	        var WelcomUser = document.createElement("span");
-	        WelcomUser.setAttribute('style','font-size:0.8rem;');
-	        WelcomUser.textContent=Session_userID;
-	        
- 	 		document.getElementById('greet').append(WelcomUser);
- 	 		
- 	 		var logoutButton= document.createElement('button');
- 	 		logoutButton.setAttribute('type','submit');
- 	 		logoutButton.classList.add('btn','me-sm-1','rounded-pill','btn-info');
- 	 		logoutButton.innerHTML='Logout';
- 	 		
- 	 		var logoutForm= document.getElementById('logoutForm');
- 	 		logoutForm.setAttribute('method','post');
- 	 		logoutForm.setAttribute('action','logout');
- 	 		logoutForm.append(logoutButton);
- 	 		
- 	 		document.getElementById('greet').setAttribute('style','margin-right:10px; font-size:0.5em');
-
- 		}
- 	})(2);
-     </script>
-     
-     
-    </div>
-  </div>
-</nav>
+ 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	  <jsp:include page="/WEB-INF/views/common/nav.jsp" flush="false"/>
+	</nav>
     <!--//상단 -->
 
 	<div class="container-column-align" style="height: 100%; margin-top: 1rem;">
@@ -170,15 +76,15 @@
 									<td align="left">
 										<!-- 오늘 입력된 글에 new 아이콘을 표시 -->
 										<c:if test="${date.year==dto.writedate.year && date.month==dto.writedate.month && date.date==dto.writedate.date}">
-											<img src="images/new1.png"/>
+											<img src="/images/new1.png"/>
 										</c:if>
 										<c:set var="subject" value="${fn:replace(dto.subject,'<','&lt;')}" />
 										<c:set var="subject" value="${fn:replace(subject,'>','&gt;')}" />
 										<c:if test='${dto.url.equals("itboard")}'>
-											<a href="itboard/increment?bidx=${dto.bidx}&currentPage=${boardList.currentPage}" class="subject all">
+											<a href="/itboard/increment?bidx=${dto.bidx}&currentPage=${boardList.currentPage}" class="subject all">
 										</c:if>
 										<c:if test='${dto.url.equals("humorboard")}'>
-											<a href="humorboard/increment?bidx=${dto.bidx}&currentPage=${boardList.currentPage}" class="subject all">
+											<a href="/humorboard/increment?bidx=${dto.bidx}&currentPage=${boardList.currentPage}" class="subject all">
 										</c:if>
 											${subject}
 										</a>
@@ -316,11 +222,11 @@
 										<c:set var="current_ref" value="${dto.board_ref}"/>
 										<!-- 오늘 입력된 글에 new 아이콘을 표시 -->
 										<c:if test="${date.year==dto.writedate.year && date.month==dto.writedate.month && date.date==dto.writedate.date}">
-											<img src="images/new1.png"/>
+											<img src="/images/new1.png"/>
 										</c:if>
 										<c:set var="subject" value="${fn:replace(dto.subject,'<','&lt;')}" />
 										<c:set var="subject" value="${fn:replace(subject,'>','&gt;')}" />
-										<a href="itboard/increment?bidx=${dto.bidx}&currentPage=${boardList.currentPage}" class="subject all">
+										<a href="/itboard/increment?bidx=${dto.bidx}&currentPage=${boardList.currentPage}" class="subject all">
 											${subject}
 										</a>
 									</td>
@@ -341,7 +247,7 @@
 									</td>
 									<td align="center">
 										<c:if test="${dto.good>=10}">
-										<img src="images/hot.gif"/>
+										<img src="/images/hot.gif"/>
 										</c:if>
 										${dto.good}
 									</td>
@@ -454,11 +360,11 @@
 										<c:set var="current_ref" value="${dto.board_ref}"/>
 										<!-- 오늘 입력된 글에 new 아이콘을 표시 -->
 										<c:if test="${date.year==dto.writedate.year && date.month==dto.writedate.month && date.date==dto.writedate.date}">
-											<img src="images/new1.png"/>
+											<img src="/images/new1.png"/>
 										</c:if>
 										<c:set var="subject" value="${fn:replace(dto.subject,'<','&lt;')}" />
 										<c:set var="subject" value="${fn:replace(subject,'>','&gt;')}" />
-										<a href="itboard/increment?bidx=${dto.bidx}&currentPage=${boardList.currentPage}" class="subject all">
+										<a href="/itboard/increment?bidx=${dto.bidx}&currentPage=${boardList.currentPage}" class="subject all">
 											${subject}
 										</a>
 									</td>
@@ -479,7 +385,7 @@
 									</td>
 									<td align="center">
 										<c:if test="${dto.good>=10}">
-										<img src="images/hot.gif"/>
+										<img src="/images/hot.gif"/>
 										</c:if>
 										${dto.good}
 									</td>
@@ -544,7 +450,7 @@
         </div>
         <!-- //Humor게시판 -->
     </div>
-    <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript" src="/js/common.js"></script>
     <script>
 		window.onload = function() {
 			colorizeText('${searchText}','${searchType}');

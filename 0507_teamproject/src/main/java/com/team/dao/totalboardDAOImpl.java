@@ -6,6 +6,8 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import com.team.dto.HumorboardDTO;
@@ -19,89 +21,91 @@ public class totalboardDAOImpl implements totalboardDAO{
 	@Inject
     private SqlSession sqlSession;
 	
+	private static final Logger LOG = LoggerFactory.getLogger(totalboardDAOImpl.class);
+	
 	private static final String Namespace = "com.team.mapper.totalboardMapper";
 
 	@Override
 	public void inserthumorBoard(HumorboardDTO humorboardDTO) {
-		System.out.println("totalboardDAOImpl-inserthumorBoard");
+		LOG.debug("inserthumorBoard");
 		sqlSession.insert(Namespace+".inserthumorBoard", humorboardDTO);
 	}
 
 	@Override
 	public void updateHumorBoardGood(HashMap<String, Integer> hmap) {
-		System.out.println("totalboardDAOImpl-updateHumorBoardGood");
+		LOG.debug("updateHumorBoardGood");
 		sqlSession.update(Namespace+".updateHumorBoardGood", hmap);
 	}
 
 	@Override
 	public void insertitBoard(ITboardDTO iTboardDTO) {
-		System.out.println("totalboardDAOImpl-insertitBoard");
+		LOG.debug("insertitBoard");
 		sqlSession.insert(Namespace+".insertitBoard", iTboardDTO);
 	}
 
 	@Override
 	public void updateItBoardGood(HashMap<String, Integer> hmap) {
-		System.out.println("totalboardDAOImpl-updateItBoardGood");
+		LOG.debug("updateItBoardGood");
 		sqlSession.update(Namespace+".updateItBoardGood", hmap);
 	}
 
 	@Override
 	public void updateHumorBoard(HumorboardDTO humorboardDTO) {
-		System.out.println("totalboardDAOImpl-updateHumorBoard");
+		LOG.debug("updateHumorBoard");
 		sqlSession.update(Namespace+".updateHumorBoard", humorboardDTO);
 	}
 
 	@Override
 	public void updateITBoard(ITboardDTO iTboardDTO) {
-		System.out.println("totalboardDAOImpl-updateITBoard");
+		LOG.debug("updateITBoard");
 		sqlSession.update(Namespace+".updateITBoard", iTboardDTO);
 	}
 
 	@Override
 	public void deleteHumorBoard(int bidx) {
-		System.out.println("totalboardDAOImpl-deleteHumorBoard");
+		LOG.debug("deleteHumorBoard");
 		sqlSession.delete(Namespace+".deleteHumorBoard", bidx);
 	}
 
 	@Override
 	public void deleteITBoard(int bidx) {
-		System.out.println("totalboardDAOImpl-deleteITBoard");
+		LOG.debug("deleteITBoard");
 		sqlSession.delete(Namespace+".deleteITBoard", bidx);
 	}
 
 	@Override
 	public List<TotalboardDTO> selectNewList(int num) {
-		System.out.println("totalboardDAOImpl-selectNewList");
+		LOG.debug("selectNewList");
 		return sqlSession.selectList(Namespace+".selectNewList",num);
 	}
 
 	@Override
 	public List<TotalboardDTO> selectGoodList(int num) {
-		System.out.println("totalboardDAOImpl-selectGoodList");
+		LOG.debug("selectGoodList");
 		return sqlSession.selectList(Namespace+".selectGoodList",num);
 	}
 
 	@Override
 	public void incrementItBoard(int bidx) {
-		System.out.println("totalboardDAOImpl-incrementItBoard");
+		LOG.debug("incrementItBoard");
 		sqlSession.update(Namespace+".incrementItBoard",bidx);
 	}
 
 	@Override
 	public void incrementHumorBoard(int bidx) {
-		System.out.println("totalboardDAOImpl-incrementHumorBoard");
+		LOG.debug("incrementHumorBoard");
 		sqlSession.update(Namespace+".incrementHumorBoard",bidx);
 	}
 
 	@Override
 	public int selectTypeCount(TotalboardList totalboardList) {
-		System.out.println("totalboardDAOImpl-selectTypeCount");
+		LOG.debug("selectTypeCount");
 		return sqlSession.selectOne(Namespace+".selectTypeCount",totalboardList);
 	}
 
 	@Override
 	public List<TotalboardDTO> selectTypeList(TotalboardList totalboardList) {
-		System.out.println("totalboardDAOImpl-selectTypeList");
+		LOG.debug("selectTypeList");
 		return sqlSession.selectList(Namespace+".selectTypeList",totalboardList);
 	}
 	

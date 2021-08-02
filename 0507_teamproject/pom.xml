@@ -11,6 +11,10 @@
 		<java-version>1.6</java-version>
 		<org.springframework-version>3.1.1.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.6.10</org.aspectj-version>
+		<spring.security.version>3.1.7.RELEASE</spring.security.version>
+		
+		<jcloverslf4j.version>1.6.6</jcloverslf4j.version>
+         <logback.version>1.0.7</logback.version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
 	<dependencies>
@@ -20,7 +24,7 @@
 			<artifactId>spring-context</artifactId>
 			<version>${org.springframework-version}</version>
 			<exclusions>
-				<!-- Exclude Commons Logging in favor of SLF4j -->
+				<!-- Exclude Commons Logging in favor of SLF4j , JCL 제외 -->
 				<exclusion>
 					<groupId>commons-logging</groupId>
 					<artifactId>commons-logging</artifactId>
@@ -32,7 +36,32 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
-				
+
+
+	<!-- Spring Security -->
+	<dependency>
+		<groupId>org.springframework.security</groupId>
+		<artifactId>spring-security-core</artifactId>
+		<version>${spring.security.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework.security</groupId>
+		<artifactId>spring-security-web</artifactId>
+		<version>${spring.security.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework.security</groupId>
+		<artifactId>spring-security-config</artifactId>
+		<version>${spring.security.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework.security</groupId>
+		<artifactId>spring-security-taglibs</artifactId>
+		<version>${spring.security.version}</version>
+	</dependency>
+	<!-- -->
+
+
 		<!-- AspectJ -->
 		<dependency>
 			<groupId>org.aspectj</groupId>
@@ -58,6 +87,7 @@
 			<version>${org.slf4j-version}</version>
 			<scope>runtime</scope>
 		</dependency>
+		
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
@@ -82,6 +112,18 @@
 			</exclusions>
 			<scope>runtime</scope>
 		</dependency>
+
+		<!-- Logback --> 
+         <dependency>                                    
+                  <groupId>org.slf4j</groupId>                
+                  <artifactId>jcl-over-slf4j</artifactId>     
+                  <version>${jcloverslf4j.version}</version>  
+         </dependency>
+         <dependency>
+                  <groupId>ch.qos.logback</groupId>
+                  <artifactId>logback-classic</artifactId>
+                  <version>${logback.version}</version>
+         </dependency>
 
 		<!-- @Inject -->
 		<dependency>
@@ -159,11 +201,11 @@
         
         <!-- Mybatis log -->
         <!-- https://mvnrepository.com/artifact/org.bgee.log4jdbc-log4j2/log4jdbc-log4j2-jdbc4.1 -->
-        <dependency>
+        <!-- <dependency>
             <groupId>org.bgee.log4jdbc-log4j2</groupId>
             <artifactId>log4jdbc-log4j2-jdbc4</artifactId>
             <version>1.16</version>
-        </dependency>
+        </dependency> -->
 
 		<dependency>
 		
@@ -227,6 +269,8 @@
 		</dependency>
 
 	</dependencies>
+	
+	
     <build>
         <plugins>
             <plugin>
